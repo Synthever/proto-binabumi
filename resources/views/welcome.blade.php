@@ -8,5 +8,6 @@
 <body class="bg-gray-100 text-center py-20">
     <h1 class="text-4xl font-bold text-green-600">Selamat Datang di SIGMA</h1>
     <p class="text-gray-600 mt-2">Inovasi Bina Bumi untuk daur ulang botol plastik</p>
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 </body>
 </html>
