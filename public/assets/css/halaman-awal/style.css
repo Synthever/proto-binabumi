@@ -1,0 +1,105 @@
+/* Loading Screen Styles */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F3F4F6;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF5EA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-content {
+    text-align: center;
+    color: black;
+}
+
+.loading-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.loading-dot {
+    width: 12px;
+    height: 12px;
+    background: #2D5A3A;
+    border-radius: 50%;
+}
+
+.page-transition {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation Classes */
+.animate-hero {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.animate-feature {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #2D5A3A;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.sub-title {
+    font-size: 1.25rem;
+    color: #2D5A3A;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
