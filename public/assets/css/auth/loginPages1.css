@@ -1,0 +1,773 @@
+/* Google OAuth Pages Styles - Base max-width: 1024px */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+/* Animation preparation - Initially hidden elements */
+.oauth-header,
+.app-title-section,
+.account-item,
+.privacy-notice,
+.language-selector,
+.footer-link {
+    opacity: 0;
+}
+
+/* App logo - simple preparation without transform conflicts */
+.app-logo {
+    opacity: 0;
+}
+
+/* Smooth transitions for interactive elements */
+.back-btn,
+.account-item,
+.privacy-link,
+.footer-link {
+    transition: all 0.2s ease;
+    will-change: transform;
+}
+
+/* Enhanced hover states */
+.back-btn:hover {
+    background: rgba(95, 99, 104, 0.08);
+    transform: scale(1.1);
+}
+
+.account-item:hover {
+    background-color: rgba(26, 115, 232, 0.04);
+    transform: translateX(5px) scale(1.02);
+}
+
+.account-item:active {
+    background-color: rgba(26, 115, 232, 0.08);
+    transform: scale(0.98);
+}
+
+/* Enhanced logo animations */
+.app-logo {
+    will-change: transform;
+}
+
+/* Smooth avatar animations */
+.account-avatar {
+    will-change: transform;
+    transition: transform 0.2s ease;
+}
+
+/* Main Container */
+.oauth-container {
+    background: #fff;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Status Bar */
+.mobile-status-bar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1024px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    color: #000;
+    font-size: 17px;
+    font-weight: 600;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.status-left {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.signal-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px;
+}
+
+.signal-bars span {
+    width: 3px;
+    background: #000;
+    border-radius: 1px;
+}
+
+.signal-bars span:nth-child(1) { height: 4px; }
+.signal-bars span:nth-child(2) { height: 6px; }
+.signal-bars span:nth-child(3) { height: 8px; }
+.signal-bars span:nth-child(4) { height: 10px; }
+
+.wifi-icon, .battery-icon {
+    font-size: 14px;
+}
+
+/* OAuth Header */
+.oauth-header {
+    position: fixed;
+    top: 5px;
+    left: auto;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1024px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #5f6368;
+    transition: all 0.2s ease;
+    margin-right: 16px;
+}
+
+.back-btn:hover {
+    background: rgba(95, 99, 104, 0.08);
+}
+
+.back-btn:active {
+    background: rgba(95, 99, 104, 0.12);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.google-logo {
+    width: 20px;
+    height: 20px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: #5f6368;
+    margin: 0;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 124px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* App Info Section */
+.app-info {
+    text-align: center;
+    margin-bottom: 48px;
+    width: 100%;
+}
+
+.app-logo-container {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: contain;
+    padding: 16px;
+}
+
+.app-title-section {
+    margin-bottom: 0;
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.app-subtitle {
+    font-size: 16px;
+    color: #5f6368;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.app-subtitle strong {
+    color: #202124;
+    font-weight: 500;
+}
+
+/* Account List */
+.account-list {
+    width: 100%;
+    margin-bottom: 32px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #dadce0;
+    gap: 16px;
+}
+
+.account-item:last-child {
+    border-bottom: none;
+}
+
+.account-item:hover {
+    background-color: rgba(26, 115, 232, 0.04);
+}
+
+.account-item:active {
+    background-color: rgba(26, 115, 232, 0.08);
+}
+
+.account-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 500;
+    color: #fff;
+    font-size: 16px;
+}
+
+.alt-avatar {
+    background-color: #f8f9fa !important;
+    color: #5f6368 !important;
+    border: 1px solid #dadce0;
+}
+
+.avatar-initial {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.account-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.account-name {
+    font-size: 16px;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 2px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-email {
+    font-size: 14px;
+    color: #5f6368;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.use-another .account-name {
+    margin-bottom: 0;
+}
+
+/* Privacy Notice */
+.privacy-notice {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.privacy-text {
+    font-size: 12px;
+    color: #5f6368;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.privacy-text.small {
+    font-size: 11px;
+}
+
+.privacy-link {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+/* Language Selector */
+.language-selector {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.language-select {
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: #5f6368;
+    cursor: pointer;
+    padding: 8px 0;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%235f6368' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0 center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 20px;
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-link {
+    font-size: 12px;
+    color: #5f6368;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #1a73e8;
+}
+
+/* Bottom Privacy (Mobile) */
+.bottom-privacy {
+    width: 100%;
+    margin-bottom: 32px;
+    display: none;
+}
+
+/* Mobile Bottom Indicator */
+.mobile-bottom-indicator {
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    z-index: 1000;
+}
+
+/* Responsive Design */
+
+/* Large screens (Desktop) - Above 1024px */
+@media (min-width: 1025px) {
+    .oauth-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-status-bar {
+        display: none;
+    }
+    
+    .oauth-header {
+        top: 0;
+        height: 72px;
+        padding: 0 32px;
+    }
+    
+    .main-content {
+        padding: 88px 48px 48px;
+        max-width: 520px;
+    }
+    
+    .app-logo {
+        width: 140px;
+        height: 140px;
+        padding: 20px;
+    }
+    
+    .app-title {
+        font-size: 28px;
+    }
+    
+    .app-subtitle {
+        font-size: 18px;
+    }
+    
+    .mobile-bottom-indicator {
+        display: none;
+    }
+}
+
+/* Large Tablets (iPad Pro) - 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .oauth-container {
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+    }
+    
+    .mobile-status-bar {
+        max-width: 100%;
+    }
+    
+    .oauth-header {
+        max-width: 100%;
+        padding: 0 24px;
+    }
+    
+    .main-content {
+        padding: 124px 32px 32px;
+        max-width: 500px;
+    }
+    
+    .app-logo {
+        width: 120px;
+        height: 120px;
+        padding: 18px;
+    }
+    
+    .app-title {
+        font-size: 26px;
+    }
+    
+    .app-subtitle {
+        font-size: 17px;
+    }
+    
+    .account-item {
+        padding: 18px 24px;
+    }
+    
+    .account-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    .account-name {
+        font-size: 17px;
+    }
+    
+    .account-email {
+        font-size: 15px;
+    }
+}
+
+/* Standard Mobile (iPhone Pro Max) - 414px to 767px */
+@media (min-width: 414px) and (max-width: 767px) {
+    .main-content {
+        padding: 124px 28px 28px;
+        max-width: 450px;
+    }
+    
+    .app-info {
+        margin-bottom: 40px;
+    }
+    
+    .app-logo-container {
+        margin-bottom: 28px;
+    }
+    
+    .app-logo {
+        width: 100px;
+        height: 100px;
+        padding: 15px;
+    }
+    
+    .app-title {
+        font-size: 23px;
+    }
+    
+    .account-item {
+        padding: 15px 18px;
+    }
+    
+    .account-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+    
+    .account-name {
+        font-size: 15px;
+    }
+    
+    .account-email {
+        font-size: 13px;
+    }
+}
+
+/* Standard Mobile (iPhone) - 375px to 413px */
+@media (min-width: 375px) and (max-width: 413px) {
+    .main-content {
+        padding: 124px 24px 24px;
+        max-width: 400px;
+    }
+    
+    .app-info {
+        margin-bottom: 36px;
+    }
+    
+    .app-logo-container {
+        margin-bottom: 24px;
+    }
+    
+    .app-logo {
+        width: 90px;
+        height: 90px;
+        padding: 14px;
+    }
+    
+    .app-title {
+        font-size: 22px;
+    }
+    
+    .app-subtitle {
+        font-size: 15px;
+    }
+    
+    .account-list {
+        margin-bottom: 28px;
+    }
+    
+    .account-item {
+        padding: 14px 16px;
+        gap: 14px;
+    }
+    
+    .account-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    
+    .account-name {
+        font-size: 15px;
+    }
+    
+    .account-email {
+        font-size: 13px;
+    }
+    
+    .privacy-notice {
+        margin-bottom: 20px;
+    }
+    
+    .footer-links {
+        margin-bottom: 28px;
+        gap: 20px;
+    }
+}
+
+/* Small Mobile (iPhone SE) - 320px to 374px */
+@media (max-width: 374px) {
+    .main-content {
+        padding: 124px 20px 20px;
+        max-width: 350px;
+    }
+    
+    .app-info {
+        margin-bottom: 32px;
+    }
+    
+    .app-logo-container {
+        margin-bottom: 20px;
+    }
+    
+    .app-logo {
+        width: 80px;
+        height: 80px;
+        padding: 12px;
+    }
+    
+    .app-title {
+        font-size: 20px;
+    }
+    
+    .app-subtitle {
+        font-size: 14px;
+    }
+    
+    .account-list {
+        margin-bottom: 24px;
+    }
+    
+    .account-item {
+        padding: 12px 14px;
+        gap: 12px;
+    }
+    
+    .account-avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+    
+    .account-name {
+        font-size: 14px;
+    }
+    
+    .account-email {
+        font-size: 12px;
+    }
+    
+    .privacy-notice {
+        margin-bottom: 18px;
+    }
+    
+    .privacy-text {
+        font-size: 11px;
+    }
+    
+    .footer-links {
+        margin-bottom: 24px;
+        gap: 16px;
+    }
+    
+    .footer-link {
+        font-size: 11px;
+    }
+    
+    .bottom-privacy {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    .privacy-notice {
+        display: none;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .oauth-header {
+        height: 56px;
+    }
+    
+    .main-content {
+        padding: 80px 24px 20px;
+        justify-content: flex-start;
+    }
+    
+    .app-info {
+        margin-bottom: 24px;
+    }
+    
+    .app-logo-container {
+        margin-bottom: 16px;
+    }
+    
+    .app-logo {
+        width: 70px;
+        height: 70px;
+        padding: 10px;
+    }
+    
+    .app-title {
+        font-size: 20px;
+    }
+    
+    .app-subtitle {
+        font-size: 14px;
+    }
+    
+    .account-list {
+        margin-bottom: 20px;
+    }
+    
+    .account-item {
+        padding: 10px 16px;
+    }
+    
+    .account-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .privacy-notice {
+        margin-bottom: 16px;
+    }
+    
+    .footer-links {
+        margin-bottom: 20px;
+    }
+    
+    .mobile-status-bar {
+        height: 32px;
+        font-size: 15px;
+    }
+}

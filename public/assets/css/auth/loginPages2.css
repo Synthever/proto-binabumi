@@ -1,0 +1,662 @@
+/* Google OAuth Permission Pages Styles - Base max-width: 1024px */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+/* Animation preparation - Initially hidden elements */
+.oauth-header,
+.permission-title,
+.user-info,
+.permission-section > *,
+.action-buttons .btn {
+    opacity: 0;
+}
+
+/* App logo - simple preparation without transform conflicts */
+.app-logo {
+    opacity: 0;
+}
+
+/* Smooth transitions for interactive elements */
+.back-btn,
+.btn,
+.permission-link,
+.info-btn {
+    transition: all 0.2s ease;
+    will-change: transform;
+}
+
+/* Enhanced hover states */
+.back-btn:hover {
+    background: rgba(95, 99, 104, 0.08);
+    transform: scale(1.1);
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Enhanced logo animations */
+.app-logo {
+    will-change: transform;
+}
+
+/* Gmail icon animations */
+.gmail-icon {
+    will-change: transform;
+}
+
+/* Main Container */
+.oauth-container {
+    background: #fff;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Status Bar */
+.mobile-status-bar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1024px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    color: #000;
+    font-size: 17px;
+    font-weight: 600;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.status-left {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.signal-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 12px;
+}
+
+.signal-bars span {
+    width: 3px;
+    background: #000;
+    border-radius: 1px;
+}
+
+.signal-bars span:nth-child(1) { height: 4px; }
+.signal-bars span:nth-child(2) { height: 6px; }
+.signal-bars span:nth-child(3) { height: 8px; }
+.signal-bars span:nth-child(4) { height: 10px; }
+
+.wifi-icon, .battery-icon {
+    font-size: 14px;
+}
+
+/* OAuth Header */
+.oauth-header {
+    position: fixed;
+    top: 5px;
+    left: auto;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1024px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #5f6368;
+    transition: all 0.2s ease;
+    margin-right: 16px;
+}
+
+.back-btn:hover {
+    background: rgba(95, 99, 104, 0.08);
+}
+
+.back-btn:active {
+    background: rgba(95, 99, 104, 0.12);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.google-logo {
+    width: 20px;
+    height: 20px;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: #5f6368;
+    margin: 0;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 124px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* App Logo */
+.app-logo-container {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: contain;
+    padding: 12px;
+}
+
+/* Permission Title */
+.permission-title {
+    text-align: center;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.main-title {
+    font-size: 20px;
+    font-weight: 400;
+    color: #202124;
+    line-height: 1.4;
+}
+
+.main-title strong {
+    font-weight: 500;
+    color: #202124;
+}
+
+/* User Info */
+.user-info {
+    text-align: center;
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.user-email {
+    font-size: 14px;
+    color: #5f6368;
+    font-weight: 400;
+}
+
+/* Permission Section */
+.permission-section {
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.permission-heading {
+    font-size: 16px;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 24px;
+}
+
+.permission-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 16px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.gmail-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.permission-text {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.permission-description {
+    font-size: 14px;
+    color: #202124;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.info-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.info-btn:hover {
+    background: rgba(95, 99, 104, 0.08);
+}
+
+/* Trust Section */
+.trust-section {
+    width: 100%;
+}
+
+.trust-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 16px;
+}
+
+.trust-title strong {
+    font-weight: 500;
+}
+
+.trust-description {
+    font-size: 12px;
+    color: #5f6368;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.trust-description:last-child {
+    margin-bottom: 0;
+}
+
+.permission-link {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.permission-link:hover {
+    text-decoration: underline;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #dadce0;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.btn-cancel {
+    background: #fff;
+    color: #1a73e8;
+    border-color: #dadce0;
+}
+
+.btn-cancel:hover {
+    background: #f8f9fa;
+    border-color: #1a73e8;
+}
+
+.btn-allow {
+    background: #1a73e8;
+    color: #fff;
+    border-color: #1a73e8;
+}
+
+.btn-allow:hover {
+    background: #1557b0;
+    border-color: #1557b0;
+}
+
+/* Mobile Bottom Indicator */
+.mobile-bottom-indicator {
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    z-index: 1000;
+}
+
+/* Responsive Design */
+
+/* Large screens (Desktop) - Above 1024px */
+@media (min-width: 1025px) {
+    .oauth-container {
+        max-width: 1024px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-status-bar {
+        display: none;
+    }
+    
+    .oauth-header {
+        top: 0;
+        height: 72px;
+        padding: 0 32px;
+    }
+    
+    .main-content {
+        padding: 88px 48px 48px;
+        max-width: 520px;
+    }
+    
+    .app-logo {
+        width: 96px;
+        height: 96px;
+        padding: 16px;
+    }
+    
+    .main-title {
+        font-size: 24px;
+    }
+    
+    .permission-heading {
+        font-size: 18px;
+    }
+    
+    .mobile-bottom-indicator {
+        display: none;
+    }
+}
+
+/* Large Tablets (iPad Pro) - 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .oauth-container {
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+    }
+    
+    .mobile-status-bar {
+        max-width: 100%;
+    }
+    
+    .oauth-header {
+        max-width: 100%;
+        padding: 0 24px;
+    }
+    
+    .main-content {
+        padding: 124px 32px 32px;
+        max-width: 500px;
+    }
+    
+    .app-logo {
+        width: 88px;
+        height: 88px;
+        padding: 14px;
+    }
+    
+    .main-title {
+        font-size: 22px;
+    }
+    
+    .permission-heading {
+        font-size: 17px;
+    }
+}
+
+/* Standard Mobile (iPhone Pro Max) - 414px to 767px */
+@media (min-width: 414px) and (max-width: 767px) {
+    .main-content {
+        padding: 124px 28px 28px;
+        max-width: 450px;
+    }
+    
+    .app-logo {
+        width: 76px;
+        height: 76px;
+        padding: 12px;
+    }
+    
+    .main-title {
+        font-size: 19px;
+    }
+    
+    .permission-item {
+        padding: 14px;
+    }
+    
+    .action-buttons {
+        gap: 10px;
+    }
+}
+
+/* Standard Mobile (iPhone) - 375px to 413px */
+@media (min-width: 375px) and (max-width: 413px) {
+    .main-content {
+        padding: 124px 24px 24px;
+        max-width: 400px;
+    }
+    
+    .app-logo {
+        width: 72px;
+        height: 72px;
+        padding: 11px;
+    }
+    
+    .main-title {
+        font-size: 18px;
+    }
+    
+    .permission-heading {
+        font-size: 15px;
+    }
+    
+    .permission-item {
+        padding: 12px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+/* Small Mobile (iPhone SE) - 320px to 374px */
+@media (max-width: 374px) {
+    .main-content {
+        padding: 124px 20px 20px;
+        max-width: 350px;
+    }
+    
+    .app-logo {
+        width: 68px;
+        height: 68px;
+        padding: 10px;
+    }
+    
+    .main-title {
+        font-size: 17px;
+    }
+    
+    .permission-heading {
+        font-size: 14px;
+    }
+    
+    .permission-item {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .permission-description {
+        font-size: 13px;
+    }
+    
+    .trust-description {
+        font-size: 11px;
+    }
+    
+    .btn {
+        padding: 9px 18px;
+        font-size: 12px;
+    }
+    
+    .action-buttons {
+        gap: 8px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .oauth-header {
+        height: 56px;
+    }
+    
+    .main-content {
+        padding: 80px 24px 20px;
+        justify-content: flex-start;
+    }
+    
+    .app-logo-container {
+        margin-bottom: 20px;
+    }
+    
+    .app-logo {
+        width: 60px;
+        height: 60px;
+        padding: 8px;
+    }
+    
+    .permission-title {
+        margin-bottom: 16px;
+    }
+    
+    .user-info {
+        margin-bottom: 20px;
+    }
+    
+    .permission-section {
+        margin-bottom: 20px;
+    }
+    
+    .main-title {
+        font-size: 16px;
+    }
+    
+    .permission-heading {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+    
+    .permission-item {
+        margin-bottom: 20px;
+        padding: 8px;
+    }
+    
+    .action-buttons {
+        padding-top: 16px;
+    }
+    
+    .mobile-status-bar {
+        height: 32px;
+        font-size: 15px;
+    }
+}
