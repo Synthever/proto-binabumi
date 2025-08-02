@@ -216,7 +216,7 @@
 <body class="oauth-container">
     <!-- Header with Back Button -->
     <div class="oauth-header">
-        <button class="back-btn" onclick="location.href='{{ url()->previous() }}'">
+        <button class="back-btn" onclick="location.href='/login'">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -254,12 +254,9 @@
             </div>
 
             <!-- Use Another Account -->
-            <div class="account-item use-another">
+            <div class="account-item use-another" style="border-bottom: 1px solid #dadce0;">
                 <div class="account-avatar alt-avatar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <img src="/assets/images/auth/icon-a.png" alt="User Icon" class="avatar-icon" style="width: 30px; height: 30px;" />
                 </div>
                 <div class="account-info">
                     <h3 class="account-name">Use another account</h3>

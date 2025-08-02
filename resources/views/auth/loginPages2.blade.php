@@ -192,7 +192,7 @@
 <body class="oauth-container">
     <!-- Header with Back Button -->
     <div class="oauth-header">
-        <button class="back-btn" onclick="location.href='{{ url()->previous() }}'">
+        <button class="back-btn" onclick="location.href='/login/google'">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -262,7 +262,7 @@
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-            <button class="btn btn-cancel" onclick="location.href='{{ url()->previous() }}'">Cancel</button>
+            <button class="btn btn-cancel" onclick="location.href='/login/google'">Cancel</button>
             <button class="btn btn-allow" onclick="alert('Allow clicked')">Allow</button>
         </div>
     </div>

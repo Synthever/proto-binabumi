@@ -5,6 +5,21 @@
     padding: 0;
 }
 
+/* Fix for Tailwind v4 image sizing issues */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent image overflow in specific containers */
+.app-logo-container img,
+.user-avatar img,
+.gmail-icon img,
+.header-content img {
+    max-width: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -183,8 +198,12 @@ body {
 }
 
 .google-logo {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    object-fit: contain;
+    display: block;
 }
 
 .header-title {
@@ -214,11 +233,14 @@ body {
 }
 
 .app-logo {
-    width: 80px;
-    height: 80px;
+    width: 80px !important;
+    height: 80px !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
     border-radius: 50%;
     object-fit: contain;
     padding: 12px;
+    display: block;
 }
 
 /* Permission Title */
@@ -325,8 +347,22 @@ body {
     flex-shrink: 0;
 }
 
-.info-btn:hover {
-    background: rgba(95, 99, 104, 0.08);
+.user-avatar-img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.gmail-icon-img {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+    object-fit: contain;
+    display: block;
 }
 
 /* Trust Section */

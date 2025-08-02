@@ -135,7 +135,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 100px 32px 40px;
+    padding: 60px 32px 60px;
     width: 100%;
     position: relative;
 }
@@ -282,7 +282,7 @@ body {
 /* Form Options */
 .form-options {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin: 8px 0;
 }
@@ -390,7 +390,7 @@ body {
 
 /* Register Section */
 .register-section {
-    margin-top: 32px;
+    margin-top: 40px;
     text-align: center;
     animation: fadeInUp 0.8s ease-out 0.6s both;
 }
@@ -449,7 +449,7 @@ body {
     }
     
     .main-content {
-        padding: 100px 48px 40px;
+        padding: 60px 48px 60px;
     }
     
     .logo-container {
@@ -477,6 +477,10 @@ body {
     .login-card {
         padding: 40px;
         max-width: 440px;
+    }
+    
+    .register-section {
+        margin-top: 48px;
     }
     
     .mobile-status-bar {
@@ -636,7 +640,7 @@ body {
     }
     
     .main-content {
-        padding: 80px 24px 60px;
+        padding: 60px 24px 80px;
     }
     
     .logo-container {
@@ -687,7 +691,7 @@ body {
     }
     
     .register-section {
-        margin-top: 32px;
+        margin-top: 40px;
     }
 }
 

@@ -5,6 +5,20 @@
     padding: 0;
 }
 
+/* Fix for Tailwind v4 image sizing issues */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent image overflow in specific containers */
+.app-logo-container img,
+.account-avatar img,
+.header-content img {
+    max-width: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -187,8 +201,12 @@ body {
 }
 
 .google-logo {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    object-fit: contain;
+    display: block;
 }
 
 .header-title {
@@ -224,11 +242,14 @@ body {
 }
 
 .app-logo {
-    width: 120px;
-    height: 120px;
+    width: 120px !important;
+    height: 120px !important;
+    max-width: 120px !important;
+    max-height: 120px !important;
     border-radius: 50%;
     object-fit: contain;
     padding: 16px;
+    display: block;
 }
 
 .app-title-section {
@@ -259,9 +280,7 @@ body {
 .account-list {
     width: 100%;
     margin-bottom: 32px;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    overflow: hidden;
+    /* Removed border and border-radius for cleaner look */
 }
 
 .account-item {
@@ -300,9 +319,7 @@ body {
 }
 
 .alt-avatar {
-    background-color: #f8f9fa !important;
     color: #5f6368 !important;
-    border: 1px solid #dadce0;
 }
 
 .avatar-initial {
@@ -335,8 +352,22 @@ body {
     white-space: nowrap;
 }
 
-.use-another .account-name {
-    margin-bottom: 0;
+.avatar-logo {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.user-avatar-img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Privacy Notice */

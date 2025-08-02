@@ -269,7 +269,7 @@
         <!-- Register Link -->
         <div class="register-section">
             <p class="register-text">
-                Belum punya akun? <a href="#" class="register-link">Daftar sekarang!</a>
+                Belum punya akun? <a href="/daftar" class="register-link">Daftar sekarang!</a>
             </p>
         </div>
     </div>
