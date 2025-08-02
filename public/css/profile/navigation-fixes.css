@@ -1,0 +1,238 @@
+
+
+/* Ensure page content is scrollable */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+/* Fix for page containers */
+.page-container {
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+    position: relative !important;
+}
+
+.page-content {
+    position: static !important;
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+}
+
+/* Ensure all profile containers are scrollable */
+.profile-detail-container,
+.changepass-container,
+.changerekening-container,
+.kebijakan-privasi-container,
+.syarat-ketentuan-container,
+.profile-container {
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+    position: relative;
+}
+
+/* Critical back button fixes */
+.back-button {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    background: white !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background: #f8fafc !important;
+    transform: translateX(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.back-button:active {
+    transform: translateX(-1px) scale(0.98) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+.back-button i {
+    font-size: 20px !important;
+    color: #374151 !important;
+    pointer-events: none !important;
+}
+
+/* Header section fixes */
+.header-section {
+    position: relative !important;
+    z-index: 100 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 16px 0 24px !important;
+    pointer-events: auto !important;
+}
+
+/* Prevent any overlays from blocking interactions */
+.fade-in, .fade-in-delayed {
+    pointer-events: auto !important;
+}
+
+/* Make sure form elements don't block back button */
+form {
+    position: relative;
+    z-index: 1;
+}
+
+/* Debug styles (remove in production) */
+.debug-clickable {
+    outline: 2px dashed red !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.debug-clickable:hover {
+    outline: 2px solid green !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+    .back-button {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+    
+    .back-button i {
+        font-size: 18px !important;
+    }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-appearance: none) {
+    .back-button {
+        -webkit-appearance: none !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+    }
+}
+
+/* Prevent text selection on buttons */
+.back-button,
+.action-button,
+.menu-item {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Scrolling fixes */
+.page-content,
+.profile-detail-container,
+.changepass-container,
+.changerekening-container,
+.kebijakan-privasi-container,
+.syarat-ketentuan-container,
+.profile-container {
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+}
+
+/* Fix for modal overlays interfering with clicks */
+.modal-overlay {
+    pointer-events: auto !important;
+}
+
+.modal-overlay:not(.show) {
+    pointer-events: none !important;
+}
+
+/* Animation fixes */
+.slide-in-right,
+.slide-in-left,
+.slide-out-left,
+.slide-out-right {
+    pointer-events: auto !important;
+}
+
+/* Emergency scroll fix */
+.no-scroll-fix {
+    overflow: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    position: static !important;
+}
+
+/* Click area expansion for small screens */
+@media (max-width: 480px) {
+    .back-button::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        z-index: -1;
+    }
+}
+
+/* Debugging utilities */
+.debug-mode .back-button {
+    border: 3px solid red !important;
+    background: rgba(255, 255, 0, 0.5) !important;
+}
+
+.debug-mode .header-section {
+    border: 2px dashed blue !important;
+    background: rgba(0, 0, 255, 0.1) !important;
+}
+
+/* Force hardware acceleration for better performance */
+.page-content,
+.back-button,
+.header-section {
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: transform !important;
+}
+
+/* Print fixes */
+@media print {
+    .back-button {
+        display: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .back-button {
+        border: 2px solid #000 !important;
+    }
+}
+
+/* Focus improvements */
+.back-button:focus {
+    outline: 3px solid #3b82f6 !important;
+    outline-offset: 2px !important;
+}
+
+/* Final fallback for broken interactions */
+.emergency-clickable-fix * {
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: auto !important;
+}

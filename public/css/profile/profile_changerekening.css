@@ -1,0 +1,544 @@
+/* Profile Change Rekening Page Custom Styles */
+.change-rekening-container {
+    max-width: 1024px; /* iPad Pro 12.9" width */
+    margin: 0 auto;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 0 24px;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    padding: 16px 0 24px;
+    gap: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+.back-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    pointer-events: all;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    flex-shrink: 0;
+}
+
+.back-button:hover {
+    background: #f8fafc;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-button i {
+    font-size: 20px;
+    color: #374151;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #374151;
+    margin: 0;
+}
+
+.rekening-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.bank-selection {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.bank-dropdown {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.bank-dropdown:hover {
+    border-color: #9ca3af;
+    background: #f9fafb;
+}
+
+.bank-dropdown:focus {
+    border-color: #065f46;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+}
+
+.bank-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+.bank-icon i {
+    font-size: 20px;
+    color: white;
+}
+
+.bank-info {
+    flex: 1;
+}
+
+.bank-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+}
+
+.dropdown-arrow {
+    margin-left: 12px;
+    color: #9ca3af;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.bank-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.3s ease;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #f8fafc;
+}
+
+.dropdown-item.selected {
+    background: #f0fdf4;
+    color: #065f46;
+}
+
+.form-input {
+    width: 100%;
+    padding: 18px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    font-size: 16px;
+    color: #374151;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #065f46;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-input:hover {
+    border-color: #9ca3af;
+    background: #f9fafb;
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.form-input.with-prefix {
+    padding-left: 60px;
+}
+
+.form-error {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 8px;
+    display: none;
+}
+
+.form-error.show {
+    display: block;
+}
+
+.success-message {
+    background: #10b981;
+    color: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    animation: slideDown 0.3s ease;
+}
+
+.success-message.show {
+    display: flex;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: white;
+    color: #065f46;
+    border: 2px solid #065f46;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background: #065f46;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.bank-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bank-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.bank-option:last-child {
+    border-bottom: none;
+}
+
+.bank-option:hover {
+    background: #f8fafc;
+}
+
+.bank-option.selected {
+    background: #f0fdf4;
+    color: #065f46;
+}
+
+.bank-option .bank-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+/* Account number formatting */
+.account-display {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+/* Mobile Phones (320px - 480px) */
+@media (max-width: 480px) {
+    .change-rekening-container {
+        max-width: 100%;
+        padding: 0 16px;
+    }
+    
+    .header-section {
+        padding: 12px 0 20px;
+        gap: 12px;
+    }
+    
+    .back-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .back-button i {
+        font-size: 18px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+    }
+    
+    .rekening-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .form-input, .bank-dropdown {
+        padding: 16px 18px;
+        font-size: 15px;
+    }
+    
+    .bank-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 12px;
+    }
+    
+    .bank-icon i {
+        font-size: 18px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 24px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+    
+    .form-input.with-prefix {
+        padding-left: 50px;
+    }
+    
+    .input-prefix {
+        left: 16px;
+        font-size: 15px;
+    }
+}
+
+/* Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .change-rekening-container {
+        max-width: 600px;
+        padding: 0 24px;
+    }
+    
+    .rekening-card {
+        padding: 28px;
+    }
+    
+    .bank-icon {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* iPad Pro 12.9" and similar (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .change-rekening-container {
+        max-width: 1024px;
+        padding: 0 32px;
+    }
+    
+    .rekening-card {
+        padding: 40px;
+    }
+    
+    .action-buttons {
+        max-width: 400px;
+        margin: 32px auto 0;
+    }
+}
+
+/* Large screens (1025px+) */
+@media (min-width: 1025px) {
+    .change-rekening-container {
+        max-width: 1024px;
+        padding: 0 40px;
+    }
+    
+    .rekening-card {
+        padding: 48px;
+    }
+}
+
+/* Animation for page load */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in-delayed {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced hover effects for larger screens */
+@media (min-width: 1024px) {
+    .rekening-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-input:focus, .bank-dropdown:focus {
+        transform: translateY(-2px);
+    }
+    
+    .dropdown-menu {
+        border-radius: 20px;
+    }
+}

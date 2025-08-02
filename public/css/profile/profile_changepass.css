@@ -1,0 +1,450 @@
+/* Profile Change Password Page Custom Styles */
+.change-password-container {
+    max-width: 1024px; /* iPad Pro 11" width */
+    margin: 0 auto;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 0 24px;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    padding: 16px 0 24px;
+    gap: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+.back-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    pointer-events: all;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    flex-shrink: 0;
+}
+
+.back-button:hover {
+    background: #f8fafc;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-button i {
+    font-size: 20px;
+    color: #374151;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #374151;
+    margin: 0;
+}
+
+.password-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.form-input {
+    width: 100%;
+    padding: 18px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    font-size: 16px;
+    color: #374151;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-input:focus {
+    border-color: #065f46;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-input:hover {
+    border-color: #9ca3af;
+    background: #f9fafb;
+}
+
+.form-input::placeholder {
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    padding: 4px;
+}
+
+.password-toggle:hover {
+    color: #065f46;
+}
+
+.password-strength {
+    margin-top: 8px;
+    padding: 0 4px;
+}
+
+.strength-bar {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    width: 0%;
+}
+
+.strength-weak { 
+    background: #ef4444; 
+    width: 25%;
+}
+
+.strength-medium { 
+    background: #f59e0b; 
+    width: 50%;
+}
+
+.strength-good { 
+    background: #10b981; 
+    width: 75%;
+}
+
+.strength-strong { 
+    background: #065f46; 
+    width: 100%;
+}
+
+.strength-text {
+    font-size: 12px;
+    color: #6b7280;
+    display: flex;
+    justify-content: space-between;
+}
+
+.password-requirements {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    border-left: 4px solid #065f46;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+.requirement-item:last-child {
+    margin-bottom: 0;
+}
+
+.requirement-check {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition: all 0.3s ease;
+}
+
+.requirement-check.valid {
+    background: #10b981;
+    color: white;
+}
+
+.form-error {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 8px;
+    display: none;
+}
+
+.form-error.show {
+    display: block;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: white;
+    color: #065f46;
+    border: 2px solid #065f46;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-secondary:hover {
+    background: #065f46;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Animation */
+.success-message {
+    background: #10b981;
+    color: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    animation: slideDown 0.3s ease;
+}
+
+.success-message.show {
+    display: flex;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+/* Mobile Phones (320px - 480px) */
+@media (max-width: 480px) {
+    .change-password-container {
+        max-width: 100%;
+        padding: 0 16px;
+    }
+    
+    .header-section {
+        padding: 12px 0 20px;
+        gap: 12px;
+    }
+    
+    .back-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .back-button i {
+        font-size: 18px;
+    }
+    
+    .page-title {
+        font-size: 20px;
+    }
+    
+    .password-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+    
+    .form-input {
+        padding: 16px 18px;
+        font-size: 15px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 32px;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+    
+    .password-requirements {
+        padding: 14px;
+    }
+}
+
+/* Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .change-password-container {
+        max-width: 600px;
+        padding: 0 24px;
+    }
+    
+    .password-card {
+        padding: 28px;
+    }
+}
+
+/* iPad Pro 11" and similar (769px - 834px) */
+@media (min-width: 769px) {
+    .change-password-container {
+        max-width: 834px;
+        padding: 0 32px;
+    }
+    
+    .password-card {
+        padding: 40px;
+    }
+    
+    .action-buttons {
+        max-width: 400px;
+        margin: 40px auto 0;
+    }
+}
+
+/* Large screens (835px+) */
+@media (min-width: 835px) {
+    .change-password-container {
+        max-width: 800px;
+        padding: 0 40px;
+    }
+    
+    .password-card {
+        padding: 48px;
+    }
+}
+
+/* Animation for page load */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in-delayed {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced hover effects for larger screens */
+@media (min-width: 834px) {
+    .password-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-input:focus {
+        transform: translateY(-2px);
+    }
+}
