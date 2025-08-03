@@ -166,7 +166,7 @@ body {
 }
 
 .main-title {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: white;
     margin-bottom: 8px;
@@ -582,7 +582,7 @@ body {
     }
     
     .main-content {
-        padding: 80px 28px 40px;
+        padding: 80px 28px 80px;
     }
     
     .logo-container {
@@ -599,8 +599,10 @@ body {
     }
     
     .logo-image {
-        width: 100px;
-        height: 100px;
+        width: 40.07px !important;
+        height: 40px !important;
+        max-width: 40.07px !important;
+        max-height: 40px !important;
     }
     
     .main-title {
@@ -636,7 +638,7 @@ body {
     }
     
     .main-content {
-        padding: 80px 24px 60px;
+        padding: 80px 24px 100px;
     }
     
     .logo-container {
@@ -653,8 +655,10 @@ body {
     }
     
     .logo-image {
-        width: 70px;
-        height: 70px;
+        width: 40.07px !important;
+        height: 40px !important;
+        max-width: 40.07px !important;
+        max-height: 40px !important;
     }
     
     .main-title {
@@ -699,7 +703,7 @@ body {
     }
     
     .main-content {
-        padding: 70px 20px 50px;
+        padding: 80px 20px 80px;
     }
     
     .logo-container {
@@ -716,8 +720,10 @@ body {
     }
     
     .logo-image {
-        width: 65px;
-        height: 65px;
+        width: 40.07px !important;
+        height: 40px !important;
+        max-width: 40.07px !important;
+        max-height: 40px !important;
     }
     
     .main-title {

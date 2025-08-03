@@ -27,6 +27,13 @@ class AuthController extends Controller
         ]);
     }
 
+    public function loginManual()   
+    {
+        return view('auth.loginManual', [
+            'name' => 'Login - SIGMA'
+        ]);
+    }
+
     public function daftar()
     {
         return view('auth.daftarPages', [
