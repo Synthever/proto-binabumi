@@ -256,7 +256,7 @@
                         <span class="checkbox-circle"></span>
                         <span class="checkbox-text">Ingat saya</span>
                     </label>
-                    <a href="#" class="forgot-link">Lupa password?</a>
+                    <a href="/forgot/password" class="forgot-link">Lupa password?</a>
                 </div>
 
                 <!-- Submit Button -->

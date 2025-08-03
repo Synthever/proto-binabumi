@@ -87,24 +87,133 @@ html, body {
     width: 100%;
 }
 
-/* App Logo */
-.app-logo-container {
+/* User Avatar Styles */
+.user-avatar-container {
     margin-bottom: 32px;
     text-align: center;
 }
 
-.app-logo {
+.user-avatar {
+    display: inline-block;
+}
+
+.avatar-circle {
     width: 75px;
     height: 75px;
+    background: #34a853;
     border-radius: 50%;
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Login Title */
-.login-title {
+.avatar-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* Verification Title */
+.verification-title {
     text-align: center;
+    margin-bottom: 32px;
+}
+
+/* User Email Info */
+.user-email-info {
     margin-bottom: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+.email-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #5f6368;
+}
+
+.email-initial {
+    width: 24px;
+    height: 24px;
+    background: #ea4335;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.email-address {
+    font-weight: 400;
+}
+
+/* Password Form Styles */
+.password-form {
+    width: 100%;
+    max-width: 350px;
+}
+
+.password-input {
+    padding-right: 60px; /* Make room for show button */
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.show-password-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #1a73e8;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.show-password-btn:hover {
+    background-color: #f1f3f4;
+}
+
+/* Password Links */
+.password-links {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 16px;
+}
+
+.forgot-password-link {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgot-password-link:hover {
+    color: #1557b0;
+}
+
+/* Password Buttons */
+.password-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 24px;
 }
 
 .main-title {
@@ -310,24 +419,33 @@ html, body {
         padding: 24px 24px 16px;
     }
 
-    .app-logo {
+    .avatar-circle {
         width: 60px;
         height: 60px;
+    }
+
+    .avatar-icon {
+        width: 32px;
+        height: 32px;
     }
 
     .main-title {
         font-size: 20px;
     }
 
-    .form-buttons {
-        flex-direction: column;
-        gap: 16px;
-        align-items: stretch;
+    .email-badge {
+        padding: 6px 12px;
+        font-size: 13px;
     }
 
-    .next-btn {
-        align-self: flex-end;
-        min-width: 80px;
+    .email-initial {
+        width: 20px;
+        height: 20px;
+        font-size: 11px;
+    }
+
+    .password-buttons {
+        justify-content: center;
     }
 
     .footer-links {
@@ -357,18 +475,45 @@ html, body {
         padding: 16px 16px 12px;
     }
 
-    .app-logo {
+    .avatar-circle {
         width: 50px;
         height: 50px;
+    }
+
+    .avatar-icon {
+        width: 28px;
+        height: 28px;
     }
 
     .main-title {
         font-size: 18px;
     }
 
+    .email-badge {
+        padding: 4px 10px;
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .email-initial {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+
     .form-input {
         padding: 12px 14px;
         font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    .password-input {
+        padding-right: 55px;
+    }
+
+    .show-password-btn {
+        right: 8px;
+        font-size: 13px;
+        padding: 3px 6px;
     }
 
     .footer-content {
@@ -388,7 +533,9 @@ html, body {
 .forgot-link:focus,
 .guest-link:focus,
 .create-account-link:focus,
-.footer-link:focus {
+.footer-link:focus,
+.show-password-btn:focus,
+.forgot-password-link:focus {
     outline: 2px solid #1a73e8;
     outline-offset: 2px;
 }
