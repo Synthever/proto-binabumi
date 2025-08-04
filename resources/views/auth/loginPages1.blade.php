@@ -241,20 +241,20 @@
         </div>
 
         <!-- Account Selection -->
-        <div class="account-list" onclick="location.href='/login/google/step1'">
+        <div class="account-list">
             <!-- Account 1 -->
-            <div class="account-item">
+            <div class="account-item" onclick="location.href='/login/google/step1'">
                 <div class="account-avatar">
                     <img src="/assets/images/halaman-awal/logo.png" alt="SIGMA Logo" class="avatar-logo" />
                 </div>
-                <div class="account-info">
+                <div class="account-info">  
                     <h3 class="account-name">Bina Bumi</h3>
                     <p class="account-email">binabumi@gmail.com</p>
                 </div>
             </div>
 
             <!-- Use Another Account -->
-            <div class="account-item use-another" style="border-bottom: 1px solid #dadce0;">
+            <div class="account-item use-another" style="border-bottom: 1px solid #dadce0;" onclick="location.href='/login/manual'">
                 <div class="account-avatar alt-avatar">
                     <img src="/assets/images/auth/icon-a.png" alt="User Icon" class="avatar-icon" style="width: 30px; height: 30px;" />
                 </div>

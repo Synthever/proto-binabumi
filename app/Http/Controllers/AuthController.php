@@ -6,10 +6,17 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
         return view('auth.loginPages', [
             'name' => 'Login - SIGMA'
+        ]);
+    }
+
+    public function daftar()
+    {
+        return view('auth.daftarPages', [
+            'name' => 'Daftar - SIGMA'
         ]);
     }
 
@@ -34,10 +41,24 @@ class AuthController extends Controller
         ]);
     }
 
-    public function daftar()
+    public function loginManualStep1()   
     {
-        return view('auth.daftarPages', [
-            'name' => 'Daftar - SIGMA'
+        return view('auth.loginManual1', [
+            'name' => 'Login - SIGMA'
+        ]);
+    }
+
+    public function forgotPassword()
+    {
+        return view('auth.forgotPassword', [
+            'name' => 'Forgot Password - SIGMA'
+        ]);
+    }
+
+    public function forgotPasswordVerifikasi()
+    {
+        return view('auth.forgotPasswordVerifikasi', [
+            'name' => 'Forgot Password Verification - SIGMA'
         ]);
     }
 }

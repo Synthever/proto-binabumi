@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in with Google</title>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="{{ asset('assets/css/auth/loginManual.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/auth/loginManual1.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script>
         // Force scroll to top on page load/refresh
@@ -36,20 +36,19 @@
                 delay: 100
             });
 
-            // App logo bounce animation
+            // User avatar animation
             anime({
-                targets: '.app-logo',
-                scale: [0.2, 1.2, 1],
-                rotate: [0, 0],
+                targets: '.user-avatar',
+                scale: [0.3, 1.1, 1],
                 opacity: [0, 1],
                 duration: 1000,
                 easing: 'easeOutBounce',
                 delay: 300
             });
 
-            // Title section animation
+            // Verification title animation
             anime({
-                targets: '.login-title',
+                targets: '.verification-title',
                 translateY: [30, 0],
                 opacity: [0, 1],
                 duration: 600,
@@ -57,24 +56,34 @@
                 delay: 800
             });
 
-            // Form animation
+            // User email info animation
             anime({
-                targets: '.login-form',
-                translateY: [40, 0],
-                opacity: [0, 1],
-                duration: 700,
-                easing: 'easeOutQuart',
-                delay: 1000
-            });
-
-            // Links stagger animation
-            anime({
-                targets: '.form-links a, .form-buttons *',
+                targets: '.user-email-info',
                 translateY: [20, 0],
                 opacity: [0, 1],
                 duration: 500,
                 easing: 'easeOutQuart',
-                delay: anime.stagger(100, {start: 1200})
+                delay: 1000
+            });
+
+            // Password form animation
+            anime({
+                targets: '.password-form',
+                translateY: [40, 0],
+                opacity: [0, 1],
+                duration: 700,
+                easing: 'easeOutQuart',
+                delay: 1200
+            });
+
+            // Links and buttons stagger animation
+            anime({
+                targets: '.password-links a, .password-buttons *',
+                translateY: [20, 0],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutQuart',
+                delay: anime.stagger(100, {start: 1400})
             });
 
             // Footer animation
@@ -84,7 +93,7 @@
                 opacity: [0, 1],
                 duration: 400,
                 easing: 'easeOutQuart',
-                delay: anime.stagger(100, {start: 1600})
+                delay: anime.stagger(100, {start: 1800})
             });
 
             // Back button hover animation
@@ -109,20 +118,36 @@
                         easing: 'easeOutQuart'
                     });
                 });
+
+                // Back button functionality
+                backBtn.addEventListener('click', function() {
+                    window.history.back();
+                });
             }
 
-            // Form submission
-            const form = document.getElementById('loginForm');
+            // Password form submission
+            const form = document.getElementById('passwordForm');
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                console.log('Form submitted with email:', form.email.value);
-                // Add your form submission logic here
+                console.log('Password form submitted');
+                // Add your password verification logic here
             });
 
-            // Back button functionality
-            backBtn.addEventListener('click', function() {
-                window.history.back();
-            });
+            // Show/hide password toggle
+            const showPasswordBtn = document.querySelector('.show-password-btn');
+            const passwordInput = document.getElementById('password');
+            
+            if (showPasswordBtn && passwordInput) {
+                showPasswordBtn.addEventListener('click', function() {
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        this.textContent = 'Hide';
+                    } else {
+                        passwordInput.type = 'password';
+                        this.textContent = 'Show';
+                    }
+                });
+            }
         });
     </script>
 </head>
@@ -130,7 +155,7 @@
 <body class="oauth-container">
     <!-- Header with Back Button -->
     <div class="oauth-header">
-        <button class="back-btn" onclick="location.href='/login/google'">
+        <button class="back-btn" onclick="location.href='/login/manual'">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -143,47 +168,54 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- App Logo -->
-        <div class="app-logo-container">
-            <img src="/assets/images/halaman-awal/logo.png" alt="SIGMA Logo" class="app-logo" />
+        <!-- User Avatar -->
+        <div class="user-avatar-container">
+            <div class="user-avatar">
+                <div class="avatar-circle">
+                    <svg class="avatar-icon" width="48" height="48" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#ffffff"/>
+                    </svg>
+                </div>
+            </div>
         </div>
 
-        <!-- Login Title -->
-        <div class="login-title">
-            <h2 class="main-title">Sign in with your Google Account</h2>
+        <!-- Verification Title -->
+        <div class="verification-title">
+            <h2 class="main-title">To continue, first verify that it's you</h2>
         </div>
 
-        <!-- Login Form -->
-        <div class="login-form">
-            <form id="loginForm" class="form-container">
-                <!-- Email Input -->
+        <!-- User Email Info -->
+        <div class="user-email-info">
+            <div class="email-badge">
+                <span class="email-initial">P</span>
+                <span class="email-address">pamelatrianjani@gmail.com</span>
+            </div>
+        </div>
+
+        <!-- Password Form -->
+        <div class="password-form">
+            <form id="passwordForm" class="form-container">
+                <!-- Password Input -->
                 <div class="input-group">
                     <input 
-                        type="email" 
-                        id="email" 
-                        name="email"
-                        class="form-input"
-                        placeholder="Email"
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        class="form-input password-input"
+                        placeholder="Password"
                         required
                     >
+                    <button type="button" class="show-password-btn">Show</button>
                 </div>
 
-                <!-- Form Links -->
-                <div class="form-links">
-                    <a href="#" class="forgot-link">Forgot email?</a>
-                    
-                    <div class="guest-info">
-                        <p class="guest-text">
-                            Not your computer? Use Guest mode to sign in privately.
-                        </p>
-                        <a href="#" class="guest-link">Learn more about using Guest mode</a>
-                    </div>
+                <!-- Password Links -->
+                <div class="password-links">
+                    <a href="#" class="forgot-password-link">Forgot password?</a>
                 </div>
 
-                <!-- Form Buttons -->
-                <div class="form-buttons">
-                    <a href="#" class="create-account-link">Create account</a>
-                    <button type="submit" class="next-btn" onclick="location.href='/login/manual/step1'">Next</button>
+                <!-- Password Buttons -->
+                <div class="password-buttons">
+                    <button type="submit" class="next-btn">Next</button>
                 </div>
             </form>
         </div>
