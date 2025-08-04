@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubah Kata Sandi - SIGMA</title>
+    <title>Keamanan Akun - SIGMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/profile/profile_changepass.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile/navigation.css') }}">
@@ -160,8 +159,7 @@
         </div>
     </div>
 
-    <!-- Loading Scripts -->
-        <!-- Scripts -->
+    <!-- Scripts -->
     <script src="{{ asset('js/profile/navigation.js') }}"></script>
     <script src="{{ asset('js/profile/navigation-fixes.js') }}"></script>
     <script>
@@ -169,13 +167,14 @@
         // Page-specific initialization
         document.addEventListener('DOMContentLoaded', function() {
             // Mark current page
-            if (window.profileNavigator) {
+               <script>
+ if (window.profileNavigator) {
                 profileNavigator.currentPage = 'keamanan';
             }
         });
 
-        // Enhanced navigation functions
-        function goBack() {
+        // Enhanced navigation functions               <script>
+nction goBack() {
             // Mark that we're returning to main page
             sessionStorage.setItem('returningToMain', 'true');
             

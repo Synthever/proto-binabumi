@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\TukarKoinController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
@@ -10,11 +12,21 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
 // Route for the Auth page
-Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/login/google', [AuthController::class, 'googleLogin'])->name('google.login');
 Route::get('/login/google/step1', [AuthController::class, 'googleStep1'])->name('google.step1');
 Route::get('/login/manual', [AuthController::class, 'loginManual'])->name('login.manual');
+Route::get('/login/manual/step1', [AuthController::class, 'loginManualStep1'])->name('manual.step1');
 Route::get('/daftar', [AuthController::class, 'daftar'])->name('daftar');
+Route::get('/forgot/password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
+Route::get('/forgot/password/verifikasi', [AuthController::class, 'forgotPasswordVerifikasi'])->name('forgot.password.verifikasi');
+
+// Routes Halaman Beranda
+Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
+
+// Routes Halaman Tukar Koin
+Route::get('/tukar-koin', [TukarKoinController::class, 'index'])->name('tukar-koin');
+Route::post('/tukar-koin/exchange', [TukarKoinController::class, 'exchange'])->name('tukar-koin.exchange');
 
 // Routes Halaman Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile_index');
