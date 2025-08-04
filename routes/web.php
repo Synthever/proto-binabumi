@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HistoryController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -22,3 +23,12 @@ Route::get('/profile/changepass', [ProfileController::class, 'changepass'])->nam
 Route::get('/profile/changerekening', [ProfileController::class, 'changerekening'])->name('profile_changerekening');
 Route::get('/profile/kebijakanprivasi', [ProfileController::class, 'kebijakanprivasi'])->name('profile_kebijakanprivasi');
 Route::get('/profile/syaratketentuan', [ProfileController::class, 'syaratketentuan'])->name('profile_syaratketentuan');
+
+// Route Halaman History
+Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+Route::get('/history/transaksi/{id}', [HistoryController::class, 'detailTransaksi'])->name('history_detail-transaksi');
+Route::get('/history/transaksi-2/{id}', [HistoryController::class, 'detailTransaksiDua'])->name('history_detail-transaksi-2');
+Route::get('/history/transaksi-3/{id}', [HistoryController::class, 'detailTransaksiTiga'])->name('history_detail-transaksi-3');
+Route::get('/history/transaksi-4/{id}', [HistoryController::class, 'detailTransaksiEmpat'])->name('history_detail-transaksi-4');
+Route::get('/history/transaksi-5/{id}', [HistoryController::class, 'detailTransaksiLima'])->name('history_detail-transaksi-5');
+Route::get('/history/transaksi-6/{id}', [HistoryController::class, 'detailTransaksiEnam'])->name('history_detail-transaksi-6');
