@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\TukarKoinController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
@@ -14,6 +16,13 @@ Route::get('/login/google', [AuthController::class, 'googleLogin'])->name('googl
 Route::get('/login/google/step1', [AuthController::class, 'googleStep1'])->name('google.step1');
 Route::get('/login/manual', [AuthController::class, 'loginManual'])->name('login.manual');
 Route::get('/daftar', [AuthController::class, 'daftar'])->name('daftar');
+
+// Routes Halaman Beranda
+Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
+
+// Routes Halaman Tukar Koin
+Route::get('/tukar-koin', [TukarKoinController::class, 'index'])->name('tukar-koin');
+Route::post('/tukar-koin/exchange', [TukarKoinController::class, 'exchange'])->name('tukar-koin.exchange');
 
 // Routes Halaman Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile_index');
