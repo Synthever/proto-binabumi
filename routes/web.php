@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\DonasiController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -44,3 +45,9 @@ Route::get('/history/transaksi-3/{id}', [HistoryController::class, 'detailTransa
 Route::get('/history/transaksi-4/{id}', [HistoryController::class, 'detailTransaksiEmpat'])->name('history_detail-transaksi-4');
 Route::get('/history/transaksi-5/{id}', [HistoryController::class, 'detailTransaksiLima'])->name('history_detail-transaksi-5');
 Route::get('/history/transaksi-6/{id}', [HistoryController::class, 'detailTransaksiEnam'])->name('history_detail-transaksi-6');
+
+// Route Halaman Donasi
+Route::get('/donasi', [DonasiController::class, 'index'])->name('donasi.index');
+Route::get('/donasi/biodata', [DonasiController::class, 'BiodataDonatur'])->name('donasi.biodata');
+Route::post('/donasi/bukti-tf', [DonasiController::class, 'BuktiTF'])->name('donasi.bukti-tf');
+Route::get('/donasi/upload-bukti', [DonasiController::class, 'UploadBuktiTF'])->name('donasi.upload-bukti');
