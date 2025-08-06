@@ -3,11 +3,13 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\TukarKoinController;
+use App\Http\Controllers\EdukasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DonasiController;
+use App\Http\Controllers\MapsController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
@@ -28,6 +30,15 @@ Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
 // Routes Halaman Tukar Koin
 Route::get('/tukar-koin', [TukarKoinController::class, 'index'])->name('tukar-koin');
 Route::post('/tukar-koin/exchange', [TukarKoinController::class, 'exchange'])->name('tukar-koin.exchange');
+
+// Routes Halaman Edukasi
+Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
+
+// Routes Halaman Maps
+Route::get('/maps', [MapsController::class, 'cariMesin'])->name('maps.cari-mesin-1');
+Route::get('/maps/notfound', [MapsController::class, 'notFound'])->name('maps.cari-mesin-2');
+Route::get('/maps/notactive', [MapsController::class, 'notActive'])->name('maps.cari-mesin-3');
+
 
 // Routes Halaman Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile_index');

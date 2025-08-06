@@ -7,9 +7,9 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <link rel="stylesheet" href="{{ asset('assets/css/beranda/beranda.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></link>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <div class="mobile-container">
@@ -44,7 +44,7 @@
             <div class="divider"></div>
             <div class="stats-item">
                 <div class="icon-wrapper">
-                    <img src="{{ asset('assets/images/beranda/koin.png') }}"alt="Koin">
+                    <img src="{{ asset('assets/images/beranda/koin.png') }}" alt="Koin">
                 </div>
                 <div class="stats-top-values">
                     <div class="label">Koin</div>
@@ -54,7 +54,7 @@
             <div class="divider"></div>
             <div class="stats-item">
                 <div class="icon-wrapper">
-                    <img src="{{ asset('assets/images/beranda/botol.png') }}"alt="Botol">
+                    <img src="{{ asset('assets/images/beranda/botol.png') }}" alt="Botol">
                 </div>
                 <div class="stats-top-values">
                     <div class="label">Botol</div>
@@ -162,14 +162,17 @@
       });
 
       // Add click animation to QR button
-      document.querySelector('.qr-button').addEventListener('click', function() {
-        anime({
-          targets: this,
-          scale: [1, 1.1, 1],
-          duration: 300,
-          easing: 'easeOutQuart'
+      const qrButton = document.querySelector('.qr-button');
+      if (qrButton) {
+        qrButton.addEventListener('click', function() {
+          anime({
+            targets: this,
+            scale: [1, 1.1, 1],
+            duration: 300,
+            easing: 'easeOutQuart'
+          });
         });
-      });
+      }
     });
   </script>
 </body>
