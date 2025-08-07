@@ -32,6 +32,7 @@ Route::post('/tukar-koin/exchange', [TukarKoinController::class, 'exchange'])->n
 
 // Routes Halaman Edukasi
 Route::get('/edukasi', [EdukasiController::class, 'index'])->name('edukasi');
+Route::get('/edukasi/artikel/{id}', [EdukasiController::class, 'show'])->name('edukasi.artikel');
 
 // Routes Halaman Maps
 Route::get('/maps', [MapsController::class, 'cariMesin'])->name('maps.cari-mesin-1');
