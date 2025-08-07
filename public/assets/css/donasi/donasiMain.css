@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+body {
+  width: 100%;
+  max-width: 1024px; /* batas maksimal */
+  font-family: 'Poppins', sans-serif;
+  background: #FFFFFF;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 24px;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  pointer-events: all;
+  user-select: none;
+  flex-shrink: 0;
+  padding: 10px;
+  color: #374151;
+}
+
+.back-button:hover {
+  background: #f8fafc;
+  transform: translateX(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #374151;
+  padding-left: 16px;
+}
+
+.card {
+  padding: 16px;
+  margin-bottom: 15px;
+}
+
+.card img {
+  width: 100%;
+  height: auto; /* Pastikan proporsional */
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1b4332;
+}
+
+.progress-text {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.progress-text span {
+  color: #999;
+  font-weight: normal;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background-color: #66bb6a;
+  transition: width 1s ease-in-out;
+}
+
+.progress-percent {
+  font-size: 0.9rem;
+  color: #1b4332;
+  text-align: right;
+  margin-top: -4px;
+}
+
+.content {
+  color: #f9f9f9;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  color: #1b4332;
+  margin-bottom: 12px;
+}
+
+.content p,
+.content ol,
+.content ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.content .highlight {
+  color: #2e7d32;
+  margin: 12px 0;
+}
+
+ol,
+ul {
+  padding-left: 20px;
+}
+
+.closing {
+  margin-top: 16px;
+  font-size: 1rem;
+  color: #1b4332;
+}
+
+.cta-button {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.cta-button a {
+  width: 100%;
+  display: inline-block;
+  background: linear-gradient(to right, #264414, #5FAA32);
+  background-size: 200% auto;
+  background-position: left center;
+  color: white;
+  padding: 12px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-position 0.4s ease-in-out;
+}
+
+.cta-button a:hover {
+  background-position: right center;
+}
+
+/* RESPONSIVE: Tablet */
+@media (max-width: 768px) {
+  body {
+    padding: 0 16px;
+  }
+
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .card h2,
+  .content h3 {
+    font-size: 1.1rem;
+  }
+
+  .content p,
+  .content ol,
+  .content ul {
+    font-size: 0.95rem;
+  }
+}
+
+/* RESPONSIVE: Mobile */
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 0;
+  }
+
+  .header h1 {
+    font-size: 1rem;
+    padding-left: 8px;
+  }
+
+  .back-button {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+  }
+
+  .progress-bar {
+    height: 10px;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .content h3 {
+    font-size: 1rem;
+  }
+
+  .content p,
+  .content ol,
+  .content ul {
+    font-size: 0.9rem;
+  }
+
+  .cta-button a {
+    font-size: 0.9rem;
+    padding: 10px 24px;
+  }
+}
