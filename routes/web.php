@@ -63,3 +63,7 @@ Route::get('/donasi', [DonasiController::class, 'index'])->name('donasi.index');
 Route::get('/donasi/biodata', [DonasiController::class, 'BiodataDonatur'])->name('donasi.biodata');
 Route::post('/donasi/bukti-tf', [DonasiController::class, 'BuktiTF'])->name('donasi.bukti-tf');
 Route::get('/donasi/upload-bukti', [DonasiController::class, 'UploadBuktiTF'])->name('donasi.upload-bukti');
+
+// Route Halaman Test Cam
+Route::get('/testcam', [App\Http\Controllers\CamController::class, 'index'])->name('testcam.index');
+Route::get('/scan-result', [App\Http\Controllers\CamController::class, 'scanResult'])->name('scan.result');
