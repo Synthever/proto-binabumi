@@ -61,4 +61,11 @@ class AuthController extends Controller
             'name' => 'Forgot Password Verification - SIGMA'
         ]);
     }
+
+    public function forgotPasswordNew()
+    {
+        return view('auth.forgotPasswordNew', [
+            'name' => 'Forgot Password New - SIGMA'
+        ]);
+    }
 }

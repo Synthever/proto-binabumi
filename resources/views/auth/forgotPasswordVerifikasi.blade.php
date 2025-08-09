@@ -283,7 +283,7 @@
 
                 <!-- Submit Button -->
                 <div class="form-buttons">
-                    <button type="submit" class="send-code-btn">Konfirmasi</button>
+                    <button type="submit" class="send-code-btn" onclick="location.href='/forgot/password/new'">Konfirmasi</button>
                 </div>
             </form>
             

@@ -22,6 +22,7 @@ Route::get('/login/manual/step1', [AuthController::class, 'loginManualStep1'])->
 Route::get('/daftar', [AuthController::class, 'daftar'])->name('daftar');
 Route::get('/forgot/password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
 Route::get('/forgot/password/verifikasi', [AuthController::class, 'forgotPasswordVerifikasi'])->name('forgot.password.verifikasi');
+Route::get('/forgot/password/new', [AuthController::class, 'forgotPasswordNew'])->name('forgot.password.new');
 
 // Routes Halaman Beranda
 Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
