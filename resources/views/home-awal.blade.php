@@ -7,7 +7,7 @@
             <img src="{{ asset('assets/images/halaman-awal/logo.png') }}" alt="Logo" class="w-24 h-24 mb-4">
         </div>
         <h4 class="fw-bold mb-3 title">SIGMA</h4>
-        <p class="sub-title">Smart Integrated Gathering Machine</p>
+        <p class="sub-title">Smart Integrated Plastic Gathering Machine</p>
         <div class="loading-dots">
             <div class="loading-dot" id="dot1"></div>
             <div class="loading-dot" id="dot2"></div>
@@ -128,7 +128,7 @@
                 <p class="text-lg mb-8">BinaBumi menciptakan solusi inovatif berupa mesin pintar SIGMA yang mengubah
                     botol plastik menjadi E-Money, untuk Indonesia yang lebih bersih dan bernilai.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="https://wa.me/628989282512" target="_blank"
+                    <a href="/login" target="_blank"
                         class="btn bg-bina-green hover:bg-bina-dark-green text-white py-3 px-6 rounded-lg text-center transition-colors">Bermitra
                         dengan Kami</a>
                     <a href="#how-it-works"
@@ -561,7 +561,7 @@
                 pengelolaan sampah plastik yang cerdas dan terintegrasi."</p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="https://wa.me/628989282512" target="_blank"
+                <a href="/login" target="_blank"
                     class="bg-white text-bina-dark-green hover:bg-bina-cream transition-colors py-3 px-8 rounded-lg font-bold text-lg">Bermitra
                     dengan Kami</a>
                 <a href="#"

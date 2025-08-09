@@ -211,7 +211,7 @@
 
                 <!-- Submit Button -->
                 <div class="form-buttons">
-                    <button type="submit" class="send-code-btn">Simpan Password</button>
+                    <button type="submit" class="send-code-btn" onclick="location.href='/login'">Simpan Password</button>
                 </div>
             </form>
         </div>

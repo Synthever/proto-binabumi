@@ -3,7 +3,7 @@
   <div class="nav-content">
     <!-- Beranda -->
     <div class="nav-item {{ $active === 'beranda' ? 'active' : '' }}">
-      <a href="{{ route('beranda') }}" class="nav-link">
+      <a href="/beranda" class="nav-link">
         <i class="fas fa-home"></i>
         <span>Beranda</span>
       </a>
@@ -11,7 +11,7 @@
 
     <!-- Edukasi -->
     <div class="nav-item {{ $active === 'edukasi' ? 'active' : '' }}">
-      <a href="#" class="nav-link">
+      <a href="/edukasi" class="nav-link">
         <i class="fas fa-book-open"></i>
         <span>Edukasi</span>
       </a>
@@ -19,14 +19,14 @@
 
     <!-- QR Code (Center) - dalam flow normal -->
     <div class="qr-nav-item">
-      <div class="qr-button" onclick="handleQRClick()">
+      <div class="qr-button" onclick="location.href='/scan'">
         <i class="fas fa-qrcode"></i>
       </div>
     </div>
 
     <!-- Riwayat -->
     <div class="nav-item {{ $active === 'riwayat' ? 'active' : '' }}">
-      <a href="#" class="nav-link">
+      <a href="/history" class="nav-link">
         <i class="fas fa-history"></i>
         <span>Riwayat</span>
       </a>
@@ -34,7 +34,7 @@
 
     <!-- Profil -->
     <div class="nav-item {{ $active === 'profil' ? 'active' : '' }}">
-      <a href="#" class="nav-link">
+      <a href="/profile" class="nav-link">
         <i class="fas fa-user"></i>
         <span>Profil</span>
       </a>

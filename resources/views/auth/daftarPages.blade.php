@@ -248,7 +248,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" onclick="location.href='/login'">
                     Daftar
                 </button>
 
