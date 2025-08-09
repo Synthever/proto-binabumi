@@ -216,7 +216,7 @@
                 <div class="fade-in-delayed">
                     <h3 class="section-title">Pengaturan</h3>
                     
-                    <div class="menu-item" onclick="navigateTo('data-profil')">
+                    <div class="menu-item" onclick="navigateTo('data-profile')">
                         <div class="menu-icon icon-data-profil">
                             <i class="fas fa-user"></i>
                         </div>
