@@ -27,8 +27,8 @@ body {
 }
 
 .loading-logo {
-    width: 80px;
-    height: 80px;
+    width: 210px;
+    height: 210px;
     margin-bottom: 20px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
@@ -103,3 +103,74 @@ body {
         transform: translateY(-10px);
     }
 }
+
+/* Custom styles to complement Tailwind CSS */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom transition effects for hover states */
+.transition-colors {
+    transition: all 0.3s ease;
+}
+
+/* Navbar styles */
+.nav-link {
+    transition: color 0.3s ease;
+    position: relative;
+    display: inline-block;
+    padding: 0.25rem 0;
+}
+
+/* Prevent vertical movement or size changes on hover */
+.nav-link:hover {
+    transform: none;
+}
+
+/* Navigation items animation */
+.nav-item {
+    position: relative;
+}
+
+/* Navigation scroll effect */
+.nav-scrolled {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Button hover effects enhancement */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card hover effects */
+.shadow-md:hover {
+    transform: translateY(-5px);
+}
+
+/* Add overlay to the BinaBumi logo */
+.logo-overlay {
+    position: relative;
+}
+
+.logo-overlay:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 90, 58, 0.05);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.logo-overlay:hover:after {
+    opacity: 1;
+}
+
+/* Add JavaScript to enable scroll effect on navigation */

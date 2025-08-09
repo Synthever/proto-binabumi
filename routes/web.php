@@ -11,6 +11,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\MapsController;
 use App\Http\Controllers\ScanController;
+use App\Http\Controllers\GamesController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -67,3 +68,7 @@ Route::get('/donasi/upload-bukti', [DonasiController::class, 'UploadBuktiTF'])->
 
 // Scan
 Route::get('/scan', [ScanController::class, 'index'])->name('scan.index');
+
+// Route Halaman Games
+Route::get('/games', [GamesController::class, 'index'])->name('games.index');
+Route::get('/games/challenge', [GamesController::class, 'challenge'])->name('games.challenge');
