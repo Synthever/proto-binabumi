@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histori Anda - SIGMA</title>
+    <title>Riwayat Anda - SIGMA</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('css/history/historyMain.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 
     <!-- Header -->
     <div class="header">
-        <h1 class="title">History</h1>
+        <h1 class="title">Riwayat</h1>
     </div>
 
     <!-- Search -->
