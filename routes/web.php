@@ -12,7 +12,6 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\MapsController;
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
 
 // Route for the Auth page
 Route::get('/login', [AuthController::class, 'login'])->name('login');

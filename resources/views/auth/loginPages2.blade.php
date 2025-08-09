@@ -263,7 +263,7 @@
         <!-- Action Buttons -->
         <div class="action-buttons">
             <button class="btn btn-cancel" onclick="location.href='/login/google'">Cancel</button>
-            <button class="btn btn-allow" onclick="alert('Allow clicked')">Allow</button>
+            <button class="btn btn-allow" onclick="location.href='/beranda'">Allow</button>
         </div>
     </div>
 </body>

@@ -215,7 +215,7 @@
 
                 <!-- Password Buttons -->
                 <div class="password-buttons">
-                    <button type="submit" class="next-btn">Next</button>
+                    <button type="submit" class="next-btn" onclick="location.href='/login/google/step1'">Next</button>
                 </div>
             </form>
         </div>
