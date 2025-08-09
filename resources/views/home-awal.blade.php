@@ -570,7 +570,7 @@
             </div>
         </div>
     </section>
-
+        
     <!-- Footer -->
     <footer class="bg-gray-100 py-12 px-12">
         <div class="container mx-auto px-4">
