@@ -67,8 +67,3 @@ Route::get('/donasi/upload-bukti', [DonasiController::class, 'UploadBuktiTF'])->
 
 // Scan
 Route::get('/scan', [ScanController::class, 'index'])->name('scan.index');
-
-
-// Route Halaman Test Cam
-Route::get('/testcam', [App\Http\Controllers\CamController::class, 'index'])->name('testcam.index');
-Route::get('/scan-result', [App\Http\Controllers\CamController::class, 'scanResult'])->name('scan.result');

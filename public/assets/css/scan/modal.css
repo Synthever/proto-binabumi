@@ -1,0 +1,369 @@
+/* Modal Styles for Scan Page - Similar to Profile Page */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 20px;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    text-align: center;
+    padding: 32px 24px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: white;
+    position: relative;
+}
+
+.modal-icon.success {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    box-shadow: 0 8px 32px rgba(6, 95, 70, 0.3);
+}
+
+.modal-icon.warning {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
+}
+
+.modal-icon.primary {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.modal-subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.modal-body {
+    padding: 20px 24px;
+}
+
+.qr-result-container {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.qr-result-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.qr-result-text {
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #1f2937;
+    word-break: break-all;
+    line-height: 1.5;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.modal-actions {
+    padding: 20px 24px 32px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.modal-button {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 20px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.modal-button:hover:before {
+    left: 100%;
+}
+
+.modal-button.primary {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(6, 95, 70, 0.3);
+}
+
+.modal-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(6, 95, 70, 0.4);
+}
+
+.modal-button.primary:active {
+    transform: translateY(0);
+}
+
+.modal-button.secondary {
+    background: white;
+    color: #065f46;
+    border: 2px solid #065f46;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.modal-button.secondary:hover {
+    background: #f0fdf4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.modal-button.secondary:active {
+    transform: translateY(0);
+}
+
+.modal-button.danger {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+}
+
+.modal-button.danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+}
+
+.modal-button.danger:active {
+    transform: translateY(0);
+}
+
+/* Toast Notification (existing from scan.css) */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    z-index: 10000;
+    box-shadow: 0 8px 32px rgba(6, 95, 70, 0.3);
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px);
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .modal-content {
+        max-width: 90%;
+        margin: 20px;
+        border-radius: 20px;
+    }
+    
+    .modal-header {
+        padding: 24px 20px 16px;
+    }
+    
+    .modal-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    
+    .modal-title {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    
+    .modal-subtitle {
+        font-size: 15px;
+    }
+    
+    .modal-body {
+        padding: 16px 20px;
+    }
+    
+    .qr-result-container {
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    .qr-result-text {
+        padding: 12px;
+        font-size: 13px;
+    }
+    
+    .modal-actions {
+        padding: 16px 20px 24px;
+        flex-direction: column;
+    }
+    
+    .modal-button {
+        min-width: auto;
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal-overlay {
+        padding: 10px;
+    }
+    
+    .modal-content {
+        max-width: 100%;
+        margin: 10px;
+    }
+    
+    .modal-header {
+        padding: 20px 16px 12px;
+    }
+    
+    .modal-body {
+        padding: 12px 16px;
+    }
+    
+    .modal-actions {
+        padding: 12px 16px 20px;
+    }
+}
+
+/* Accessibility */
+.modal-button:focus {
+    outline: 3px solid rgba(6, 95, 70, 0.5);
+    outline-offset: 2px;
+}
+
+.modal-content:focus {
+    outline: none;
+}
+
+/* Animation for modal entrance */
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes modalExit {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .modal-content {
+        border: 2px solid #000;
+    }
+    
+    .modal-button {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .modal-overlay,
+    .modal-content,
+    .modal-button {
+        transition: none;
+    }
+    
+    .modal-button:before {
+        transition: none;
+    }
+}

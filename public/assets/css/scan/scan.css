@@ -59,9 +59,11 @@ body {
 .scanner-wrapper {
     flex: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0 20px;
+    gap: 24px;
 }
 
 /* Camera Container */
@@ -93,72 +95,24 @@ body {
     pointer-events: none;
 }
 
-/* Corner Markers - Exactly like design */
-.corner {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border: 4px solid #4CAF50;
-    border-radius: 6px;
-    z-index: 15;
+/* Scan Instructions */
+.scan-instructions {
+    text-align: center;
+    max-width: 300px;
 }
 
-.corner.top-left {
-    top: 24px;
-    left: 24px;
-    border-right: none;
-    border-bottom: none;
-    border-top-left-radius: 8px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
+.scan-instructions p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
-.corner.top-right {
-    top: 24px;
-    right: 24px;
-    border-left: none;
-    border-bottom: none;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.corner.bottom-left {
-    bottom: 24px;
-    left: 24px;
-    border-right: none;
-    border-top: none;
-    border-bottom-left-radius: 8px;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.corner.bottom-right {
-    bottom: 24px;
-    right: 24px;
-    border-left: none;
-    border-top: none;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-/* Scanning Line Animation */
-.scan-line {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    right: 24px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #4CAF50, transparent);
-    box-shadow: 0 0 12px #4CAF50;
-    opacity: 0.9;
-    border-radius: 2px;
-    z-index: 12;
+.scan-instructions small {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.3;
 }
 
 /* Camera Error State */
@@ -190,6 +144,30 @@ body {
     font-size: 14px;
     color: #666;
     line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.retry-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.retry-btn:hover {
+    background: #45a049;
+}
+
+.retry-btn:active {
+    transform: translateY(1px);
 }
 
 /* Responsive Design - Tablet (768px and below) */
@@ -213,6 +191,7 @@ body {
     
     .scanner-wrapper {
         padding: 0 16px;
+        gap: 20px;
     }
     
     .camera-container {
@@ -220,46 +199,12 @@ body {
         border-radius: 20px;
     }
     
-    .corner {
-        width: 28px;
-        height: 28px;
-        border-width: 3px;
+    .scan-instructions p {
+        font-size: 15px;
     }
-    
-    .corner.top-left,
-    .corner.top-right,
-    .corner.bottom-left,
-    .corner.bottom-right {
-        top: 20px;
-        right: 20px;
-        bottom: 20px;
-        left: 20px;
-    }
-    
-    .corner.top-left {
-        top: 20px;
-        left: 20px;
-    }
-    
-    .corner.top-right {
-        top: 20px;
-        right: 20px;
-    }
-    
-    .corner.bottom-left {
-        bottom: 20px;
-        left: 20px;
-    }
-    
-    .corner.bottom-right {
-        bottom: 20px;
-        right: 20px;
-    }
-    
-    .scan-line {
-        top: 20px;
-        left: 20px;
-        right: 20px;
+
+    .scan-instructions small {
+        font-size: 13px;
     }
 }
 
@@ -284,6 +229,7 @@ body {
     
     .scanner-wrapper {
         padding: 0 12px;
+        gap: 16px;
     }
     
     .camera-container {
@@ -291,47 +237,12 @@ body {
         border-radius: 16px;
     }
     
-    .corner {
-        width: 24px;
-        height: 24px;
-        border-width: 3px;
+    .scan-instructions p {
+        font-size: 14px;
     }
     
-    .corner.top-left,
-    .corner.top-right,
-    .corner.bottom-left,
-    .corner.bottom-right {
-        top: 16px;
-        right: 16px;
-        bottom: 16px;
-        left: 16px;
-    }
-    
-    .corner.top-left {
-        top: 16px;
-        left: 16px;
-    }
-    
-    .corner.top-right {
-        top: 16px;
-        right: 16px;
-    }
-    
-    .corner.bottom-left {
-        bottom: 16px;
-        left: 16px;
-    }
-    
-    .corner.bottom-right {
-        bottom: 16px;
-        right: 16px;
-    }
-    
-    .scan-line {
-        top: 16px;
-        left: 16px;
-        right: 16px;
-        height: 2px;
+    .scan-instructions small {
+        font-size: 12px;
     }
 }
 
@@ -356,6 +267,7 @@ body {
     
     .scanner-wrapper {
         padding: 0 40px;
+        gap: 28px;
     }
     
     .camera-container {
@@ -363,47 +275,12 @@ body {
         border-radius: 28px;
     }
     
-    .corner {
-        width: 36px;
-        height: 36px;
-        border-width: 4px;
+    .scan-instructions p {
+        font-size: 17px;
     }
     
-    .corner.top-left,
-    .corner.top-right,
-    .corner.bottom-left,
-    .corner.bottom-right {
-        top: 28px;
-        right: 28px;
-        bottom: 28px;
-        left: 28px;
-    }
-    
-    .corner.top-left {
-        top: 28px;
-        left: 28px;
-    }
-    
-    .corner.top-right {
-        top: 28px;
-        right: 28px;
-    }
-    
-    .corner.bottom-left {
-        bottom: 28px;
-        left: 28px;
-    }
-    
-    .corner.bottom-right {
-        bottom: 28px;
-        right: 28px;
-    }
-    
-    .scan-line {
-        top: 28px;
-        left: 28px;
-        right: 28px;
-        height: 3px;
+    .scan-instructions small {
+        font-size: 15px;
     }
 }
 
@@ -419,18 +296,4 @@ body {
     to {
         opacity: 1;
     }
-}
-
-/* Pulse animation for scan line */
-@keyframes scanPulse {
-    0%, 100% {
-        opacity: 0.4;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-.scan-line {
-    animation: scanPulse 2s ease-in-out infinite;
 }
