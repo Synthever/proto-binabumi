@@ -1,4 +1,3 @@
-@ -1,74 +0,0 @@
 <?php
 
 use App\Http\Controllers\HomeController;
@@ -13,6 +12,8 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\MapsController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\UsersController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -73,3 +74,10 @@ Route::get('/scan', [ScanController::class, 'index'])->name('scan.index');
 // Route Halaman Games
 Route::get('/games', [GamesController::class, 'index'])->name('games.index');
 Route::get('/games/challenge', [GamesController::class, 'challenge'])->name('games.challenge');
+
+// test
+Route::get('/test/add-users', [UsersController::class, 'addUsers'])->name('test.add-users');
+Route::post('/test/users/store', [UsersController::class, 'store'])->name('users.store');
+Route::get('/test/add-statistic', [StatisticController::class, 'addStatistic'])->name('test.add-statistic');
+Route::post('/test/statistic/store', [StatisticController::class, 'store'])->name('statistic.store');
+Route::get('/test/view-statistics', [StatisticController::class, 'viewStatistics'])->name('test.view-statistics');
