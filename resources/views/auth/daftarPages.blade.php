@@ -213,42 +213,72 @@
 
         <!-- Card -->
         <div class="login-card">
-            <form class="login-form">
+            <form class="login-form" method="POST" action="{{ route('register.process') }}">
+                @csrf
                 <!-- Form Fields -->
                 <div class="form-group">
                     <input
-                        type="email"
-                        placeholder="Email"
-                        class="form-input"
-                        required />
-                </div>
-
-                <div class="form-group">
-                    <input
                         type="text"
+                        name="username"
                         placeholder="Username"
                         class="form-input"
-                        required />
+                        value="{{ old('username') }}"
+                        required
+                        minlength="3"
+                        maxlength="255" />
+                </div>
+
+                <div class="form-group">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        class="form-input"
+                        value="{{ old('email') }}"
+                        required
+                        maxlength="255" />
                 </div>
 
                 <div class="form-group">
                     <input
                         type="password"
+                        name="password"
                         placeholder="Password"
                         class="form-input"
-                        required />
+                        required
+                        minlength="8"
+                        maxlength="255" />
                 </div>
 
                 <div class="form-group">
                     <input
                         type="password"
+                        name="password_confirmation"
                         placeholder="Ulangi Password"
                         class="form-input"
-                        required />
+                        required
+                        minlength="8"
+                        maxlength="255" />
                 </div>
 
+                <!-- Error Messages -->
+                @if($errors->any())
+                    <div style="background-color: #fee2e2; border: 1px solid #fca5a5; color: #dc2626; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                        @foreach($errors->all() as $error)
+                            <p style="margin: 5px 0; font-size: 14px;">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
+                <!-- Success Message -->
+                @if(session('success'))
+                    <div style="background-color: #d1fae5; border: 1px solid #6ee7b7; color: #065f46; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="margin: 5px 0; font-size: 14px;">{{ session('success') }}</p>
+                    </div>
+                @endif
+
                 <!-- Submit Button -->
-                <button type="submit" class="submit-btn" onclick="location.href='/login'">
+                <button type="submit" class="submit-btn">
                     Daftar
                 </button>
 

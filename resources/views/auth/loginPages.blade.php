@@ -213,7 +213,8 @@
 
         <!-- Card -->
         <div class="login-card">
-            <form class="login-form">
+            <form class="login-form" method="POST" action="{{ route('login.process') }}">
+                @csrf
                 <!-- Google Button -->
                 <button type="button" class="google-btn" onclick="location.href='/login/google'">
                     <svg width="20" height="20" viewBox="0 0 24 24">
@@ -235,19 +236,41 @@
                 <!-- Form Fields -->
                 <div class="form-group">
                     <input
-                        type="email"
-                        placeholder="Email"
+                        type="text"
+                        name="login"
+                        placeholder="Email atau Username"
                         class="form-input"
-                        required />
+                        value="{{ old('login') }}"
+                        required
+                        maxlength="255" />
                 </div>
 
                 <div class="form-group">
                     <input
                         type="password"
+                        name="password"
                         placeholder="Password"
                         class="form-input"
-                        required />
+                        required
+                        minlength="8"
+                        maxlength="255" />
                 </div>
+
+                <!-- Error Messages -->
+                @if($errors->any())
+                    <div style="background-color: #fee2e2; border: 1px solid #fca5a5; color: #dc2626; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                        @foreach($errors->all() as $error)
+                            <p style="margin: 5px 0; font-size: 14px;">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
+                <!-- Success Message -->
+                @if(session('success'))
+                    <div style="background-color: #d1fae5; border: 1px solid #6ee7b7; color: #065f46; padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="margin: 5px 0; font-size: 14px;">{{ session('success') }}</p>
+                    </div>
+                @endif
 
                 <!-- Checkbox dan Forgot Password -->
                 <div class="form-options">
@@ -260,7 +283,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="submit-btn" onclick="location.href='/beranda'">
+                <button type="submit" class="submit-btn">
                     Masuk
                 </button>
             </form>

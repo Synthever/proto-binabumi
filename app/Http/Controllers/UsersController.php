@@ -33,8 +33,7 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'no_handphone' => 'required|string|max:20',
             'email' => 'required|email|max:255',
-            'is_connect' => 'required|in:true,false',
-            'machine_id' => 'nullable|string|max:255',
+            'password' => 'required|string|min:8|max:255',
             'date_created' => 'required|string|max:255',
             'date_updated' => 'required|string|max:255',
         ], [
@@ -46,7 +45,8 @@ class UsersController extends Controller
             'no_handphone.required' => 'Phone number is required.',
             'email.required' => 'Email is required.',
             'email.email' => 'Please enter a valid email address.',
-            'is_connect.required' => 'Connection status is required.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters.',
             'date_created.required' => 'Date created is required.',
             'date_updated.required' => 'Date updated is required.',
         ]);
@@ -58,8 +58,7 @@ class UsersController extends Controller
                 'name' => $validated['name'],
                 'no_handphone' => $validated['no_handphone'],
                 'email' => $validated['email'],
-                'is_connect' => $validated['is_connect'] === 'true',
-                'machine_id' => $validated['machine_id'] ?? '-',
+                'password' => bcrypt($validated['password']),
                 'date_created' => $validated['date_created'],
                 'date_updated' => $validated['date_updated'],
             ]);
