@@ -25,9 +25,9 @@
 
                     <!-- Profile Card -->
                     <div class="profile-card fade-in">
-                        <div class="profile-avatar">P</div>
-                        <h2 class="text-2xl font-bold text-center text-gray-800 mb-3">Pamela Tri Anjani</h2>
-                        <p class="text-center text-gray-500 text-base">pamelalrianjani@gmail.com</p>
+                        <div class="profile-avatar">{{ strtoupper(substr($userData['name'], 0, 1)) }}</div>
+                        <h2 class="text-2xl font-bold text-center text-gray-800 mb-3">{{ $userData['name'] }}</h2>
+                        <p class="text-center text-gray-500 text-base">{{ $userData['email'] }}</p>
                     </div>
 
                     <!-- Two Column Layout for iPad Pro -->

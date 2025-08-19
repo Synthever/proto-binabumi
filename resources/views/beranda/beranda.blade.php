@@ -24,7 +24,7 @@
             <span>{{ $userData['location'] }}</span>
           </div>
         </div>
-        <div class="user-avatar">
+        <div class="user-avatar" onclick="location.href='/profile'">
           {{ strtoupper(substr($userData['name'], 0, 1)) }}
         </div>
       </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="stats-top-values">
                     <div class="label">Saldo</div>
-                    <div class="value">0</div>
+                    <div class="value">{{ number_format($userData['saldo'], 0, ',', '.') }}</div>
                 </div>
             </div>
             <div class="divider"></div>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="stats-top-values">
                     <div class="label">Koin</div>
-                    <div class="value">0</div>
+                    <div class="value">{{ number_format($userData['koin'], 0, ',', '.') }}</div>
                 </div>
             </div>
             <div class="divider"></div>
@@ -58,24 +58,24 @@
                 </div>
                 <div class="stats-top-values">
                     <div class="label">Botol</div>
-                    <div class="value">0</div>
+                    <div class="value">{{ number_format($userData['botol'], 0, ',', '.') }}</div>
                 </div>
             </div>
         </div>
 
         <div class="stats-bottom">
             <div class="stats-box">
-            <div class="box-value">0</div>
+            <div class="box-value">{{ number_format($userData['pengumpulan'], 0, ',', '.') }}</div>
             <div class="box-label">Pengumpulan</div>
             </div>
             <div class="vertical-line"></div>
             <div class="stats-box">
-            <div class="box-value">0</div>
+            <div class="box-value">{{ number_format($userData['berhasil'], 0, ',', '.') }}</div>
             <div class="box-label">Berhasil</div>
             </div>
             <div class="vertical-line"></div>
             <div class="stats-box">
-            <div class="box-value">0</div>
+            <div class="box-value">{{ number_format($userData['pending'], 0, ',', '.') }}</div>
             <div class="box-label">Pending</div>
             </div>
         </div>

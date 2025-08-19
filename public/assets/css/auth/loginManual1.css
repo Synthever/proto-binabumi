@@ -95,6 +95,7 @@ html, body {
 
 .user-avatar {
     display: inline-block;
+    user-select: none;
 }
 
 .avatar-circle {

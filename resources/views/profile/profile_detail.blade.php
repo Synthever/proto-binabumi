@@ -61,7 +61,7 @@
                         <div class="photo-section">
                             <label class="photo-upload-label">Ubah foto profil</label>
                             <div class="profile-photo" onclick="triggerFileUpload()">
-                                P
+                                {{ strtoupper(substr($userData['name'], 0, 1)) }}
                             </div>
                             <div class="file-upload-section">
                                 <button type="button" class="file-upload-button" onclick="triggerFileUpload()">
@@ -77,19 +77,19 @@
                         <!-- Form Fields -->
                         <div class="form-group">
                             <label class="form-label">Ubah username</label>
-                            <input type="text" class="form-input" value="Pamela Tri Anjani"
+                            <input type="text" class="form-input" value="{{ $userData['username'] }}"
                                 placeholder="Masukkan username" id="username" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Ubah email</label>
-                            <input type="email" class="form-input" value="pamelalrianjani@gmail.com"
+                            <input type="email" class="form-input" value="{{ $userData['email'] }}"
                                 placeholder="Masukkan email" id="email" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Ubah no hp</label>
-                            <input type="tel" class="form-input" value="+62 8888 7777 3333"
+                            <input type="tel" class="form-input" value="{{ $userData['no_handphone'] }}"
                                 placeholder="Masukkan nomor HP" id="phone" required>
                         </div>
 
