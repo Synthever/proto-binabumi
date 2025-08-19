@@ -171,11 +171,11 @@ class ProfileNavigator {
         if (this.isTransitioning || page === this.currentPage) return;
         
         const routes = {
-            'data-profil': '/profile/detail',
-            'keamanan': '/profile/changepass',
-            'rekening': '/profile/changerekening',
-            'kebijakan': '/profile/kebijakanprivasi',
-            'syarat': '/profile/syaratketentuan'
+            'data-profile': '/profile/data-profile',
+            'keamanan': '/profile/keamanan',
+            'rekening': '/profile/rekening',
+            'kebijakan': '/profile/kebijakan',
+            'syarat': '/profile/syarat'
         };
         
         if (routes[page]) {

@@ -1,10 +1,39 @@
+/* Browser Reset dan Normalisasi */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /* Profile Syarat & Ketentuan Page Custom Styles */
 .syarat-ketentuan-container {
+    width: 100%;
     max-width: 1024px; /* iPad Pro 12.9" width */
     margin: 0 auto;
     min-height: 100vh;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .header-section {
@@ -55,12 +84,15 @@
 }
 
 .terms-card {
+    width: 100%;
     background: white;
     border-radius: 24px;
     padding: 32px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
     margin-bottom: 24px;
     line-height: 1.6;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .terms-header {
@@ -320,22 +352,29 @@
     margin: 0;
 }
 
-/* Responsive Design */
+/* Responsive Design - Browser Specific Fixes */
 /* Mobile Phones (320px - 480px) */
 @media (max-width: 480px) {
     .syarat-ketentuan-container {
+        width: 100%;
         max-width: 100%;
         padding: 0 16px;
+        margin: 0;
+        box-sizing: border-box;
     }
     
     .header-section {
         padding: 12px 0 20px;
         gap: 12px;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .back-button {
         width: 40px;
         height: 40px;
+        min-width: 40px;
+        min-height: 40px;
     }
     
     .back-button i {
@@ -344,11 +383,15 @@
     
     .page-title {
         font-size: 20px;
+        flex: 1;
     }
     
     .terms-card {
+        width: 100%;
         padding: 20px;
         border-radius: 20px;
+        box-sizing: border-box;
+        margin: 0 0 24px 0;
     }
     
     .terms-title {
@@ -380,6 +423,8 @@
     
     .important-notice, .warning-box, .contact-info, .acceptance-box {
         padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .important-title, .warning-title, .contact-title, .acceptance-title {
@@ -394,12 +439,17 @@
 /* Tablets (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
     .syarat-ketentuan-container {
+        width: 100%;
         max-width: 600px;
         padding: 0 24px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
     
     .terms-card {
+        width: 100%;
         padding: 28px;
+        box-sizing: border-box;
     }
     
     .terms-title {
@@ -412,26 +462,36 @@
 }
 
 /* iPad Pro 12.9" and similar (769px - 1024px) */
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .syarat-ketentuan-container {
+        width: 100%;
         max-width: 1024px;
         padding: 0 32px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
     
     .terms-card {
+        width: 100%;
         padding: 40px;
+        box-sizing: border-box;
     }
 }
 
-/* Large screens (835px+) */
-@media (min-width: 835px) {
+/* Large screens (1025px+) */
+@media (min-width: 1025px) {
     .syarat-ketentuan-container {
+        width: 100%;
         max-width: 800px;
         padding: 0 40px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
     
     .terms-card {
+        width: 100%;
         padding: 48px;
+        box-sizing: border-box;
     }
 }
 
@@ -553,4 +613,141 @@ html {
     font-weight: 700;
     flex-shrink: 0;
     margin-top: 2px;
+}
+
+/* Browser Specific Fixes */
+/* Chrome dan Chromium-based browsers */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .syarat-ketentuan-container {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    
+    .terms-card {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+}
+
+/* Microsoft Edge Legacy */
+@supports (-ms-ime-align: auto) {
+    .syarat-ketentuan-container {
+        display: flex;
+        flex-direction: column;
+        -ms-flex-direction: column;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .terms-card {
+        box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .header-section {
+        display: flex;
+        align-items: center;
+        -ms-flex-align: center;
+        width: 100%;
+    }
+}
+
+/* Modern Edge (Chromium-based) */
+@supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    .syarat-ketentuan-container {
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+    .syarat-ketentuan-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .terms-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Safari specific fixes */
+@supports (-webkit-appearance: none) and (not (stroke-color: transparent)) {
+    .syarat-ketentuan-container {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .terms-card {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: 100%;
+    }
+}
+
+/* Internet Explorer 11 (jika masih diperlukan) */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .syarat-ketentuan-container {
+        display: block;
+        width: 100%;
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .terms-card {
+        width: 100%;
+        display: block;
+    }
+    
+    .header-section {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Force consistent box model across browsers */
+.syarat-ketentuan-container,
+.syarat-ketentuan-container *,
+.terms-card,
+.terms-card * {
+    box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+}
+
+/* Viewport specific fixes */
+@media screen and (max-width: 100vw) {
+    .syarat-ketentuan-container {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
+/* High DPI display fixes */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .terms-card {
+        border: 0.5px solid transparent;
+    }
+}
+
+/* Container query fallback for older browsers */
+.syarat-ketentuan-container {
+    contain: layout style;
+}
+
+/* Final emergency fixes for Chrome vs Edge differences */
+.page-container,
+.page-content {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.slide-in-from-right {
+    width: 100% !important;
+    box-sizing: border-box !important;
 }

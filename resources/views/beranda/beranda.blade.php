@@ -86,7 +86,7 @@
       <h3 class="features-title">Jelajahi Fitur</h3>
       <div class="features-grid">
         <!-- Cari Mesin -->
-        <div class="feature-card">
+        <div class="feature-card" onclick="location.href='/maps'">
           <div class="feature-icon search">
             <i class="fas fa-search-location"></i>
           </div>
@@ -95,7 +95,7 @@
         </div>
 
         <!-- Tukar Koin -->
-        <div class="feature-card">
+        <div class="feature-card" onclick="location.href='/tukar-koin'">
           <div class="feature-icon exchange">
             <i class="fas fa-exchange-alt"></i>
           </div>
@@ -104,7 +104,7 @@
         </div>
 
         <!-- Donasi -->
-        <div class="feature-card">
+        <div class="feature-card" onclick="location.href='/donasi'">
           <div class="feature-icon donate">
             <i class="fas fa-heart"></i>
           </div>
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Permainan -->
-        <div class="feature-card">
+        <div class="feature-card" onclick="location.href='/games'">
           <div class="feature-icon game">
             <i class="fas fa-gamepad"></i>
           </div>
