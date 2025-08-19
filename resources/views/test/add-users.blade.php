@@ -165,17 +165,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Connection Status <span class="required">*</span></label>
-                    <select name="is_connect" class="form-select" required>
-                        <option value="">Select Status</option>
-                        <option value="false" {{ old('is_connect') == 'false' ? 'selected' : '' }}>Not Connected</option>
-                        <option value="true" {{ old('is_connect') == 'true' ? 'selected' : '' }}>Connected</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Machine ID</label>
-                    <input type="text" name="machine_id" class="form-input" value="{{ old('machine_id', '-') }}" placeholder="e.g., MCH001 or leave as -">
+                    <label class="form-label">Password <span class="required">*</span></label>
+                    <input type="password" name="password" class="form-input" required placeholder="Enter password" minlength="8">
+                    <div class="input-hint">Minimum 8 characters</div>
                 </div>
 
                 <div class="form-group">

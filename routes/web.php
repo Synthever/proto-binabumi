@@ -14,22 +14,26 @@ use App\Http\Controllers\ScanController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ConnectionController;
 
 Route::get('/', [HomeController::class, 'index']);
 
 // Route for the Auth page
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginProcess'])->name('login.process');
 Route::get('/login/google', [AuthController::class, 'googleLogin'])->name('google.login');
 Route::get('/login/google/step1', [AuthController::class, 'googleStep1'])->name('google.step1');
 Route::get('/login/manual', [AuthController::class, 'loginManual'])->name('login.manual');
 Route::get('/login/manual/step1', [AuthController::class, 'loginManualStep1'])->name('manual.step1');
 Route::get('/daftar', [AuthController::class, 'daftar'])->name('daftar');
+Route::post('/daftar', [AuthController::class, 'register'])->name('register.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot/password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
 Route::get('/forgot/password/verifikasi', [AuthController::class, 'forgotPasswordVerifikasi'])->name('forgot.password.verifikasi');
 Route::get('/forgot/password/new', [AuthController::class, 'forgotPasswordNew'])->name('forgot.password.new');
 
 // Routes Halaman Beranda
-Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda')->middleware('check.login');
 
 // Routes Halaman Tukar Koin
 Route::get('/tukar-koin', [TukarKoinController::class, 'index'])->name('tukar-koin');
@@ -81,3 +85,6 @@ Route::post('/test/users/store', [UsersController::class, 'store'])->name('users
 Route::get('/test/add-statistic', [StatisticController::class, 'addStatistic'])->name('test.add-statistic');
 Route::post('/test/statistic/store', [StatisticController::class, 'store'])->name('statistic.store');
 Route::get('/test/view-statistics', [StatisticController::class, 'viewStatistics'])->name('test.view-statistics');
+Route::get('/test/add-connection', [ConnectionController::class, 'addConnection'])->name('test.add-connection');
+Route::post('/test/connection/store', [ConnectionController::class, 'store'])->name('connection.store');
+Route::get('/test/view-connections', [ConnectionController::class, 'viewConnections'])->name('test.view-connections');
