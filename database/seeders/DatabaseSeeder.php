@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Raekhandi Yoga',
             'no_handphone' => '085158338027',
             'email' => 'rey@example.com',
-            'password' => bcrypt('Rey@21'),
+            'password' => bcrypt('Qwerty@21'),
             'is_login' => false, // Default to false
             'date_created' => now()->format('d-m-Y H:i'),
             'date_updated' => now()->format('d-m-Y H:i'),
