@@ -179,8 +179,7 @@
                     </div>
 
                     <!-- Scripts -->
-                    <script src="{{ asset('/assets/js/profile/navigation.js') }}"></script>
-                    <script src="{{ asset('/assets/js/profile/navigation-fixes.js') }}"></script>
+                    <script src="{{ asset('/assets/js/profile/navigation-utils.js') }}"></script>
                     <script src="{{ asset('/assets/js/profile/profile_changepass.js') }}"></script>
                 </body>
 

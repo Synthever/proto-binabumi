@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Data Profil - SIGMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/profile_detail.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation-fixes.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Emergency CSS reset untuk konsistensi browser */
@@ -60,21 +62,38 @@
                         <!-- Photo Section -->
                         <div class="photo-section">
                             <label class="photo-upload-label">Ubah foto profil</label>
-                            <div class="profile-photo" onclick="triggerFileUpload()">
-                                {{ strtoupper(substr($userData['name'], 0, 1)) }}
+                            <div class="profile-photo" onclick="triggerFileUpload()" 
+                                 @if($userData['profile_picture']) 
+                                     style="background-image: url('{{ $userData['profile_picture'] }}'); background-size: cover; background-position: center;"
+                                 @endif>
+                                @if(!$userData['profile_picture'])
+                                    {{ strtoupper(substr($userData['name'], 0, 1)) }}
+                                @endif
                             </div>
                             <div class="file-upload-section">
                                 <button type="button" class="file-upload-button" onclick="triggerFileUpload()">
                                     <i class="fas fa-upload"></i>
                                     Pilih file
                                 </button>
-                                <span class="file-upload-text">Belum ada file ya dipilih</span>
+                                <span class="file-upload-text">
+                                    @if($userData['profile_picture'])
+                                        Foto profil tersimpan
+                                    @else
+                                        Belum ada file ya dipilih
+                                    @endif
+                                </span>
                             </div>
                             <input type="file" id="photoUpload" accept="image/*" style="display: none;"
                                 onchange="handleFileUpload(event)">
                         </div>
 
                         <!-- Form Fields -->
+                        <div class="form-group">
+                            <label class="form-label">Ubah nama lengkap</label>
+                            <input type="text" class="form-input" value="{{ $userData['name'] }}"
+                                placeholder="Masukkan nama lengkap" id="name" required>
+                        </div>
+
                         <div class="form-group">
                             <label class="form-label">Ubah username</label>
                             <input type="text" class="form-input" value="{{ $userData['username'] }}"
@@ -122,8 +141,7 @@
             </div>
 
             <!-- Loading Scripts -->
-            <script src="{{ asset('/assets/js/profile/navigation.js') }}"></script>
-            <script src="{{ asset('/assets/js/profile/navigation-fixes.js') }}"></script>
+            <script src="{{ asset('/assets/js/profile/navigation-utils.js') }}"></script>
             <script src="{{ asset('/assets/js/profile/profile_detail.js') }}"></script>
 </body>
 

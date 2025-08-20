@@ -19,20 +19,93 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollToTop();
     initializeSectionHighlighting();
     trackTermsViewed();
+    
+    // Apply navigation fixes
+    setTimeout(() => {
+        autoFixBackButton();
+    }, 100);
 });
 
-// Enhanced navigation functions
-function goBack() {
+// Override global goBack function
+window.goBack = enhancedGoBack;
+
+// Enhanced navigation functions with fixes
+function enhancedGoBack() {
+    console.log('🔙 Enhanced go back triggered from syarat ketentuan');
+    
+    // Add visual feedback
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.style.transform = 'scale(0.95)';
+        backButton.style.background = '#f0f0f0';
+        
+        setTimeout(() => {
+            backButton.style.transform = '';
+            backButton.style.background = '';
+        }, 200);
+    }
+    
     // Mark that we're returning to main page
     sessionStorage.setItem('returningToMain', 'true');
-
-    if (window.profileNavigator) {
-        profileNavigator.goBack();
-    } else {
-        // Fallback
-        console.log('Going back...');
-        window.history.back();
+    
+    try {
+        if (window.profileNavigator && typeof window.profileNavigator.goBack === 'function') {
+            window.profileNavigator.goBack();
+        } else {
+            window.location.href = '/profile';
+        }
+    } catch (error) {
+        console.error('❌ Error in goBack:', error);
+        window.location.href = '/profile';
     }
+}
+
+// Fix scroll issues
+function fixScrolling() {
+    const containers = document.querySelectorAll('.page-container, .page-content, .syarat-ketentuan-container');
+    
+    containers.forEach(container => {
+        if (container) {
+            container.style.height = 'auto';
+            container.style.maxHeight = 'none';
+            container.style.overflow = 'visible';
+            container.style.overflowY = 'auto';
+        }
+    });
+    
+    document.body.style.overflow = 'auto';
+}
+
+// Force attach click handlers
+function forceAttachClickHandlers() {
+    const backButtons = document.querySelectorAll('.back-button');
+    
+    backButtons.forEach((button) => {
+        button.removeEventListener('click', enhancedGoBack);
+        button.addEventListener('click', enhancedGoBack, { passive: false });
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            enhancedGoBack();
+        }, { passive: false });
+        
+        button.style.cssText += `
+            position: relative !important;
+            z-index: 99999 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        `;
+    });
+}
+
+// Auto-fix function
+function autoFixBackButton() {
+    fixScrolling();
+    forceAttachClickHandlers();
+}
+
+// Backward compatibility
+function goBack() {
+    enhancedGoBack();
 }
 
 // Smooth scrolling for anchor links

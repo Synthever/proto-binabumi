@@ -13,20 +13,95 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePageAnimations();
     initializeFormValidation();
     initializeClickAnimations();
+    
+    // Apply navigation fixes
+    setTimeout(() => {
+        autoFixBackButton();
+    }, 100);
 });
 
-// Enhanced navigation functions
-function goBack() {
+// Override global goBack function
+window.goBack = enhancedGoBack;
+
+// Enhanced navigation functions with fixes
+function enhancedGoBack() {
+    console.log('🔙 Enhanced go back triggered from changepass');
+    
+    // Add visual feedback
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.style.transform = 'scale(0.95)';
+        backButton.style.background = '#f0f0f0';
+        
+        setTimeout(() => {
+            backButton.style.transform = '';
+            backButton.style.background = '';
+        }, 200);
+    }
+    
     // Mark that we're returning to main page
     sessionStorage.setItem('returningToMain', 'true');
-
-    if (window.profileNavigator) {
-        profileNavigator.goBack();
-    } else {
-        // Fallback
-        console.log('Going back...');
-        window.history.back();
+    
+    try {
+        if (window.profileNavigator && typeof window.profileNavigator.goBack === 'function') {
+            window.profileNavigator.goBack();
+        } else {
+            window.location.href = '/profile';
+        }
+    } catch (error) {
+        console.error('❌ Error in goBack:', error);
+        window.location.href = '/profile';
     }
+}
+
+// Fix scroll issues specific to changepass page
+function fixScrolling() {
+    const containers = document.querySelectorAll('.page-container, .page-content, .changepass-container');
+    
+    containers.forEach(container => {
+        if (container) {
+            container.style.height = 'auto';
+            container.style.maxHeight = 'none';
+            container.style.overflow = 'visible';
+            container.style.overflowY = 'auto';
+            container.style.position = 'relative';
+        }
+    });
+    
+    document.body.style.overflow = 'auto';
+    document.body.style.height = 'auto';
+}
+
+// Force attach click handlers for back button
+function forceAttachClickHandlers() {
+    const backButtons = document.querySelectorAll('.back-button');
+    
+    backButtons.forEach((button) => {
+        button.removeEventListener('click', enhancedGoBack);
+        button.addEventListener('click', enhancedGoBack, { passive: false });
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            enhancedGoBack();
+        }, { passive: false });
+        
+        button.style.cssText += `
+            position: relative !important;
+            z-index: 99999 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        `;
+    });
+}
+
+// Auto-fix function
+function autoFixBackButton() {
+    fixScrolling();
+    forceAttachClickHandlers();
+}
+
+// Backward compatibility
+function goBack() {
+    enhancedGoBack();
 }
 
 // Enhanced save function with modal confirmation

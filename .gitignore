@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Profile pictures - ignore individual files but keep directory
+/public/assets/profile_pict/*
+!/public/assets/profile_pict/.gitkeep

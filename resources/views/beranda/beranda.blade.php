@@ -25,7 +25,11 @@
           </div>
         </div>
         <div class="user-avatar" onclick="location.href='/profile'">
-          {{ strtoupper(substr($userData['name'], 0, 1)) }}
+          @if(!empty($userData['profile_picture']))
+            <img src="{{ $userData['profile_picture'] }}" alt="Profile Picture" class="avatar-image" onerror="this.style.display='none'; this.parentNode.innerHTML='{{ strtoupper(substr($userData['name'], 0, 1)) }}';">
+          @else
+            {{ strtoupper(substr($userData['name'], 0, 1)) }}
+          @endif
         </div>
       </div>
     </div>

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('is_login')->default(false); // Track login status
             $table->string('date_created');
             $table->string('date_updated');
+            $table->string('profile_picture')->nullable();
         });
 
         // Create password reset tokens table

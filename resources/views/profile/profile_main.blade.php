@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/profile_style.css') }}" onerror="this.remove()">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation.css') }}" onerror="this.remove()">
     <link rel="stylesheet" href="{{ asset('/assets/css/components/bottom-nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
@@ -25,7 +26,14 @@
 
                     <!-- Profile Card -->
                     <div class="profile-card fade-in">
-                        <div class="profile-avatar">{{ strtoupper(substr($userData['name'], 0, 1)) }}</div>
+                        <div class="profile-avatar" 
+                             @if($userData['profile_picture']) 
+                                 style="background-image: url('{{ $userData['profile_picture'] }}'); background-size: cover; background-position: center;"
+                             @endif>
+                            @if(!$userData['profile_picture'])
+                                {{ strtoupper(substr($userData['name'], 0, 1)) }}
+                            @endif
+                        </div>
                         <h2 class="text-2xl font-bold text-center text-gray-800 mb-3">{{ $userData['name'] }}</h2>
                         <p class="text-center text-gray-500 text-base">{{ $userData['email'] }}</p>
                     </div>
@@ -131,240 +139,11 @@
     @include('components.bottom-nav', ['active' => 'profil'])
 
     <!-- Loading Scripts -->
-    <script src="{{ asset('assets/js/profile/navigation.js') }}" onerror="console.warn('Navigation script not found')">
+    <script src="{{ asset('assets/js/profile/navigation-utils.js') }}" onerror="console.warn('Navigation utils script not found')">
     </script>
-    <script>
-        // Debug logging function
-        function debugLog(message, data = null) {
-            console.log(`[Profile Debug] ${message}`, data || '');
-        }
-
-        // Error handling function
-        function handleError(error, context) {
-            console.error(`[Profile Error] ${context}:`, error);
-        }
-
-        // Enhanced menu interactions with haptic feedback
-        function initMenuInteractions() {
-            try {
-                debugLog('Initializing menu interactions');
-
-                document.querySelectorAll('.menu-item, .action-button').forEach(item => {
-                    item.addEventListener('click', function() {
-                        // Add visual feedback
-                        this.style.transform = 'scale(0.95)';
-
-                        // Add haptic feedback if available
-                        if ('vibrate' in navigator) {
-                            navigator.vibrate(50);
-                        }
-
-                        setTimeout(() => {
-                            this.style.transform = '';
-                        }, 150);
-                    });
-
-                    // Add hover effect for non-touch devices
-                    item.addEventListener('mouseenter', function() {
-                        if (!('ontouchstart' in window)) {
-                            this.style.transform = 'translateY(-1px)';
-                        }
-                    });
-
-                    item.addEventListener('mouseleave', function() {
-                        if (!('ontouchstart' in window)) {
-                            this.style.transform = '';
-                        }
-                    });
-                });
-
-                debugLog('Menu interactions initialized');
-            } catch (error) {
-                handleError(error, 'Menu interactions initialization');
-            }
-        }
-
-        // Initialize animations with stagger effect
-        function initStaggerAnimation() {
-            try {
-                debugLog('Initializing stagger animations');
-
-                const elements = document.querySelectorAll('.fade-in, .fade-in-delayed');
-                elements.forEach((el, index) => {
-                    el.style.animationDelay = `${index * 0.1}s`;
-                    el.addEventListener('animationend', function() {
-                        this.style.opacity = '1';
-                        this.style.transform = 'translateY(0)';
-                    });
-                });
-
-                debugLog('Stagger animations initialized');
-            } catch (error) {
-                handleError(error, 'Stagger animations initialization');
-            }
-        }
-
-        // Performance optimization
-        function optimizePerformance() {
-            try {
-                debugLog('Optimizing performance');
-
-                // Use passive event listeners for better scroll performance
-                document.addEventListener('touchstart', function() {}, {
-                    passive: true
-                });
-                document.addEventListener('touchmove', function() {}, {
-                    passive: true
-                });
-
-                debugLog('Performance optimization completed');
-            } catch (error) {
-                handleError(error, 'Performance optimization');
-            }
-        }
-
-        // Accessibility improvements
-        function initAccessibility() {
-            try {
-                debugLog('Initializing accessibility features');
-
-                document.querySelectorAll('.menu-item').forEach((item, index) => {
-                    item.setAttribute('tabindex', '0');
-                    item.setAttribute('role', 'button');
-                    item.setAttribute('aria-label', item.querySelector('h3').textContent);
-
-                    // Keyboard navigation
-                    item.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            this.click();
-                        }
-                    });
-                });
-
-                // Add focus indicators
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Tab') {
-                        document.body.classList.add('keyboard-navigation');
-                    }
-                });
-
-                document.addEventListener('mousedown', function() {
-                    document.body.classList.remove('keyboard-navigation');
-                });
-
-                debugLog('Accessibility features initialized');
-            } catch (error) {
-                handleError(error, 'Accessibility initialization');
-            }
-        }
-
-        // Network status monitoring
-        function initNetworkMonitoring() {
-            try {
-                debugLog('Initializing network monitoring');
-
-                function updateNetworkStatus() {
-                    const status = navigator.onLine ? 'online' : 'offline';
-                    debugLog('Network status:', status);
-
-                    if (navigator.onLine) {
-                        document.body.classList.remove('offline');
-                    } else {
-                        document.body.classList.add('offline');
-                        if (window.showError) {
-                            showError('Tidak Ada Koneksi', 'Periksa koneksi internet Anda');
-                        }
-                    }
-                }
-
-                window.addEventListener('online', updateNetworkStatus);
-                window.addEventListener('offline', updateNetworkStatus);
-                updateNetworkStatus();
-
-                debugLog('Network monitoring initialized');
-            } catch (error) {
-                handleError(error, 'Network monitoring initialization');
-            }
-        }
-
-        // Initialize everything when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                debugLog('Profile page initializing...');
-
-                // Page navigation setup
-                if (window.profileNavigator) {
-                    profileNavigator.currentPage = 'main';
-                    profileNavigator.pageStack = ['main'];
-                }
-
-                // Initialize page state
-                history.replaceState({
-                    page: 'main'
-                }, '', '/profile');
-
-                // Detect if returning from sub-page and add appropriate slide animation
-                const isBackNavigation = window.performance.navigation.type === 2 ||
-                    document.referrer.includes('/profile/') ||
-                    sessionStorage.getItem('returningToMain') === 'true';
-
-                const mainPageContent = document.getElementById('mainPageContent');
-                if (isBackNavigation && mainPageContent) {
-                    mainPageContent.classList.add('slide-in-from-left');
-                    sessionStorage.removeItem('returningToMain');
-                }
-
-                // Initialize all features
-                initStaggerAnimation();
-                initMenuInteractions();
-                optimizePerformance();
-                initAccessibility();
-                initNetworkMonitoring();
-
-                debugLog('Profile page initialized successfully');
-            } catch (error) {
-                handleError(error, 'Profile initialization');
-            }
-        });
-
-        // Error handling
-        window.addEventListener('error', function(e) {
-            handleError(e.error, 'Global error');
-            // Show user-friendly error message
-            if (window.showError) {
-                showError('Terjadi Kesalahan', 'Silakan refresh halaman atau coba lagi nanti');
-            }
-        });
-
-        function logout() {
-            try {
-                debugLog('Logout initiated');
-
-                if (confirm('Apakah Anda yakin ingin keluar?')) {
-                    debugLog('User confirmed logout');
-                    // Add logout logic here
-                    window.location.href = '/logout';
-                }
-            } catch (error) {
-                handleError(error, 'Logout');
-            }
-        }
-
-        function confirmDelete() {
-            try {
-                debugLog('Account deletion initiated');
-
-                if (confirm('Apakah Anda yakin ingin menghapus akun? Tindakan ini tidak dapat dibatalkan.')) {
-                    debugLog('User confirmed account deletion');
-                    // Add delete account logic here
-                    console.log('Delete account requested');
-                }
-            } catch (error) {
-                handleError(error, 'Account deletion');
-            }
-        }
+    <script src="{{ asset('assets/js/profile/profile_main.js') }}" onerror="console.warn('Profile main script not found')">
     </script>
+    
 </body>
 
 </html>

@@ -1,0 +1,2 @@
+# This file ensures the profile_pict directory is tracked in git
+# but allows us to ignore the actual image files for privacy

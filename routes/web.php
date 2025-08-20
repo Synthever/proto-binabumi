@@ -27,7 +27,7 @@ Route::get('/login/manual', [AuthController::class, 'loginManual'])->name('login
 Route::get('/login/manual/step1', [AuthController::class, 'loginManualStep1'])->name('manual.step1');
 Route::get('/daftar', [AuthController::class, 'daftar'])->name('daftar');
 Route::post('/daftar', [AuthController::class, 'register'])->name('register.process');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot/password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
 Route::get('/forgot/password/verifikasi', [AuthController::class, 'forgotPasswordVerifikasi'])->name('forgot.password.verifikasi');
 Route::get('/forgot/password/new', [AuthController::class, 'forgotPasswordNew'])->name('forgot.password.new');
@@ -57,6 +57,10 @@ Route::middleware('check.login')->group(function () {
     Route::get('/profile/rekening', [ProfileController::class, 'changerekening'])->name('profile_changerekening');
     Route::get('/profile/kebijakan', [ProfileController::class, 'kebijakanprivasi'])->name('profile_kebijakanprivasi');
     Route::get('/profile/syarat', [ProfileController::class, 'syaratketentuan'])->name('profile_syaratketentuan');
+    
+    // Profile picture upload routes
+    Route::post('/profile/upload-picture', [ProfileController::class, 'uploadProfilePicture'])->name('profile.upload.picture');
+    Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
 // Route Halaman History

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Statistic;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\File;
 
 class BerandaController extends Controller
 {
@@ -29,6 +30,7 @@ class BerandaController extends Controller
             'name' => $currentUser->name ?: $currentUser->username, // Use name or fallback to username
             'email' => $currentUser->email,
             'no_handphone' => $currentUser->no_handphone,
+            'profile_picture' => $this->getProfilePictureUrl($currentUser->user_id),
             'location' => 'Lokasi Kamu', // Default location for now
             'saldo' => $userStats ? $userStats->balance : 0,
             'koin' => $userStats ? $userStats->poin : 0,
@@ -39,5 +41,24 @@ class BerandaController extends Controller
         ];
 
         return view('beranda.beranda', compact('userData'));
+    }
+
+    /**
+     * Get profile picture URL for user
+     */
+    public function getProfilePictureUrl($userId)
+    {
+        try {
+            $user = Users::findByUserId($userId);
+            if ($user && !empty($user->profile_picture)) {
+                $picturePath = public_path('assets/profile_pict/' . $user->profile_picture);
+                if (File::exists($picturePath)) {
+                    return asset('assets/profile_pict/' . $user->profile_picture);
+                }
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }
