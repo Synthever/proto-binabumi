@@ -7,6 +7,7 @@ use App\Http\Controllers\EdukasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\MapsController;
@@ -100,3 +101,6 @@ Route::get('/test/view-statistics', [StatisticController::class, 'viewStatistics
 Route::get('/test/add-connection', [ConnectionController::class, 'addConnection'])->name('test.add-connection');
 Route::post('/test/connection/store', [ConnectionController::class, 'store'])->name('connection.store');
 Route::get('/test/view-connections', [ConnectionController::class, 'viewConnections'])->name('test.view-connections');
+
+// API
+Route::get('/saldo/add', [BalanceController::class, 'add'])->name('saldo.add');
