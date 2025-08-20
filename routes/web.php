@@ -92,15 +92,5 @@ Route::middleware('check.login')->group(function () {
     Route::get('/games/challenge', [GamesController::class, 'challenge'])->name('games.challenge');
 });
 
-// test
-Route::get('/test/add-users', [UsersController::class, 'addUsers'])->name('test.add-users');
-Route::post('/test/users/store', [UsersController::class, 'store'])->name('users.store');
-Route::get('/test/add-statistic', [StatisticController::class, 'addStatistic'])->name('test.add-statistic');
-Route::post('/test/statistic/store', [StatisticController::class, 'store'])->name('statistic.store');
-Route::get('/test/view-statistics', [StatisticController::class, 'viewStatistics'])->name('test.view-statistics');
-Route::get('/test/add-connection', [ConnectionController::class, 'addConnection'])->name('test.add-connection');
-Route::post('/test/connection/store', [ConnectionController::class, 'store'])->name('connection.store');
-Route::get('/test/view-connections', [ConnectionController::class, 'viewConnections'])->name('test.view-connections');
-
 // API
 Route::get('/saldo/add', [BalanceController::class, 'add'])->name('saldo.add');
