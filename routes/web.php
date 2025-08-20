@@ -16,7 +16,7 @@ use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ConnectionController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Route for the Auth page
 Route::get('/login', [AuthController::class, 'login'])->name('login');
