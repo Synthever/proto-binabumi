@@ -39,11 +39,17 @@
       
       // Function to show popup
       window.showRincianPopup = function() {
+        // Close any existing notification modal first
+        if (window.currentNotificationModal) {
+          closeNotificationModal();
+        }
+        
         const overlay = document.getElementById('popupRincian');
-        const container = overlay.querySelector('.popup-container');
         overlay.style.display = 'flex';
+        
+        // Add show class after a short delay to trigger animation
         setTimeout(() => {
-          container.classList.add('show');
+          overlay.classList.add('show');
         }, 10);
       };
 
@@ -132,18 +138,17 @@
       const result = await processQRCode(qrText);
       
       if (result.success) {
-        // Show the popup with transaction details
-        showRincianPopup();
+        // Show success notification
+        showSuccessNotification(qrText, result.message);
       } else {
         // Show error notification
         showErrorNotification(qrText, result.message);
-        
-        // Restart scanning after error
-        setTimeout(() => {
-          startQRScanning();
-        }, 4000);
       }
-    }
+      
+      // Restart scanning after 4 seconds
+      setTimeout(() => {
+        startQRScanning();
+      }, 4000);
 
     async function processQRCode(qrText) {
       try {
@@ -368,10 +373,8 @@
       </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    @include('components.bottom-nav', ['active' => 'scan'])
-
-    <!-- Popup Rincian Proses -->
+  <!-- Bottom Navigation -->
+  @include('components.bottom-nav', ['active' => 'scan'])    <!-- Popup Rincian Proses -->
     <div class="popup-overlay" id="popupRincian">
       <div class="popup-container">
         <div class="detail-setoran">

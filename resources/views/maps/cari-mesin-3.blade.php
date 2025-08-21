@@ -14,8 +14,10 @@
     <div class="cari-mesin-container">
         <!-- Header Section -->
         <div class="header-wrapper">
-            <x-back-button href="/beranda" color="#193D29" />
-            <x-header title="Cari Mesin" :sticky="true" />
+            <button onclick="window.location.href='/beranda'" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="header-title">Cari Mesin</h1>
         </div>
 
         <!-- Location Badge -->
