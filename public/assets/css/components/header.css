@@ -1,0 +1,205 @@
+/* Header Component Styles */
+.page-header {
+    background: white !important;
+    padding: 20px 32px 15px 32px;
+    border-bottom: 1px solid rgba(25, 61, 41, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 1024px !important; /* Match container background width */
+    box-sizing: border-box;
+    z-index: 1001 !important; /* Higher than navbar */
+    transition: all 0.3s ease;
+    overflow: hidden; /* Prevent overflow on mobile */
+    position: relative; /* Default position */
+}
+
+/* Sticky variant - Reduced specificity to allow profile CSS override */
+.page-header.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+}
+
+/* Header title styling */
+.page-header .header-title,
+.header-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #193D29 !important; /* Brand green color */
+    margin: 0 !important;
+    transition: all 0.3s ease;
+    text-align: left;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+}
+
+.page-header .header-title:hover,
+.header-title:hover {
+    color: rgba(25, 61, 41, 0.8) !important;
+    transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .page-header {
+        padding: 12px 16px 8px 16px !important;
+        max-width: 100vw !important; /* Full width on small mobile - mentok */
+        width: 100vw !important;
+    }
+    
+    /* Sticky header specific styles for mobile */
+    .page-header.sticky-header {
+        left: 0 !important; /* Reset left positioning for sticky */
+        transform: none !important; /* Remove centering transform for sticky */
+        position: fixed !important; /* Ensure sticky positioning */
+        top: 0 !important;
+    }
+    
+    .header-title {
+        font-size: 15px !important; /* Smaller on very small screens */
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .page-header {
+        padding: 15px 20px 10px 20px !important;
+        max-width: 100vw !important; /* Full width on mobile - mentok */
+        width: 100vw !important;
+    }
+    
+    /* Sticky header specific styles for mobile */
+    .page-header.sticky-header {
+        left: 0 !important; /* Reset left positioning for sticky */
+        transform: none !important; /* Remove centering transform for sticky */
+        position: fixed !important; /* Ensure sticky positioning */
+        top: 0 !important;
+    }
+    
+    .header-title {
+        font-size: 16px !important; /* Slightly smaller on mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .page-header {
+        padding: 18px 32px 12px 32px !important;
+        max-width: 1024px !important;
+    }
+    
+    /* Sticky header specific styles for tablet */
+    .page-header.sticky-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .page-header {
+        padding: 20px 32px 15px 32px !important;
+        max-width: 1024px !important;
+    }
+    
+    /* Sticky header specific styles for desktop */
+    .page-header.sticky-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+/* Center alignment variant */
+.page-header.center .header-title {
+    text-align: center;
+}
+
+/* Left alignment variant */
+.page-header.left .header-title {
+    text-align: left;
+}
+
+/* Right alignment variant */
+.page-header.right .header-title {
+    text-align: right;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .page-header {
+        background: #1f2937;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .header-title {
+        color: #10b981 !important;
+    }
+    
+    .header-title:hover {
+        color: rgba(16, 185, 129, 0.8) !important;
+    }
+}
+
+/* Animation variants */
+.page-header.fade-in {
+    animation: fadeInHeader 0.5s ease-out;
+}
+
+@keyframes fadeInHeader {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* HIGHEST PRIORITY: Force header title color */
+html body .page-header .header-title,
+html body .header-title,
+body .page-header .header-title,
+body .header-title,
+.page-header h1.header-title,
+h1.header-title {
+    color: #193D29 !important; /* Full brand green color - highest priority */
+    font-weight: 800 !important;
+}
+
+/* HIGHEST PRIORITY: Force sticky positioning on all devices */
+html body .page-header.sticky-header,
+body .page-header.sticky-header,
+.page-header.sticky-header {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 9999 !important; /* Highest z-index */
+}
+
+/* Mobile sticky positioning */
+@media (max-width: 767px) {
+    html body .page-header.sticky-header,
+    body .page-header.sticky-header,
+    .page-header.sticky-header {
+        left: 0 !important;
+        transform: none !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+    }
+}
+
+/* Desktop/Tablet sticky positioning */
+@media (min-width: 768px) {
+    html body .page-header.sticky-header,
+    body .page-header.sticky-header,
+    .page-header.sticky-header {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        max-width: 1024px !important;
+    }
+}
