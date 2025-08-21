@@ -566,11 +566,6 @@ body {
         margin-top: 28px !important;
     }
 }
-    .profile-container {
-        max-width: 1024px;
-        padding: 0 32px;
-    }
-}
 
 /* Large tablets and small desktops (835px - 1024px) */
 @media (min-width: 835px) and (max-width: 1024px) {
