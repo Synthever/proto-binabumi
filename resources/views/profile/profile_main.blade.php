@@ -16,13 +16,16 @@
 </head>
 
 <body class="bg-gray-50">
+    <!-- Fixed Sticky Header - Outside all containers -->
+    <div class="profile-header">
+        <h1 class="profile-title fade-in">Akun Saya</h1>
+    </div>
+    
     <div class="page-container">
         <div class="page-content" id="mainPageContent">
-            <div class="profile-container">
+            <div class="profile-container">                
                 <!-- Main Content -->
-                <div class="p-8">
-                    <!-- Header -->
-                    <h1 class="text-3xl font-bold text-gray-800 mb-10 fade-in">Akun Saya</h1>
+                <div>
 
                     <!-- Profile Card -->
                     <div class="profile-card fade-in">
@@ -38,9 +41,9 @@
                         <p class="text-center text-gray-500 text-base">{{ $userData['email'] }}</p>
                     </div>
 
-                    <!-- Two Column Layout for iPad Pro -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Left Column - Pengaturan Section -->
+                    <!-- Vertical Layout for Settings and Other Info -->
+                    <div class="space-y-8">
+                        <!-- Pengaturan Section -->
                         <div class="fade-in-delayed">
                             <h3 class="section-title">Pengaturan</h3>
 
@@ -84,7 +87,7 @@
                             </div>
                         </div>
 
-                        <!-- Right Column - Info Lainnya Section -->
+                        <!-- Info Lainnya Section -->
                         <div class="fade-in-delayed" style="animation-delay: 0.2s;">
                             <h3 class="section-title">Info lainnya</h3>
 
@@ -117,8 +120,8 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="mt-10 fade-in-delayed" style="animation-delay: 0.6s;">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="mt-10 mb-8 fade-in-delayed" style="animation-delay: 0.6s;">
+                        <div class="space-y-4">
                             <button class="action-button btn-logout" onclick="logout()">
                                 <i class="fas fa-sign-out-alt mr-3"></i>
                                 Log Out

@@ -7,10 +7,12 @@
 .page-container {
     position: relative;
     width: 100%;
+    max-width: 1024px !important; /* Match profile container width - forced */
+    margin: 0 auto !important; /* Center the container - forced */
     min-height: 100vh;
     overflow-x: hidden; /* Only hide horizontal overflow */
-    overflow-y: auto; /* Allow vertical scrolling */
-    background: #f9fafb;
+    overflow-y: auto; /* Allow vertical scrolling - required for sticky */
+    background: transparent; /* Let body background show through */
 }
 
 .page-content {
@@ -22,7 +24,7 @@
     background: #f9fafb;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(0);
-    overflow-y: auto; /* Ensure content can scroll */
+    overflow-y: visible; /* Allow sticky elements to work */
 }
 
 /* Make sure all containers can scroll */

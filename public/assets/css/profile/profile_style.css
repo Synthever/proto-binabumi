@@ -1,10 +1,99 @@
 /* Profile Page Custom Styles */
 .profile-container {
-    max-width: 1024px; /* iPad Pro 12.9" width */
-    margin: 0 auto;
+    max-width: 1024px !important; /* iPad Pro 12.9" width - forced with important */
+    margin: 0 auto !important; /* Center container - forced */
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    padding: 0 24px;
+    background: white;
+    padding: 80px 32px 120px 32px !important; /* Top padding for fixed header */
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.08); /* Container shadow for depth */
+    display: flex;
+    flex-direction: column;
+    color: rgba(25, 61, 41, 0.5) !important; /* Global text color */
+}
+
+/* Global text color override for all elements in profile */
+.profile-container *,
+.profile-container h1,
+.profile-container h2,
+.profile-container h3,
+.profile-container p,
+.profile-container span,
+.profile-container div,
+.profile-container i {
+    color: rgba(25, 61, 41, 0.5) !important;
+}
+
+/* HIGHEST PRIORITY: Force profile avatar to be white */
+.profile-container .profile-avatar {
+    color: white !important;
+}
+
+.profile-container .profile-avatar * {
+    color: white !important;
+}
+
+/* Exception for white text that should stay white */
+.profile-avatar,
+.profile-avatar *,
+.btn-logout,
+.btn-logout *,
+.profile-container .menu-icon,
+.profile-container .menu-icon *,
+.profile-container .menu-icon i,
+.profile-container .fas,
+.profile-container .far,
+.profile-container .fab,
+.profile-container .fa {
+    color: white !important; /* Keep avatar, logout button, and menu icons white */
+}
+
+/* Specific override for profile avatar text */
+.profile-avatar {
+    color: white !important; /* Ensure avatar "A" stays white */
+}
+
+/* Exception for delete button - should be green */
+.btn-delete,
+.btn-delete * {
+    color: #193D29 !important; /* Delete button text and icon should be green */
+}
+
+/* Exception for chevron icons - should be green */
+.profile-container .chevron-icon,
+.profile-container .chevron-icon *,
+.profile-container .chevron-icon i {
+    color: #193D29 !important; /* Chevron arrows should be green */
+}
+
+/* Fixed Profile Header - Constrained to container width */
+.profile-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: white !important;
+    z-index: 1001 !important; /* Higher than navbar */
+    padding: 20px 32px 15px 32px;
+    border-bottom: 1px solid rgba(25, 61, 41, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 1024px !important; /* Match container background width */
+    box-sizing: border-box;
+}
+
+.profile-title {
+    font-size: 18px !important;
+    font-weight: 600;
+    color: rgba(25, 61, 41, 0.5) !important; /* Match global text color */
+    margin: 0 !important;
+    transition: all 0.3s ease;
+}
+
+.profile-title:hover {
+    color: rgba(25, 61, 41, 0.7) !important; /* Slightly darker on hover */
+    transform: translateY(-1px);
 }
 
 .profile-card {
@@ -31,7 +120,7 @@
     justify-content: center;
     font-size: 48px;
     font-weight: bold;
-    color: white;
+    color: white !important; /* Force white color for logo A */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0 auto 24px;
     box-shadow: 0 8px 32px rgba(244, 114, 182, 0.3);
@@ -51,9 +140,10 @@
 }
 
 .menu-item:hover {
-    transform: translateX(6px);
+    transform: translateY(-4px) scale(1.02);
     background: #f8fafc;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: #d1d5db;
 }
 
 .menu-item:active {
@@ -109,6 +199,12 @@
     margin-left: auto;
     color: #d1d5db;
     font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover .chevron-icon {
+    color: #065f46;
+    transform: translateX(4px);
 }
 
 .action-button {
@@ -135,19 +231,28 @@
 
 .btn-delete {
     background: white;
-    color: #065f46;
-    border: 2px solid #065f46;
+    color: #193D29 !important; /* Green palette color */
+    border: 2px solid #193D29;
 }
 
 .btn-delete:hover {
-    background: #065f46;
-    color: white;
+    background: #193D29;
+    color: white !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(6, 95, 70, 0.3);
+    box-shadow: 0 8px 20px rgba(25, 61, 41, 0.3);
+}
+
+/* Specific override for delete button icon */
+.btn-delete i {
+    color: #193D29 !important; /* Green icon */
+}
+
+.btn-delete:hover i {
+    color: white !important; /* White icon on hover */
 }
 
 .section-title {
-    color: #9ca3af;
+    color: rgba(25, 61, 41, 0.5) !important; /* Match global text color */
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 20px;
@@ -333,4 +438,59 @@
         transform: translateY(-4px);
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
     }
+}
+
+/* Responsive padding and header for fixed position - match container */
+@media (max-width: 767px) {
+    .profile-container {
+        padding: 70px 24px 100px 24px !important; /* Top padding for fixed header on mobile */
+    }
+    
+    .profile-header {
+        padding: 15px 24px 10px 24px !important;
+        max-width: calc(100vw - 32px) !important; /* Responsive width with margin */
+    }
+    
+    .profile-title {
+        font-size: 16px !important; /* Slightly smaller on mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .profile-container {
+        padding: 75px 32px 110px 32px !important; /* Top padding for fixed header on tablet */
+    }
+    
+    .profile-header {
+        padding: 18px 32px 12px 32px !important;
+        max-width: 1024px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .profile-container {
+        padding: 80px 32px 120px 32px !important; /* Top padding for fixed header on desktop */
+    }
+    
+    .profile-header {
+        padding: 20px 32px 15px 32px !important;
+        max-width: 1024px !important;
+    }
+}
+
+/* FINAL OVERRIDE: Ensure profile avatar text is absolutely white */
+.profile-avatar {
+    color: white !important;
+}
+
+.profile-container .profile-avatar {
+    color: white !important;
+}
+
+body .profile-container .profile-avatar {
+    color: white !important;
+}
+
+html body .profile-container .profile-avatar {
+    color: white !important;
 }
