@@ -14,50 +14,44 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Emergency CSS reset untuk konsistensi browser */
-        html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            overflow-x: hidden !important;
+        /* Force minimal padding for immediate effect */
+        .profile-container {
+            padding: 100px 8px 40px !important;
+            background: #ffffff !important;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
         }
         
-        .page-container, 
-        .page-content, 
-        .slide-in-from-right {
-            width: 100% !important;
-            box-sizing: border-box !important;
-            margin: 0 !important;
-            padding: 0 !important;
+        @media (min-width: 1024px) {
+            .profile-container {
+                padding: 100px 8px 40px !important;
+                background: #ffffff !important;
+                border-left: 1px solid #e2e8f0 !important;
+                border-right: 1px solid #e2e8f0 !important;
+            }
         }
         
-        .profile-detail-container {
+        .main-content {
             width: 100% !important;
-            max-width: 1024px !important;
+            max-width: 500px !important;
             margin: 0 auto !important;
-            box-sizing: border-box !important;
         }
     </style>
 </head>
 
-<body class="bg-gray-50">
-    <div class="page-container">
-        <div class="page-content slide-in-from-right">
-            <div class="profile-detail-container">
-                <!-- Header Section -->
-                <div class="header-section fade-in">
-                    <button class="back-button" onclick="goBack()">
-                        <i class="fas fa-arrow-left"></i>
-                    </button>
-                    <h1 class="page-title">Data Profil</h1>
-                </div>
+<body class="profile-container">
+    <div class="main-content">
+        <!-- Header Section -->
+        <div class="header-section fade-in">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="page-title">Data Profil</h1>
+        </div>
 
-                <!-- Main Content -->
-                <div class="detail-card fade-in-delayed">
-                    <form id="profileForm" onsubmit="handleSubmit(event)">
-                        <!-- Section Title -->
-                        <h2 class="section-title">Detail Profil</h2>
+        <!-- Profile Form Content -->
+        <form id="profileForm" onsubmit="handleSubmit(event)">
+            <!-- Section Title -->
+            <h2 class="section-title">Detail Profil</h2>
 
                         <!-- Photo Section -->
                         <div class="photo-section">
@@ -137,12 +131,11 @@
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
+    </div>
 
-            <!-- Loading Scripts -->
-            <script src="{{ asset('/assets/js/profile/navigation-utils.js') }}"></script>
-            <script src="{{ asset('/assets/js/profile/profile_detail.js') }}"></script>
+    <!-- Loading Scripts -->
+    <script src="{{ asset('/assets/js/profile/navigation-utils.js') }}"></script>
+    <script src="{{ asset('/assets/js/profile/profile_detail.js') }}"></script>
 </body>
 
 </html>
