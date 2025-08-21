@@ -7,6 +7,7 @@ use App\Http\Controllers\EdukasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\MapsController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ConnectionController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Route for the Auth page
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -84,19 +85,30 @@ Route::middleware('check.login')->group(function () {
 
 // Scan
 Route::get('/scan', [ScanController::class, 'index'])->name('scan.index')->middleware('check.login');
+Route::post('/scan/process', [ScanController::class, 'processScan'])->name('scan.process')->middleware('check.login');
+Route::get('/scan/status', [ScanController::class, 'getConnectionStatus'])->name('scan.status')->middleware('check.login');
+Route::post('/scan/disconnect', [ScanController::class, 'disconnect'])->name('scan.disconnect')->middleware('check.login');
+
+// Test route for scan integration
+Route::get('/test/scan', function () {
+    return view('test.scan-test');
+})->middleware('check.login');
 
 // Route Halaman Games
 Route::middleware('check.login')->group(function () {
-    Route::get('/games', [GamesController::class, 'index'])->name('games.index');
+    // Games routes
+Route::get('/games', [GamesController::class, 'index'])->name('games');
+
+// Test scan functionality
+Route::get('/test-scan/{code}', function($code) {
+    $controller = new ScanController();
+    $request = new \Illuminate\Http\Request();
+    $request->merge(['machine_code' => $code]);
+    
+    return $controller->processScan($request);
+})->name('test.scan');
     Route::get('/games/challenge', [GamesController::class, 'challenge'])->name('games.challenge');
 });
 
-// test
-Route::get('/test/add-users', [UsersController::class, 'addUsers'])->name('test.add-users');
-Route::post('/test/users/store', [UsersController::class, 'store'])->name('users.store');
-Route::get('/test/add-statistic', [StatisticController::class, 'addStatistic'])->name('test.add-statistic');
-Route::post('/test/statistic/store', [StatisticController::class, 'store'])->name('statistic.store');
-Route::get('/test/view-statistics', [StatisticController::class, 'viewStatistics'])->name('test.view-statistics');
-Route::get('/test/add-connection', [ConnectionController::class, 'addConnection'])->name('test.add-connection');
-Route::post('/test/connection/store', [ConnectionController::class, 'store'])->name('connection.store');
-Route::get('/test/view-connections', [ConnectionController::class, 'viewConnections'])->name('test.view-connections');
+// API
+Route::get('/saldo/add', [BalanceController::class, 'add'])->name('saldo.add');

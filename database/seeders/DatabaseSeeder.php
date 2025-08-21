@@ -22,8 +22,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Raekhandi Yoga',
             'no_handphone' => '085158338027',
             'email' => 'rey@example.com',
-            'password' => bcrypt('Rey@21'),
+            'password' => bcrypt('Qwerty@21'),
             'is_login' => false, // Default to false
+            'profile_picture' => null,
             'date_created' => now()->format('d-m-Y H:i'),
             'date_updated' => now()->format('d-m-Y H:i'),
         ]);
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
         Connection::create([
             'user_id' => '666',
             'is_connect' => true,
-            'machine_id' => 'MCH001',
+            'machine_id' => '6v8f37wfvo2f',
             'date_created' => now()->format('d-m-Y H:i'),
             'date_updated' => now()->format('d-m-Y H:i'),
         ]);
