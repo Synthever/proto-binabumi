@@ -12,17 +12,193 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <!-- EMERGENCY STICKY HEADER FIX -->
+    <style>
+        /* Debug - Make sure class is applied */
+        .page-header {
+            background: white;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        /* Force sticky header for mobile - Direct CSS in head */
+        .page-header.sticky-header {
+            position: fixed !important;
+            top: 0 !important;
+            z-index: 9999 !important;
+            background: white !important;
+            border-bottom: 1px solid rgba(25, 61, 41, 0.1) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+        }
+
+        /* Mobile specific */
+        @media screen and (max-width: 767px) {
+            .page-header.sticky-header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                transform: none !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
+                padding: 15px 20px 10px 20px !important;
+                z-index: 9999 !important;
+                background: white !important;
+            }
+            
+            .page-header.sticky-header .header-title {
+                font-size: 16px !important;
+                color: #193D29 !important;
+                font-weight: 800 !important;
+                margin: 0 !important;
+            }
+        }
+
+        /* Extra small mobile */
+        @media screen and (max-width: 480px) {
+            .page-header.sticky-header {
+                padding: 12px 16px 8px 16px !important;
+            }
+            
+            .page-header.sticky-header .header-title {
+                font-size: 15px !important;
+            }
+        }
+
+        /* Desktop */
+        @media screen and (min-width: 768px) {
+            .page-header.sticky-header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                max-width: 1024px !important;
+                width: 1024px !important;
+                padding: 20px 32px 15px 32px !important;
+                z-index: 9999 !important;
+            }
+            
+            .page-header.sticky-header .header-title {
+                font-size: 18px !important;
+                color: #193D29 !important;
+                font-weight: 800 !important;
+                margin: 0 !important;
+            }
+        }
+
+        /* Header title base styles */
+        .header-title {
+            color: #193D29 !important;
+            font-weight: 800 !important;
+            margin: 0 !important;
+            font-size: 18px;
+        }
+
+        /* CRITICAL FIX: Remove transforms that break fixed positioning */
+        .page-content,
+        .page-container {
+            transform: none !important;
+        }
+
+        /* Add padding to content when header is sticky */
+        .profile-main-content {
+            padding-top: 80px !important;
+            margin-top: 0 !important;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 375px) {
+            .profile-main-content {
+                padding-top: 60px !important;
+            }
+        }
+
+        @media (min-width: 376px) and (max-width: 480px) {
+            .profile-main-content {
+                padding-top: 60px !important;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+            .profile-main-content {
+                padding-top: 65px !important;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .profile-main-content {
+                padding-top: 75px !important;
+            }
+        }
+    </style>
+
+        /* Force header to be positioned relative to viewport, not parent */
+        body > .page-header.sticky-header {
+            position: fixed !important;
+            top: 0 !important;
+            z-index: 9999 !important;
+            background: white !important;
+            border-bottom: 1px solid rgba(25, 61, 41, 0.1) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+            box-sizing: border-box !important;
+        }
+    </style>
+
+    <!-- Debug Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.page-header.sticky-header');
+            if (header) {
+                console.log('Sticky header found:', header);
+                console.log('Header classes:', header.className);
+                console.log('Header computed style position:', getComputedStyle(header).position);
+                
+                // Force fix positioning
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.left = window.innerWidth <= 767 ? '0' : '50%';
+                header.style.transform = window.innerWidth <= 767 ? 'none' : 'translateX(-50%)';
+                header.style.zIndex = '9999';
+                header.style.width = window.innerWidth <= 767 ? '100vw' : '1024px';
+                header.style.maxWidth = window.innerWidth <= 767 ? '100vw' : '1024px';
+                header.style.background = 'white';
+                header.style.borderBottom = '1px solid rgba(25, 61, 41, 0.1)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                
+                console.log('Header position after fix:', getComputedStyle(header).position);
+            } else {
+                console.log('Sticky header NOT found');
+            }
+            
+            // Remove transforms from parent containers
+            const pageContent = document.querySelector('.page-content');
+            const pageContainer = document.querySelector('.page-container');
+            
+            if (pageContent) {
+                pageContent.style.transform = 'none';
+                console.log('Removed transform from page-content');
+            }
+            
+            if (pageContainer) {
+                pageContainer.style.transform = 'none';
+                console.log('Removed transform from page-container');
+            }
+        });
+    </script>
+
 
 </head>
 
 <body class="bg-gray-50">
+    <!-- Profile Header Component - MOVED OUTSIDE ALL CONTAINERS -->
+    <x-header title="Akun Saya" :sticky="true" />
+    
     <div class="page-container">
         <div class="page-content" id="mainPageContent">
-            <div class="profile-container">
+            <div class="profile-container">                
                 <!-- Main Content -->
-                <div class="p-8">
-                    <!-- Header -->
-                    <h1 class="text-3xl font-bold text-gray-800 mb-10 fade-in">Akun Saya</h1>
+                <div>
 
                     <!-- Profile Card -->
                     <div class="profile-card fade-in">
@@ -38,9 +214,9 @@
                         <p class="text-center text-gray-500 text-base">{{ $userData['email'] }}</p>
                     </div>
 
-                    <!-- Two Column Layout for iPad Pro -->
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Left Column - Pengaturan Section -->
+                    <!-- Vertical Layout for Settings and Other Info -->
+                    <div class="space-y-8">
+                        <!-- Pengaturan Section -->
                         <div class="fade-in-delayed">
                             <h3 class="section-title">Pengaturan</h3>
 
@@ -84,7 +260,7 @@
                             </div>
                         </div>
 
-                        <!-- Right Column - Info Lainnya Section -->
+                        <!-- Info Lainnya Section -->
                         <div class="fade-in-delayed" style="animation-delay: 0.2s;">
                             <h3 class="section-title">Info lainnya</h3>
 
@@ -117,8 +293,8 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="mt-10 fade-in-delayed" style="animation-delay: 0.6s;">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="mt-10 mb-8 fade-in-delayed" style="animation-delay: 0.6s;">
+                        <div class="space-y-4">
                             <button class="action-button btn-logout" onclick="logout()">
                                 <i class="fas fa-sign-out-alt mr-3"></i>
                                 Log Out

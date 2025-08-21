@@ -5,12 +5,13 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1024px;
+  max-width: 1024px !important; /* Force match with login and profile container */
   background: white;
   border-top: 1px solid #f3f4f6;
   padding: 10px 0;
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
   z-index: 1000;
+  backdrop-filter: blur(10px); /* Add backdrop blur for better visibility */
 }
 
 .nav-content {

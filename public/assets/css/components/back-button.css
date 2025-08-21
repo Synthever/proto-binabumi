@@ -1,54 +1,250 @@
-/* Standardized Back Button Styles */
-.back-btn,
-.back-button {
+/* Back Button Component Styles */
+.back-btn {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: white;
-    border: 1px solid #e2e8f0;
+    background: white !important; /* Force white background */
+    border: 1px solid #e2e8f0 !important;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
     z-index: 100;
     pointer-events: all;
     user-select: none;
     flex-shrink: 0;
     padding: 10px;
-    color: #374151;
+    color: #193D29 !important; /* Brand green color */
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
+    touch-action: manipulation; /* Improve touch responsiveness */
 }
 
-.back-btn:hover,
-.back-button:hover {
-    background: #f8fafc;
+.back-btn:hover {
+    background: #f8fafc !important; /* Force hover background */
     transform: translateX(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border-color: #193D29 !important;
 }
 
-.back-btn:active,
+/* Mobile hover states - lighter touch */
+@media (hover: none) and (pointer: coarse) {
+    .back-btn:hover {
+        transform: none; /* Remove hover transform on touch devices */
+        background: white !important; /* Keep original background */
+    }
+}
+
+.back-btn:active {
+    background-color: rgba(25, 61, 41, 0.1) !important; /* Brand green with opacity */
+    transform: translateX(-1px);
+}
+
+/* SVG icon styling */
+.back-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+    .back-btn {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        min-height: 44px; /* Minimum touch target size */
+        min-width: 44px;
+    }
+    
+    .back-btn svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2.5;
+    }
+    
+    /* Touch-specific styles for mobile */
+    .back-btn:active {
+        transform: scale(0.95) translateX(-1px);
+        background-color: rgba(25, 61, 41, 0.15);
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .back-btn {
+        width: 44px;
+        height: 44px;
+        padding: 9px;
+        min-height: 44px; /* Minimum touch target size */
+        min-width: 44px;
+    }
+    
+    .back-btn svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 2.2;
+    }
+    
+    /* Touch-specific styles for larger mobile */
+    .back-btn:active {
+        transform: scale(0.96) translateX(-1px);
+        background-color: rgba(25, 61, 41, 0.12);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .back-btn {
+        width: 46px;
+        height: 46px;
+        padding: 9px;
+    }
+    
+    .back-btn svg {
+        width: 23px;
+        height: 23px;
+        stroke-width: 2.1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .back-btn {
+        width: 48px;
+        height: 48px;
+        padding: 10px;
+    }
+    
+    .back-btn svg {
+        width: 24px;
+        height: 24px;
+        stroke-width: 2;
+    }
+}
+
+/* Focus styles for accessibility */
+.back-btn:focus {
+    outline: 2px solid #193D29;
+    outline-offset: 2px;
+}
+
+/* For dark theme support */
+@media (prefers-color-scheme: dark) {
+    .back-btn {
+        background: #1f2937;
+        border-color: #374151;
+        color: #10b981;
+    }
+    
+    .back-btn:hover {
+        background: #111827;
+        border-color: #10b981;
+    }
+    
+    .back-btn:active {
+        background-color: rgba(16, 185, 129, 0.1);
+    }
+}
+
+/* Additional button variant support for backward compatibility */
+.back-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white !important; /* Force white background */
+    border: 1px solid #e2e8f0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    z-index: 100;
+    pointer-events: all;
+    user-select: none;
+    flex-shrink: 0;
+    padding: 10px;
+    color: #193D29 !important;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
+    touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+.back-button:hover {
+    background: #f8fafc !important; /* Force hover background */
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border-color: #193D29 !important;
+}
+
 .back-button:active {
-    background-color: rgba(95, 99, 104, 0.2);
+    background-color: rgba(25, 61, 41, 0.1) !important;
+    transform: translateX(-1px);
 }
 
-/* Icon Styles */
-.back-btn i,
-.back-button i {
-    font-size: 20px;
-}
-
-/* Media Queries */
-@media (max-width: 640px) {
-    .back-btn,
+/* Apply responsive styles to back-button class too */
+@media (max-width: 480px) {
     .back-button {
         width: 40px;
         height: 40px;
         padding: 8px;
+        min-height: 44px; /* Minimum touch target size */
+        min-width: 44px;
     }
+    
+    .back-button:active {
+        transform: scale(0.95) translateX(-1px);
+        background-color: rgba(25, 61, 41, 0.15);
+    }
+}
 
-    .back-btn i,
-    .back-button i {
-        font-size: 18px;
+@media (min-width: 481px) and (max-width: 767px) {
+    .back-button {
+        width: 44px;
+        height: 44px;
+        padding: 9px;
+        min-height: 44px; /* Minimum touch target size */
+        min-width: 44px;
     }
+    
+    .back-button:active {
+        transform: scale(0.96) translateX(-1px);
+        background-color: rgba(25, 61, 41, 0.12);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .back-button {
+        width: 46px;
+        height: 46px;
+        padding: 9px;
+    }
+}
+
+/* Mobile hover states for back-button */
+@media (hover: none) and (pointer: coarse) {
+    .back-button:hover {
+        transform: none; /* Remove hover transform on touch devices */
+        background: white !important; /* Keep original background */
+    }
+}
+
+/* HIGHEST PRIORITY: Force back button background */
+html body .back-btn,
+html body .back-button,
+body .back-btn,
+body .back-button,
+.back-btn,
+.back-button {
+    background: white !important; /* Force white background with highest priority */
+    border: 1px solid #e2e8f0 !important;
+    color: #193D29 !important;
+}
+
+html body .back-btn:hover,
+html body .back-button:hover,
+body .back-btn:hover,
+body .back-button:hover {
+    background: #f8fafc !important; /* Force hover background */
 }
