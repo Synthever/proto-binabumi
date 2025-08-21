@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/scan/scan.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/scan/modal.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/scan/popup.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -35,6 +36,22 @@
         duration: 600,
         easing: 'easeOutQuad'
       });
+      
+      // Function to show popup
+      window.showRincianPopup = function() {
+        // Close any existing notification modal first
+        if (window.currentNotificationModal) {
+          closeNotificationModal();
+        }
+        
+        const overlay = document.getElementById('popupRincian');
+        overlay.style.display = 'flex';
+        
+        // Add show class after a short delay to trigger animation
+        setTimeout(() => {
+          overlay.classList.add('show');
+        }, 10);
+      };
 
       // Scanner frame animation removed
     });
@@ -132,7 +149,6 @@
       setTimeout(() => {
         startQRScanning();
       }, 4000);
-    }
 
     async function processQRCode(qrText) {
       try {
@@ -357,8 +373,38 @@
       </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    @include('components.bottom-nav', ['active' => 'scan'])
+  <!-- Bottom Navigation -->
+  @include('components.bottom-nav', ['active' => 'scan'])    <!-- Popup Rincian Proses -->
+    <div class="popup-overlay" id="popupRincian">
+      <div class="popup-container">
+        <div class="detail-setoran">
+          <h2>Detail Setoran</h2>
+          <div class="summary-box">
+            <div class="summary-item">
+              <span class="summary-label">Jumlah Botol</span>
+              <span class="summary-value">+10</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Koin</span>
+              <span class="summary-value">+10</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Saldo</span>
+              <span class="summary-value saldo">+1.000<sup style="color:#B0891A;font-size:12px;">*</sup></span>
+            </div>
+          </div>
+          <div class="summary-note">*Saldo masih dalam proses verifikasi dan akan ditambahkan otomatis.</div>
+        </div>
+        <div class="popup-actions">
+          <button class="popup-btn btn-kembali" onclick="window.location.href='/beranda'">
+            Kembali ke Beranda
+          </button>
+          <button class="popup-btn btn-scan" onclick="window.location.reload()">
+            Scan Lagi
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 

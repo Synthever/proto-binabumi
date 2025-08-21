@@ -9,7 +9,7 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.08); /* Container shadow for depth */
     display: flex;
     flex-direction: column;
-    color: rgba(25, 61, 41, 0.7) !important; /* Global text color - 70% opacity */
+    color: rgba(25, 61, 41, 0.5) !important; /* Global text color */
 }
 
 /* Global text color override for all elements in profile */
@@ -31,9 +31,7 @@
 }
 
 /* STICKY HEADER FIX FOR MOBILE - Added to profile CSS */
-html body .page-header.sticky-header,
-body .page-header.sticky-header,
-.page-header.sticky-header {
+.sticky-header {
     position: fixed !important;
     top: 0 !important;
     z-index: 9999 !important;
@@ -41,6 +39,7 @@ body .page-header.sticky-header,
     border-bottom: 1px solid rgba(25, 61, 41, 0.1) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
     box-sizing: border-box !important;
+    width: 100% !important;
 }
 
 /* Mobile sticky positioning - Force for ALL mobile devices */

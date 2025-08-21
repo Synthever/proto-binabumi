@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Anda - SIGMA</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/header.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/history/historyMain.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -13,9 +14,7 @@
 <body class="bg-gray-100 font-sans">
 
     <!-- Header -->
-    <div class="header">
-        <h1 class="title">Riwayat</h1>
-    </div>
+    <x-header title="Riwayat" :sticky="true" />
 
     <!-- Search -->
     <div class="search-box">

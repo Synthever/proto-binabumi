@@ -6,47 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="color-scheme" content="light">
     <title>Data Profil - SIGMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/back-button.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/sticky-header.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/profile_detail.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation-fixes.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Force minimal padding for immediate effect */
-        .profile-container {
-            padding: 100px 8px 40px !important;
-            background: #ffffff !important;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
-        }
-        
-        @media (min-width: 1024px) {
-            .profile-container {
-                padding: 100px 8px 40px !important;
-                background: #ffffff !important;
-                border-left: 1px solid #e2e8f0 !important;
-                border-right: 1px solid #e2e8f0 !important;
-            }
-        }
-        
-        .main-content {
+        /* Emergency CSS reset untuk konsistensi browser */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
             width: 100% !important;
-            max-width: 500px !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+        }
+        
+        .page-container, 
+        .page-content, 
+        .slide-in-from-right {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .profile-detail-container {
+            width: 100% !important;
+            max-width: 1024px !important;
             margin: 0 auto !important;
+            box-sizing: border-box !important;
         }
     </style>
 </head>
 
-<body class="profile-container">
-    <div class="main-content">
-        <!-- Header Section -->
-        <div class="header-section fade-in">
-            <button class="back-button" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <h1 class="page-title">Data Profil</h1>
-        </div>
+<body class="bg-gray-50">
+    <div class="page-container">
+        <div class="page-content slide-in-from-right">
+            <div class="profile-detail-container">
+                <!-- Header Section -->
+                <div class="header-section fade-in">
+                    <button class="back-button" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h1 class="page-title">Data Profil</h1>
+                </div>
 
         <!-- Profile Form Content -->
         <form id="profileForm" onsubmit="handleSubmit(event)">

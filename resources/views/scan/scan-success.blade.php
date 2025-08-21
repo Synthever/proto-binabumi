@@ -10,6 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/scan/scan-success.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/scan/popup.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -48,6 +49,7 @@
                         animation: loading-rotate 1s linear infinite;
                         margin: 0 auto;
                     "></div>
+                    
                     <div class="countdown-timer">
                         <span id="countdown">00:30</span>
                     </div>
@@ -66,7 +68,81 @@
     <!-- Bottom Navigation -->
     @include('components.bottom-nav', ['active' => 'scan'])
 
+    <!-- Popup Rincian Proses -->
+    <div class="popup-overlay" id="popupRincian">
+        <div class="popup-container">
+            <div class="detail-setoran">
+                <h2>Detail Setoran</h2>
+                <div class="summary-box">
+                    <div class="summary-item">
+                        <span class="summary-label">Jumlah Botol</span>
+                        <span class="summary-value">+10</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Koin</span>
+                        <span class="summary-value">+10</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Saldo</span>
+                        <span class="summary-value saldo">+1.000<sup style="color:#B0891A;font-size:12px;">*</sup></span>
+                    </div>
+                </div>
+                <div class="summary-note">*Saldo masih dalam proses verifikasi dan akan ditambahkan otomatis.</div>
+            </div>
+            <div class="popup-actions">
+                <button class="popup-btn btn-kembali" onclick="window.location.href='/beranda'">
+                    Kembali ke Beranda
+                </button>
+                <button class="popup-btn btn-scan" onclick="window.location.href='/scan'">
+                    Scan Lagi
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        function showRincianPopup() {
+            const overlay = document.getElementById('popupRincian');
+            const container = overlay.querySelector('.popup-container');
+            
+            // Set initial styles
+            overlay.style.display = 'flex';
+            overlay.style.opacity = 0;
+            container.style.transform = 'translateY(100%)';
+            
+            // Animate overlay fade in
+            anime({
+                targets: overlay,
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeOutQuad'
+            });
+            
+            // Animate container slide up
+            anime({
+                targets: container,
+                translateY: ['100%', 0],
+                duration: 600,
+                easing: 'easeOutExpo',
+                delay: 200
+            });
+
+            // Animate content elements
+            anime({
+                targets: [
+                    container.querySelector('.detail-setoran h2'),
+                    container.querySelector('.summary-box'),
+                    container.querySelector('.summary-note'),
+                    container.querySelector('.popup-actions')
+                ],
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                delay: anime.stagger(100, {start: 400}),
+                easing: 'easeOutQuad'
+            });
+        }
+
         // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Fade in main container
@@ -139,8 +215,7 @@
                 
                 if (timeLeft <= 0) {
                     clearInterval(timer);
-                    // Auto redirect atau action lainnya setelah countdown selesai
-                    console.log('Countdown finished');
+                    showRincianPopup(); // Show popup when timer ends
                 }
             }, 1000);
         }
