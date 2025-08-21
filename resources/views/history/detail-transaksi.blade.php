@@ -10,27 +10,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        body { overflow-x: hidden; }
-        .page-wrapper {
-            transform: translateX(100%);
+        body { 
+            overflow-x: hidden; 
+        }
+        .content-wrapper {
             opacity: 0;
+            transform: translateY(20px);
+            min-height: calc(100vh - 70px); /* tinggi viewport dikurangi header */
+            padding-bottom: 100px;
+        }
+        .status-section,
+        .transaction-card {
+            opacity: 0;
+            transform: translateY(20px);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header tidak ikut animasi -->
-        <div class="header">
-            <a href="{{ route('history.index') }}" class="back-button" id="backBtn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </a>
-            <h1>Detail Transaksi</h1>
-        </div>
+    <!-- Header tidak ikut animasi -->
+    <div class="header">
+        <a href="{{ route('history.index') }}" class="back-button" id="backBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </a>
+        <h1>Detail Transaksi</h1>
+    </div>
 
-        <!-- Semua isi dibungkus untuk animasi -->
-        <div class="page-wrapper">
+    <!-- Konten dengan animasi -->
+    <div class="content-wrapper">
             <!-- Status Section -->
             <div class="status-section">
                 <div class="status-icon">
@@ -83,29 +91,17 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Animasi halaman masuk
-        anime({
-            targets: '.page-wrapper',
-            translateX: ['100%', '0%'],
+        // Animasi konten masuk
+        anime.timeline({
+            easing: 'easeOutExpo'
+        })
+        .add({
+            targets: '.content-wrapper',
             opacity: [0, 1],
-            duration: 600,
-            easing: 'easeOutQuad'
-        });
-
-        document.getElementById('downloadButton').addEventListener('click', function() {
-        const warning = document.getElementById('warningMessage');
-        warning.style.display = 'block'; // pastikan terlihat
-        anime({
-            targets: '#warningMessage',
-            opacity: [0, 1],
-            translateY: [10, 0],
-            duration: 500,
-            easing: 'easeOutQuad'
-        });
-        }); 
-
-        // Stagger isi card biar muncul berurutan
-        anime({
+            translateY: [20, 0],
+            duration: 600
+        })
+        .add({
             targets: '.status-section, .transaction-card',
             opacity: [0, 1],
             translateY: [30, 0],
@@ -113,6 +109,37 @@
             duration: 600,
             easing: 'easeOutQuart'
         });
+
+        // Animasi hover tetap seperti sebelumnya
+        const cards = document.querySelectorAll('.transaction-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.08)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 1px 4px rgba(0, 0, 0, 0.05)';
+            });
+        });
+
+        // Animasi untuk warning message jika ada
+        if (document.getElementById('downloadButton')) {
+            document.getElementById('downloadButton').addEventListener('click', function() {
+                const warning = document.getElementById('warningMessage');
+                if (warning) {
+                    warning.style.display = 'block';
+                    anime({
+                        targets: '#warningMessage',
+                        opacity: [0, 1],
+                        translateY: [10, 0],
+                        duration: 500,
+                        easing: 'easeOutQuad'
+                    });
+                }
+            }); 
+        }
       });
     </script>
 </body>

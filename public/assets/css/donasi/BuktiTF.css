@@ -69,10 +69,11 @@ body {
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
-  color: #374151;
+  color: #193D29;
   padding-left: 16px;
+  opacity: 0.7;
 }
 
 /* Bank Info Box */

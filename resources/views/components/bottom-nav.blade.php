@@ -1,4 +1,6 @@
 <!-- Bottom Navigation Component -->
+<link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">
+
 <nav class="bottom-nav">
   <div class="nav-content">
     <!-- Beranda -->

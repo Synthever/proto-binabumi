@@ -8,20 +8,39 @@
 html {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg/* Adjust bottom nav for history page */
+.bottom-nav {
+  position: fixed !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  max-width: 976px !important; /* 1024px - 48px (24px padding on each side) */
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  border-radius: 16px 16px 0 0 !important;
+  margin: 0 auto !important;
+}
+
+.bottom-nav .nav-content {
+  width: 100% !important;
+  padding: 0 24px !important;
+  margin: 0 !important;
+  justify-content: space-between !important;
+}e2e8f0 100%);
+  width: 100%;
 }
 
 body {
-  width: 1024px;
+  width: 100%;
+  max-width: 1024px;
   font-family: 'Poppins', sans-serif;
   background: #FFFFFF;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
   overflow-x: hidden;
   padding: 0 24px;
   min-height: 100vh;
+  position: relative;
 }
 
 .page-wrapper {
@@ -43,9 +62,10 @@ body {
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
-  color: #374151;
+  color: #193D29;
+  opacity: 0.7;
   padding-left: 16px;
 }
 
@@ -74,6 +94,7 @@ body {
 
 .search-input::placeholder {
   color: #667085;
+  font-family: 'Poppins', sans-serif;
 }
 
 .search-input:focus {
@@ -123,19 +144,23 @@ body {
 }
 
 .item-date {
-  color: #667085;
+  color: #193D29;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .item-title {
-  color: #344054;
+  color: #193D29;
+  opacity: 0.7;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .item-name {
-  color: #667085;
+  color: #193D29;
+  opacity: 0.7;
   font-size: 14px;
+  font-weight: 400;
 }
 
 .item-right {
@@ -143,9 +168,9 @@ body {
 }
 
 .item-amount {
-  color: #344054;
+  color: #193D29;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 8px;
 }
 
@@ -177,71 +202,21 @@ body {
   border: 1px solid #bbf7d0;
 }
 
+/* Adjust bottom nav for history page */
 .bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1024px;
-  background: #ffffff;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  z-index: 50;
+  width: 100% !important;
+  max-width: 1024px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin: 0 auto !important;
 }
 
 .bottom-nav .nav-content {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 8px 0;
+  width: 100% !important;
+  max-width: calc(1024px - 48px) !important; /* Account for body padding */
+  margin: 0 auto !important;
+  padding: 0 !important;
 }
-
-.bottom-nav .nav-item {
-  flex: 1;
-  text-align: center;
-}
-
-.bottom-nav .nav-item .nav-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #6b7280; /* abu-abu default */
-  text-decoration: none;
-  font-size: 12px;
-  transition: color 0.2s ease-in-out;
-}
-
-.bottom-nav .nav-item .nav-link i {
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-
-.bottom-nav .nav-item.active .nav-link,
-.bottom-nav .nav-item .nav-link:hover {
-  color: #16a34a; /* hijau aktif */
-  font-weight: 600;
-}
-
-/* QR Code button di tengah */
-.bottom-nav .qr-nav-item {
-  position: relative;
-  top: -24px;
-  z-index: 60;
-}
-
-.bottom-nav .qr-button {
-  background: #16a34a;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 22px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 }
