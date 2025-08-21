@@ -28,6 +28,28 @@ class ScanController extends Controller
         }
 
     /**
+     * Show scan success page
+     */
+    public function success(Request $request)
+    {
+        // Get current logged in user
+        $currentUser = AuthController::getCurrentUser();
+        
+        if (!$currentUser) {
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
+        }
+
+        // Pass any success data to the view
+        $data = [
+            'points' => $request->get('points', 100), // Default 100 points
+            'machine_id' => $request->get('machine_id', ''),
+            'user' => $currentUser
+        ];
+
+        return view('scan.scan-success', $data);
+    }
+
+    /**
      * Process scan result and validate machine code
      */
     public function processScan(Request $request)
