@@ -7,6 +7,7 @@
   <link rel="icon" accesskey="favicon.ico" href="/assets/images/logo.png" />
   <title>Scan | SIGMA</title>
   @vite('resources/css/app.css')
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/scan/scan.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/scan/modal.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">

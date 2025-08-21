@@ -9,12 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <style>
+        body { 
+            overflow-x: hidden; 
+        }
+        .content-wrapper {
+            opacity: 0;
+            transform: translateY(20px);
+            min-height: calc(100vh - 70px);
+            padding-bottom: 100px;
+        }
+        .status-section,
+        .transaction-card {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header with back button -->
-        <div class="header">
+    <!-- Header tidak ikut animasi -->
+    <div class="header">
             <a href="{{ route('history.index') }}" class="back-button">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -23,8 +37,10 @@
             <h1>Detail Transaksi</h1>
         </div>
 
-        <!-- Status Section -->
-        <div class="status-section">
+        <!-- Konten dengan animasi -->
+        <div class="content-wrapper">
+            <!-- Status Section -->
+            <div class="status-section">
             <div class="status-icon">
                 <i class="fas fa-clock fa-2x" style="color: #920807;"></i>
             </div>
@@ -64,5 +80,45 @@
                 <p>17:00 WIB</p>
             </div>
         </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi konten masuk menggunakan timeline
+            anime.timeline({
+                easing: 'easeOutExpo'
+            })
+            .add({
+                targets: '.content-wrapper',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 600
+            })
+            .add({
+                targets: '.status-section, .transaction-card',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 800,
+                delay: anime.stagger(150),
+                easing: 'easeOutQuart'
+            }, '-=200');
+
+            // Menggunakan CSS transitions untuk hover effects
+            const cards = document.querySelectorAll('.transaction-card');
+            cards.forEach(card => {
+                card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+                
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-2px)';
+                    card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.08)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = '0 1px 4px rgba(0, 0, 0, 0.05)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
