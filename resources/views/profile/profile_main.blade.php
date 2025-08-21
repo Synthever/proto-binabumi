@@ -131,7 +131,13 @@
                 padding-top: 75px !important;
             }
         }
-    </style>
+
+        /* Profile avatar with background image */
+        .profile-avatar-image {
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
 
         /* Force header to be positioned relative to viewport, not parent */
         body > .page-header.sticky-header {
@@ -148,6 +154,15 @@
     <!-- Debug Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set background image for profile avatar
+            const avatarImage = document.querySelector('.profile-avatar-image');
+            if (avatarImage) {
+                const bgImage = avatarImage.getAttribute('data-bg-image');
+                if (bgImage) {
+                    avatarImage.style.backgroundImage = `url('${bgImage}')`;
+                }
+            }
+
             const header = document.querySelector('.page-header.sticky-header');
             if (header) {
                 console.log('Sticky header found:', header);
@@ -202,14 +217,14 @@
 
                     <!-- Profile Card -->
                     <div class="profile-card fade-in">
-                        <div class="profile-avatar" 
-                             @if($userData['profile_picture']) 
-                                 style="background-image: url('{{ $userData['profile_picture'] }}'); background-size: cover; background-position: center;"
-                             @endif>
-                            @if(!$userData['profile_picture'])
+                        @if(isset($userData['profile_picture']) && $userData['profile_picture'])
+                            <div class="profile-avatar profile-avatar-image" data-bg-image="{{ $userData['profile_picture'] }}">
+                            </div>
+                        @else
+                            <div class="profile-avatar">
                                 {{ strtoupper(substr($userData['name'], 0, 1)) }}
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         <h2 class="text-2xl font-bold text-center text-gray-800 mb-3">{{ $userData['name'] }}</h2>
                         <p class="text-center text-gray-500 text-base">{{ $userData['email'] }}</p>
                     </div>
