@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cari Mesin - SIGMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/header.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/maps/cari-mesin.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,15 +13,11 @@
 <body class="bg-gray-50">
     <div class="cari-mesin-container">
         <!-- Header Section -->
-        <div class="header-section">
-            <div class="header-content">
-                <button class="back-btn" onclick="location.href='/beranda'">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <h1 class="header-title">Cari Mesin</h1>
-            </div>
+        <div class="header-wrapper">
+            <button onclick="window.location.href='/beranda'" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="header-title">Cari Mesin</h1>
         </div>
 
         <!-- Location Badge -->

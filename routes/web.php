@@ -12,6 +12,9 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\MapsController;
 use App\Http\Controllers\ScanController;
+
+// Route untuk halaman rincian proses scan botol
+Route::get('/scan/rincian-proses', [ScanController::class, 'rincianProses'])->name('scan.rincian-proses');
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UsersController;

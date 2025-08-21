@@ -1,0 +1,108 @@
+/* Popup styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+.popup-container {
+    background: white;
+    width: 100%;
+    max-width: 475px;
+    border-radius: 24px 24px 0 0;
+    padding: 24px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    margin: 0 auto;
+}
+
+.popup-container.show {
+    transform: translateY(0);
+}
+
+.detail-setoran {
+    margin-bottom: 24px;
+}
+
+.detail-setoran h2 {
+    color: #193D29;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.summary-box {
+    background: #F3F4F6;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-label {
+    color: #193D29;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.summary-value {
+    color: #2D5A3A;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.summary-value.saldo {
+    color: #193D29;
+}
+
+.summary-note {
+    color: #B0891A;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.popup-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-kembali {
+    background: #E5E7EB;
+    color: #193D29;
+}
+
+.btn-scan {
+    background: #193D29;
+    color: white;
+}
+
+.popup-btn:active {
+    opacity: 0.8;
+}
