@@ -1,0 +1,54 @@
+/* Standardized Back Button Styles */
+.back-btn,
+.back-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    pointer-events: all;
+    user-select: none;
+    flex-shrink: 0;
+    padding: 10px;
+    color: #374151;
+}
+
+.back-btn:hover,
+.back-button:hover {
+    background: #f8fafc;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn:active,
+.back-button:active {
+    background-color: rgba(95, 99, 104, 0.2);
+}
+
+/* Icon Styles */
+.back-btn i,
+.back-button i {
+    font-size: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 640px) {
+    .back-btn,
+    .back-button {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+    }
+
+    .back-btn i,
+    .back-button i {
+        font-size: 18px;
+    }
+}
