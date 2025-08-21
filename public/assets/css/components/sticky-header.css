@@ -1,0 +1,22 @@
+/* Sticky header styles */
+.sticky-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: 1024px !important;
+    z-index: 9999 !important;
+    background: white !important;
+    border-bottom: 1px solid rgba(25, 61, 41, 0.1) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 1024px) {
+    .sticky-header {
+        max-width: 100% !important;
+        left: 0 !important;
+        transform: none !important;
+    }
+}

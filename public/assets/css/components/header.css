@@ -14,14 +14,7 @@
     position: relative; /* Default position */
 }
 
-/* Sticky variant - Reduced specificity to allow profile CSS override */
-.page-header.sticky-header {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1001;
-}
+/* Sticky styling is now in sticky-header.css */
 
 /* Header title styling */
 .page-header .header-title,

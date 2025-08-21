@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="color-scheme" content="light">
     <title>Data Profil - SIGMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/back-button.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/sticky-header.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/profile_detail.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation-fixes.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -21,6 +23,7 @@
             width: 100% !important;
             box-sizing: border-box !important;
             overflow-x: hidden !important;
+            background: white !important;
         }
         
         .page-container, 
@@ -28,20 +31,16 @@
         .slide-in-from-right {
             width: 100% !important;
             box-sizing: border-box !important;
+            background: white !important;
+            position: relative !important;
+            z-index: 1 !important;
             margin: 0 !important;
             padding: 0 !important;
-        }
-        
-        .profile-detail-container {
-            width: 100% !important;
-            max-width: 1024px !important;
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
         }
     </style>
 </head>
 
-<body class="bg-gray-50">
+<body>
     <div class="page-container">
         <div class="page-content slide-in-from-right">
             <div class="profile-detail-container">

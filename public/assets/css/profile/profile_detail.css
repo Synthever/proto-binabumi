@@ -1,14 +1,21 @@
 /* Browser Reset dan Normalisasi */
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+:root {
+    --page-background: #ffffff;
+    --text-color: rgba(25, 61, 41, 0.8);
 }
 
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    height: 100%;
+    background: var(--page-background);
 }
 
 body {
@@ -21,6 +28,9 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: var(--page-background);
+    color: var(--text-color);
+    position: relative;
 }
 
 /* Profile Detail Page Custom Styles */
