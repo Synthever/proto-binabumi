@@ -9,7 +9,7 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.08); /* Container shadow for depth */
     display: flex;
     flex-direction: column;
-    color: rgba(25, 61, 41, 0.5) !important; /* Global text color */
+    color: rgba(25, 61, 41, 0.7) !important; /* Global text color - 70% opacity */
 }
 
 /* Global text color override for all elements in profile */
@@ -21,7 +21,7 @@
 .profile-container span,
 .profile-container div,
 .profile-container i {
-    color: rgba(25, 61, 41, 0.5) !important;
+    color: rgba(25, 61, 41, 0.7) !important; /* 70% opacity for better readability */
 }
 
 /* Exception for header component - keep header title full green */
@@ -302,8 +302,14 @@ body .page-header.sticky-header,
     color: white !important; /* White icon on hover */
 }
 
+/* Additional specific override for trash icon in delete button */
+.btn-delete .fa-trash-alt,
+.action-button.btn-delete i {
+    color: #193D29 !important; /* Force green color for delete button icon */
+}
+
 .section-title {
-    color: rgba(25, 61, 41, 0.5) !important; /* Match global text color */
+    color: rgba(25, 61, 41, 0.7) !important; /* Match global text color - 70% opacity */
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 20px;
