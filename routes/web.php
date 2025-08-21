@@ -85,10 +85,28 @@ Route::middleware('check.login')->group(function () {
 
 // Scan
 Route::get('/scan', [ScanController::class, 'index'])->name('scan.index')->middleware('check.login');
+Route::post('/scan/process', [ScanController::class, 'processScan'])->name('scan.process')->middleware('check.login');
+Route::get('/scan/status', [ScanController::class, 'getConnectionStatus'])->name('scan.status')->middleware('check.login');
+Route::post('/scan/disconnect', [ScanController::class, 'disconnect'])->name('scan.disconnect')->middleware('check.login');
+
+// Test route for scan integration
+Route::get('/test/scan', function () {
+    return view('test.scan-test');
+})->middleware('check.login');
 
 // Route Halaman Games
 Route::middleware('check.login')->group(function () {
-    Route::get('/games', [GamesController::class, 'index'])->name('games.index');
+    // Games routes
+Route::get('/games', [GamesController::class, 'index'])->name('games');
+
+// Test scan functionality
+Route::get('/test-scan/{code}', function($code) {
+    $controller = new ScanController();
+    $request = new \Illuminate\Http\Request();
+    $request->merge(['machine_code' => $code]);
+    
+    return $controller->processScan($request);
+})->name('test.scan');
     Route::get('/games/challenge', [GamesController::class, 'challenge'])->name('games.challenge');
 });
 

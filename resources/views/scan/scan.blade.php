@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="icon" accesskey="favicon.ico" href="/assets/images/logo.png" />
   <title>Scan | SIGMA</title>
   @vite('resources/css/app.css')
@@ -115,15 +116,15 @@
         codeReader.reset();
       }
       
-      // Validate QR code
-      const isValid = await validateQRCode(qrText);
+      // Process QR code through Laravel controller
+      const result = await processQRCode(qrText);
       
-      if (isValid) {
+      if (result.success) {
         // Show success notification
-        showSuccessNotification(qrText);
+        showSuccessNotification(qrText, result.message);
       } else {
         // Show error notification
-        showErrorNotification(qrText);
+        showErrorNotification(qrText, result.message);
       }
       
       // Restart scanning after 4 seconds
@@ -132,22 +133,45 @@
       }, 4000);
     }
 
-    async function validateQRCode(qrText) {
+    async function processQRCode(qrText) {
       try {
-        // Load valid codes from JSON file
-        const response = await fetch('/scan-pass/valid-codes.json');
+        const response = await fetch('/scan/process', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            machine_code: qrText.trim()
+          })
+        });
+
         const data = await response.json();
         
-        // Check if the scanned code is in the valid codes list
-        return data.validCodes.includes(qrText.trim());
+        if (!response.ok) {
+          return {
+            success: false,
+            message: data.message || 'Terjadi kesalahan pada server'
+          };
+        }
+
+        return {
+          success: true,
+          message: data.message || 'Scan berhasil!',
+          data: data.connection_data
+        };
+
       } catch (error) {
-        console.error('Error loading valid codes:', error);
-        // If we can't load the file, default to checking if code is "12345"
-        return qrText.trim() === '12345';
+        console.error('Error processing QR code:', error);
+        return {
+          success: false,
+          message: 'Gagal menghubungi server. Silakan coba lagi.'
+        };
       }
     }
 
-    function showSuccessNotification(qrText) {
+    function showSuccessNotification(qrText, message = 'Scan berhasil!') {
       // Create modal overlay similar to profile page
       const modalOverlay = document.createElement('div');
       modalOverlay.className = 'modal-overlay';
@@ -157,7 +181,7 @@
             <div class="modal-icon success">
               <i class="fas fa-check-circle"></i>
             </div>
-            <h3 class="modal-title">Scan berhasil!</h3>
+            <h3 class="modal-title">${message}</h3>
             <h3 class="modal-title">Akun kamu sudah tersambung</h3>
             <p class="modal-subtitle">Sekarang, masukkan botol kosong ke dalam mesin RVM</p>
           </div>
@@ -191,7 +215,7 @@
       window.currentNotificationModal = modalOverlay;
     }
 
-    function showErrorNotification(qrText) {
+    function showErrorNotification(qrText, message = 'Kode QR tidak valid') {
       // Create modal overlay for error
       const modalOverlay = document.createElement('div');
       modalOverlay.className = 'modal-overlay';
@@ -202,7 +226,7 @@
               <i class="fas fa-exclamation-triangle"></i>
             </div>
             <h3 class="modal-title">Scan Gagal!</h3>
-            <p class="modal-subtitle">Kode QR tidak valid atau tidak terdaftar dalam sistem</p>
+            <p class="modal-subtitle">${message}</p>
           </div>
           <div class="modal-actions">
             <button class="modal-button primary" onclick="closeNotificationModal()">
