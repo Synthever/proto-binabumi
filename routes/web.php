@@ -86,6 +86,7 @@ Route::middleware('check.login')->group(function () {
 // Scan
 Route::get('/scan', [ScanController::class, 'index'])->name('scan.index')->middleware('check.login');
 Route::post('/scan/process', [ScanController::class, 'processScan'])->name('scan.process')->middleware('check.login');
+Route::get('/scan/success', [ScanController::class, 'success'])->name('scan.success')->middleware('check.login');
 Route::get('/scan/status', [ScanController::class, 'getConnectionStatus'])->name('scan.status')->middleware('check.login');
 Route::post('/scan/disconnect', [ScanController::class, 'disconnect'])->name('scan.disconnect')->middleware('check.login');
 
@@ -93,6 +94,49 @@ Route::post('/scan/disconnect', [ScanController::class, 'disconnect'])->name('sc
 Route::get('/test/scan', function () {
     return view('test.scan-test');
 })->middleware('check.login');
+
+// Simple test route
+Route::get('/test/simple', function () {
+    return 'Test route is working!';
+});
+
+// Test route for scan success page - debug version
+Route::get('/test-scan-success', function () {
+    try {
+        $data = [
+            'points' => 100,
+            'machine_id' => 'TEST123',
+            'user' => (object)[
+                'name' => 'Test User',
+                'email' => 'test@example.com'
+            ]
+        ];
+        
+        return view('scan.scan-success', $data);
+    } catch (Exception $e) {
+        return response()->json([
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
+        ]);
+    }
+});
+
+// Original test route
+Route::get('/test/scan-success', function () {
+    try {
+        return view('scan.scan-success', [
+            'points' => 100,
+            'machine_id' => 'TEST123',
+            'user' => (object)[
+                'name' => 'Test User',
+                'email' => 'test@example.com'
+            ]
+        ]);
+    } catch (Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+}); // No middleware - can access directly
 
 // Route Halaman Games
 Route::middleware('check.login')->group(function () {

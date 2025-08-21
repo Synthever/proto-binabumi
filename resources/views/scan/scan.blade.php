@@ -173,47 +173,10 @@
     }
 
     function showSuccessNotification(qrText, message = 'Scan berhasil!') {
-      // Create modal overlay similar to profile page
-      const modalOverlay = document.createElement('div');
-      modalOverlay.className = 'modal-overlay';
-      modalOverlay.innerHTML = `
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-icon success">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <h3 class="modal-title">${message}</h3>
-            <h3 class="modal-title">Akun kamu sudah tersambung</h3>
-            <p class="modal-subtitle">Sekarang, masukkan botol kosong ke dalam mesin RVM</p>
-          </div>
-          
-          <div class="modal-actions">
-            <button class="modal-button primary" onclick="closeNotificationModal()">
-              <i class="fas fa-check"></i> OK
-            </button>
-          </div>
-        </div>
-      `;
-      
-      document.body.appendChild(modalOverlay);
-      
-      // Show modal with animation
+      // Instead of showing modal, redirect to success page
       setTimeout(() => {
-        modalOverlay.classList.add('show');
-      }, 10);
-      
-      // Prevent body scroll
-      document.body.style.overflow = 'hidden';
-      
-      // Close on overlay click
-      modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-          closeNotificationModal();
-        }
-      });
-      
-      // Store reference for closing
-      window.currentNotificationModal = modalOverlay;
+        window.location.href = '/scan/success?points=100&machine_id=' + encodeURIComponent(qrText);
+      }, 500); // Small delay for user feedback
     }
 
     function showErrorNotification(qrText, message = 'Kode QR tidak valid') {
