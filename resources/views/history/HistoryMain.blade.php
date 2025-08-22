@@ -7,6 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('/assets/css/components/header.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/history/historyMain.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/history/historyMain-fix.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -21,8 +22,7 @@
         <input 
             type="text" 
             placeholder="Cari riwayat transaksi" 
-            class="search-input"
-        >
+            class="search-input">
     </div>
 
     <!-- List Riwayat -->

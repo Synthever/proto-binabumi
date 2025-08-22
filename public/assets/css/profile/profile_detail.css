@@ -6,21 +6,65 @@
 }
 
 html {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background: #f5f5f5;
+    width: 100%;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
+    max-width: 1024px !important;
+    width: 100% !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 40px 60px !important;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Main Container - Following login page pattern */
+.profile-container {
+    background: linear-gradient(180deg, #2D5A3A 65%, #ffffff 35%);
+    position: relative;
+    min-height: 100vh !important;
+    max-width: 1024px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky !important;
+  top: 0;
+  z-index: 10;
+}
+
+.header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #193D29;
+  padding-left: 16px;
 }
 
 /* Profile Detail Page Custom Styles */
@@ -29,7 +73,7 @@ body {
     max-width: 1024px; /* iPad Pro 12.9" width */
     margin: 0 auto;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: #ffffff;
     padding: 0 24px;
     display: flex;
     flex-direction: column;
@@ -37,45 +81,6 @@ body {
     box-sizing: border-box;
 }
 
-.header-section {
-    display: flex;
-    align-items: center;
-    padding: 16px 0 24px;
-    gap: 16px;
-    position: relative;
-    z-index: 10;
-}
-
-.back-button {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: white;
-    border: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    z-index: 100;
-    pointer-events: all;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    flex-shrink: 0; /* Prevent shrinking */
-}
-
-.back-button:hover {
-    background: #f8fafc;
-    transform: translateX(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.back-button i {
-    font-size: 20px;
-    color: #374151;
-}
 
 .page-title {
     font-size: 24px;
@@ -87,8 +92,8 @@ body {
 .detail-card {
     background: white;
     border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    padding: 20px !important;
+    border: 1px solid #e5e7eb;
     margin-bottom: 24px;
 }
 
@@ -114,7 +119,7 @@ body {
 .profile-photo {
     width: 120px;
     height: 120px;
-    background: linear-gradient(135deg, #fbb6ce 0%, #f472b6 100%);
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -124,7 +129,7 @@ body {
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0 auto 20px;
-    box-shadow: 0 8px 32px rgba(244, 114, 182, 0.3);
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -318,7 +323,7 @@ body {
     }
     
     .detail-card {
-        padding: 20px;
+        padding: 20px !important;
         border-radius: 20px;
     }
     
@@ -388,7 +393,7 @@ body {
     }
     
     .detail-card {
-        padding: 40px;
+        padding: 20px !important;
     }
     
     .action-buttons {
@@ -444,7 +449,6 @@ body {
     
     .detail-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
     }
 }
 

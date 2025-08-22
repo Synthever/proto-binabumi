@@ -12,17 +12,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-  <div class="mobile-container">
-    <!-- Header -->
-    <div class="header">
-      <div class="header-content">
-        <div class="back-section">
-          <a href="{{ route('beranda') }}" class="back-button">
-            <i class="fas fa-arrow-left"></i>
-          </a>
-          <h1 class="page-title">Tukar Koin</h1>
-        </div>
-      </div>
+  <!-- Container ala detail profil -->
+  <div style="max-width:1024px; margin:0 auto; width:100%; box-shadow: 0 0 20px rgba(0,0,0,0.10); background: #fff; padding: 20px;">
+    <!-- Header ala detail keamanan -->
+    <div class="header" style="display: flex; align-items: center; padding: 16px 0; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 10; margin-bottom: 24px;">
+      @component('components.back-button', ['href' => route('beranda')]) @endcomponent
+      <h1 style="font-size: 18px; font-weight: 700; color: #193D29; opacity: 0.7; padding-left: 16px;">Tukar Koin</h1>
     </div>
 
     <!-- Content Area -->

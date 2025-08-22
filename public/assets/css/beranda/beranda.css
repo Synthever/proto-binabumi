@@ -1,3 +1,22 @@
+/* Bottom nav persis seperti history */
+/* Bottom nav persis seperti history */
+
+
+/* Hilangkan border-radius di .mobile-container, hanya shadow */
+.mobile-container {
+  border-radius: 0 !important;
+  box-shadow: 0 0 20px rgba(0,0,0,0.10);
+}
+@media (max-width: 1023px) {
+  .mobile-container {
+    border-radius: 0 !important;
+  }
+}
+@media (max-width: 480px) {
+  .mobile-container {
+    border-radius: 0 !important;
+  }
+}
 /* SIGMA Web App - Responsive Design matching Login Page Layout */
 
 * {
@@ -362,9 +381,6 @@ body {
     max-width: 700px;
   }
   
-  .bottom-nav {
-    padding: 16px 24px;
-  }
 }
 
 /* Mobile Portrait (≤767px) */

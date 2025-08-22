@@ -68,15 +68,6 @@ body {
     padding: 0 20px;
 }
 
-.scan-title h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: #193D29;
-    margin: 0;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-}
 
 /* Scanner Wrapper */
 .scanner-wrapper {
@@ -124,16 +115,8 @@ body {
     max-width: 300px;
 }
 
-.scan-instructions p {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-    line-height: 1.4;
-}
-
 .scan-instructions small {
-    font-size: 14px;
+    font-size: 14px !important;
     color: #666;
     line-height: 1.3;
 }
@@ -227,7 +210,7 @@ body {
     }
 
     .scan-instructions small {
-        font-size: 13px;
+        font-size: 12px !important;
     }
 }
 
@@ -303,7 +286,7 @@ body {
     }
     
     .scan-instructions small {
-        font-size: 15px;
+        font-size: 12px !important;
     }
 }
 

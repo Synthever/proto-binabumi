@@ -60,7 +60,7 @@
             <div class="info-card">
                 <h3>Tentang SIGMA</h3>
                 <p>
-                    SIGMA (Smart Integrated Garbage Management Assistant) adalah mesin pintar yang membantu Anda 
+                    SIGMA (Smart Integrated Gathering Machine) adalah mesin pintar yang membantu Anda 
                     mengelola sampah botol plastik dengan mudah dan menguntungkan. Dengan teknologi AI dan sensor 
                     canggih, SIGMA dapat mendeteksi, menimbang, dan memberikan reward sesuai dengan jumlah botol 
                     plastik yang Anda setorkan.

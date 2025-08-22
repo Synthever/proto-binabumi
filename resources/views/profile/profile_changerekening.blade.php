@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ubah Rekening - SIGMA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/profile_changerekening.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/back-button.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation-fixes.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Emergency CSS reset untuk konsistensi browser */
         html, body {
             margin: 0 !important;
             padding: 0 !important;
@@ -20,16 +18,12 @@
             box-sizing: border-box !important;
             overflow-x: hidden !important;
         }
-        
-        .page-container, 
-        .page-content, 
-        .slide-in-from-right {
+        .page-container, .page-content, .slide-in-from-right {
             width: 100% !important;
             box-sizing: border-box !important;
             margin: 0 !important;
             padding: 0 !important;
         }
-        
         .change-rekening-container {
             width: 100% !important;
             max-width: 1024px !important;
@@ -38,27 +32,19 @@
         }
     </style>
 </head>
-
-<body class="bg-gray-50">
-    <div class="page-container">
-        <div class="page-content slide-in-from-right">
-            <div class="change-rekening-container">
-                <!-- Header Section -->
-                <div class="header-section fade-in">
-                    <button class="back-button" onclick="goBack()">
-                        <i class="fas fa-arrow-left"></i>
-                    </button>
-                    <h1 class="page-title">Rekening</h1>
-                </div>
-
-                <!-- Success Message -->
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Data rekening berhasil disimpan!</span>
-                </div>
-
-                <!-- Main Content -->
-                <div class="rekening-card fade-in-delayed">
+<body style="background: #fff; min-height: 100vh; margin:0;">
+    <div style="max-width:1024px; margin:0 auto; width:100%; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.10); background: #fff; padding: 20px;">
+        <div class="header" style="display: flex; align-items: center; padding: 16px 0; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 10; margin-bottom: 24px;">
+            <x-back-button href="/profile" />
+            <h1 style="font-size: 18px; font-weight: 700; color: #193D29; opacity: 0.7; padding-left: 16px;">Rekening</h1>
+        </div>
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage" style="display:none;">
+            <i class="fas fa-check-circle"></i>
+            <span>Data rekening berhasil disimpan!</span>
+        </div>
+        <!-- Main Content -->
+    <div class="rekening-card fade-in-delayed" style="border: 1px solid #e2e8f0; box-shadow: none; border-radius: 24px; padding: 32px; margin-bottom: 24px; position: relative; background: #fff;">
                     <form id="rekeningForm" onsubmit="handleSubmit(event)">
                         <!-- Section Title -->
                         <h2 class="section-title">Ubah Rekening</h2>

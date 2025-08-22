@@ -106,7 +106,7 @@ body {
 .form-label {
     font-size: 16px;
     font-weight: 500;
-    color: #374151;
+    color: #193D29;
     margin-bottom: 12px;
     display: block;
 }
@@ -164,7 +164,7 @@ body {
 .bank-name {
     font-size: 16px;
     font-weight: 600;
-    color: #374151;
+    color: #193D29;
     margin: 0;
 }
 
@@ -231,7 +231,7 @@ body {
     border: 2px solid #e5e7eb;
     border-radius: 16px;
     font-size: 16px;
-    color: #374151;
+    color: #193D29;
     background: #fafafa;
     transition: all 0.3s ease;
     outline: none;
@@ -417,6 +417,7 @@ body {
 .account-display {
     font-family: 'Courier New', monospace;
     letter-spacing: 1px;
+    color: #193D29;
 }
 
 /* Responsive Design */

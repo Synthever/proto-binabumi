@@ -1,3 +1,13 @@
+/* Force full width for history list and items on desktop */
+@media (min-width: 769px) {
+  .history-list {
+    width: 100%;
+    max-width: 100%;
+  }
+  .history-item {
+    width: 100%;
+  }
+}
 /* Base Styles */
 * {
   box-sizing: border-box;
@@ -5,16 +15,40 @@
   padding: 0;
 }
 
-html {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg/* Adjust bottom nav for history page */
+  html {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    width: 100%;
+  }
+
+/* Force all text in history list to #193D29 */
+.history-item,
+.item-title,
+.item-name,
+.item-date,
+.item-amount {
+  color: #193D29 !important;
+}
+/* Fix: Restore text color for .item-title and .item-name, and add margin to .search-box */
+.item-title, .item-name {
+  color: #193D29 !important;
+  opacity: 1 !important;
+}
+
+/* Tambah jarak antara header dan search bar */
+.search-box {
+  margin-top: 64px !important;
+}
+
+
+/* Adjust bottom nav for history page */
 .bottom-nav {
   position: fixed !important;
   bottom: 0 !important;
   width: 100% !important;
-  max-width: 976px !important; /* 1024px - 48px (24px padding on each side) */
+  max-width: 1024px !important; /* 1024px - 48px (24px padding on each side) */
   left: auto !important;
   right: auto !important;
   transform: none !important;
@@ -27,13 +61,11 @@ html {
   padding: 0 24px !important;
   margin: 0 !important;
   justify-content: space-between !important;
-}e2e8f0 100%);
-  width: 100%;
 }
 
 body {
   width: 100%;
-  max-width: 475px;
+  max-width: 1024px;
   font-family: 'Poppins', sans-serif;
   background: #FFFFFF;
   overflow-x: hidden;
@@ -138,30 +170,12 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-.item-left {
+html {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.item-date {
-  color: #193D29;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.item-title {
-  color: #193D29;
-  opacity: 0.7;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.item-name {
-  color: #193D29;
-  opacity: 0.7;
-  font-size: 14px;
-  font-weight: 400;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  width: 100%;
 }
 
 .item-right {
@@ -218,6 +232,8 @@ body {
   margin: 0 auto !important;
   padding: 0 !important;
 }
+
+.bottom-nav .qr-button {
   cursor: pointer;
   transition: background 0.2s ease-in-out;
 }

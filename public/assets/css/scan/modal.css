@@ -65,8 +65,8 @@
 }
 
 .modal-icon.warning {
-    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
+    background: #193D29;
+    box-shadow: 0 8px 32px rgba(25, 61, 41, 0.15);
 }
 
 .modal-icon.primary {
@@ -195,19 +195,40 @@
     transform: translateY(0);
 }
 
+
+/* Tombol konfirmasi (YA) hijau tua */
 .modal-button.danger {
-    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-    color: white;
-    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+    background: #193D29;
+    color: #fff;
+    border: 2px solid #193D29;
+    box-shadow: 0 4px 16px rgba(25, 61, 41, 0.10);
 }
+
 
 .modal-button.danger:hover {
+    background: #145022;
+    border-color: #145022;
+    box-shadow: 0 8px 24px rgba(25, 61, 41, 0.15);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
 }
 
+
 .modal-button.danger:active {
+    background: #193D29;
+    border-color: #193D29;
     transform: translateY(0);
+}
+
+/* Tombol batal (TIDAK) putih border hijau tua */
+.modal-button.cancel, .modal-button.cancel:active {
+    background: #fff;
+    color: #193D29;
+    border: 2px solid #193D29;
+}
+.modal-button.cancel:hover {
+    background: #f8fafc;
+    color: #145022;
+    border-color: #145022;
 }
 
 /* Toast Notification (existing from scan.css) */

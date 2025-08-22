@@ -1,25 +1,25 @@
 /* Back Button Component Styles */
 .back-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
     background: white !important; /* Force white background */
     border: 1px solid #e2e8f0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
-    z-index: 100;
-    pointer-events: all;
-    user-select: none;
-    flex-shrink: 0;
-    padding: 10px;
+    z-index: 100 !important;
+    pointer-events: all !important;
+    user-select: none !important;
+    flex-shrink: 0 !important;
+    padding: 10px !important;
     color: #193D29 !important; /* Brand green color */
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
-    touch-action: manipulation; /* Improve touch responsiveness */
+    box-sizing: border-box !important;
+    -webkit-tap-highlight-color: transparent !important; /* Remove mobile tap highlight */
+    touch-action: manipulation !important; /* Improve touch responsiveness */
 }
 
 .back-btn:hover {

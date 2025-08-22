@@ -88,7 +88,8 @@ body {
     background: white;
     border-radius: 24px;
     padding: 32px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    box-shadow: none;
     margin-bottom: 24px;
     position: relative;
 }

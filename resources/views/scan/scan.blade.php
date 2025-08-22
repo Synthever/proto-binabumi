@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('assets/css/scan/scan.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/scan/modal.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -464,10 +465,8 @@
 
 <body class="scan-container">
   <div class="scan-content">
-    <!-- Title -->
-    <div class="scan-title">
-      <h1>Scan</h1>
-    </div>
+    <!-- Profile Header Component - MOVED OUTSIDE ALL CONTAINERS -->
+    <x-header title="Scan" :sticky="true" />
 
     <!-- QR Scanner -->
     <div class="scanner-wrapper">
@@ -482,7 +481,6 @@
 
       <!-- Scan Instructions -->
       <div class="scan-instructions">
-        <p>Arahkan kamera ke QR code yang ingin di-scan</p>
         <small>Pastikan QR code berada dalam frame scanner</small>
       </div>
     </div>
