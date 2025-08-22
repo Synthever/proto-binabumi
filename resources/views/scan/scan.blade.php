@@ -16,12 +16,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <!-- QR Code Scanner Library -->
+  <!-- QR Code Scanner Library - Multiple options for better compatibility -->
   <script src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
+  <!-- Fallback QR scanner -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-scanner@1.4.2/qr-scanner.umd.min.js"></script>
   <script>
     let currentStream = null;
     let isScanning = false;
     let codeReader = null;
+    let qrScanner = null;
     let selectedDeviceId = null;
 
     // Initialize animations when DOM is loaded
@@ -36,6 +39,9 @@
         duration: 600,
         easing: 'easeOutQuad'
       });
+      
+      // Check camera permissions on load
+      checkCameraPermissions();
       
       // Function to show popup
       window.showRincianPopup = function() {
@@ -56,63 +62,160 @@
       // Scanner frame animation removed
     });
 
-    async function initializeQRScanner() {
+    async function checkCameraPermissions() {
       try {
-        // Initialize ZXing QR code reader
-        codeReader = new ZXing.BrowserQRCodeReader();
+        const permissions = await navigator.permissions.query({ name: 'camera' });
+        console.log('Camera permission state:', permissions.state);
         
-        // Get video devices (cameras)
-        const videoInputDevices = await codeReader.listVideoInputDevices();
-        
-        if (videoInputDevices.length === 0) {
-          showCameraError('Tidak ada kamera yang tersedia');
-          return;
+        if (permissions.state === 'denied') {
+          showCameraError('Izin kamera ditolak. Silakan berikan izin kamera di pengaturan browser dan refresh halaman.');
+          return false;
         }
-
-        // Try to find back camera, otherwise use first available
-        selectedDeviceId = videoInputDevices.find(device => 
-          device.label.toLowerCase().includes('back') || 
-          device.label.toLowerCase().includes('rear') ||
-          device.label.toLowerCase().includes('environment')
-        )?.deviceId || videoInputDevices[0].deviceId;
-
-        console.log('Using camera:', videoInputDevices.find(d => d.deviceId === selectedDeviceId)?.label || 'Unknown');
-
-        // Start scanning
-        await startQRScanning();
-
+        
+        return true;
       } catch (error) {
-        console.error('Error initializing QR scanner:', error);
-        showCameraError('Gagal menginisialisasi scanner QR');
+        console.log('Cannot check camera permissions:', error);
+        return true; // Assume OK if we can't check
       }
     }
 
-    async function startQRScanning() {
+    async function initializeQRScanner() {
+      try {
+        console.log('Initializing QR scanner...');
+        
+        // Check if browser supports getUserMedia
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          showCameraError('Browser ini tidak mendukung akses kamera. Silakan gunakan browser yang lebih baru.');
+          return;
+        }
+        
+        // Request camera permission first
+        const stream = await navigator.mediaDevices.getUserMedia({ 
+          video: { 
+            facingMode: { ideal: 'environment' }, // Prefer back camera
+            width: { ideal: 1280, min: 640 },
+            height: { ideal: 720, min: 480 }
+          } 
+        });
+        
+        console.log('Camera permission granted');
+        
+        // Set video source
+        const video = document.getElementById('camera');
+        video.srcObject = stream;
+        currentStream = stream;
+        
+        // Wait for video to be ready
+        await new Promise((resolve, reject) => {
+          const timeout = setTimeout(() => {
+            reject(new Error('Video load timeout'));
+          }, 10000);
+          
+          video.addEventListener('loadedmetadata', () => {
+            console.log('Video metadata loaded');
+            clearTimeout(timeout);
+            resolve();
+          });
+          
+          video.addEventListener('error', (e) => {
+            clearTimeout(timeout);
+            reject(e);
+          });
+        });
+        
+        // Play video
+        await video.play();
+        console.log('Video playing');
+        
+        // Initialize ZXing QR code reader
+        codeReader = new ZXing.BrowserQRCodeReader();
+        
+        // Start scanning after video is playing
+        setTimeout(() => {
+          startQRScanningWithZXing();
+        }, 1000);
+
+      } catch (error) {
+        console.error('Error initializing camera:', error);
+        
+        if (error.name === 'NotAllowedError') {
+          showCameraError('Izin kamera ditolak. Silakan berikan izin kamera dan refresh halaman.');
+        } else if (error.name === 'NotFoundError') {
+          showCameraError('Kamera tidak ditemukan pada perangkat ini.');
+        } else if (error.name === 'NotSupportedError') {
+          showCameraError('Kamera tidak didukung oleh browser ini.');
+        } else if (error.message === 'Video load timeout') {
+          showCameraError('Kamera membutuhkan waktu terlalu lama untuk memuat. Silakan refresh halaman.');
+        } else {
+          showCameraError('Gagal mengakses kamera: ' + error.message);
+        }
+        
+        // Try fallback method
+        setTimeout(() => {
+          tryFallbackScanner();
+        }, 2000);
+      }
+    }
+
+    async function tryFallbackScanner() {
+      try {
+        console.log('Trying fallback QR scanner...');
+        const video = document.getElementById('camera');
+        
+        // Use QrScanner as fallback
+        if (window.QrScanner) {
+          qrScanner = new QrScanner(video, result => {
+            console.log('QR Code detected (fallback):', result.data);
+            handleQRCodeDetected(result.data);
+          });
+          
+          await qrScanner.start();
+          startScanAnimation();
+          isScanning = true;
+          console.log('Fallback scanner started');
+        }
+      } catch (error) {
+        console.error('Fallback scanner also failed:', error);
+        showCameraError('Tidak dapat menginisialisasi scanner QR. Silakan refresh halaman atau gunakan browser yang berbeda.');
+      }
+    }
+
+    async function startQRScanningWithZXing() {
       if (isScanning) return;
       isScanning = true;
 
       try {
+        console.log('Starting QR scanning...');
         const video = document.getElementById('camera');
         
-        // Start decoding from video element
-        codeReader.decodeFromVideoDevice(selectedDeviceId, video, (result, err) => {
-          if (result) {
-            handleQRCodeDetected(result.text);
-          }
-          
-          if (err && !(err instanceof ZXing.NotFoundException)) {
-            console.log('QR scanning error:', err);
-          }
-        });
+        if (!video.srcObject) {
+          console.error('Video stream not available');
+          showCameraError('Video stream tidak tersedia');
+          return;
+        }
 
-        // Start scan line animation when video is playing
-        video.addEventListener('playing', () => {
+        // Use ZXing to scan from video element
+        if (codeReader) {
+          console.log('Starting ZXing decode...');
+          
+          codeReader.decodeFromVideoElement(video, (result, err) => {
+            if (result) {
+              console.log('QR Code detected:', result.text);
+              handleQRCodeDetected(result.text);
+            }
+            
+            if (err && !(err instanceof ZXing.NotFoundException)) {
+              console.log('QR scanning error:', err);
+            }
+          });
+          
+          // Add visual feedback that scanning is active
           startScanAnimation();
-        });
+        }
 
       } catch (error) {
         console.error('Error starting QR scanning:', error);
-        showCameraError('Gagal memulai scanning');
+        showCameraError('Gagal memulai scanning: ' + error.message);
         isScanning = false;
       }
     }
@@ -147,8 +250,13 @@
       
       // Restart scanning after 4 seconds
       setTimeout(() => {
-        startQRScanning();
+        if (qrScanner) {
+          qrScanner.start();
+        } else {
+          startQRScanningWithZXing();
+        }
       }, 4000);
+    }
 
     async function processQRCode(qrText) {
       try {
@@ -317,6 +425,9 @@
       if (codeReader) {
         codeReader.reset();
       }
+      if (qrScanner) {
+        qrScanner.stop();
+      }
       if (currentStream) {
         currentStream.getTracks().forEach(track => track.stop());
       }
@@ -328,11 +439,18 @@
         if (codeReader) {
           codeReader.reset();
         }
+        if (qrScanner) {
+          qrScanner.stop();
+        }
         isScanning = false;
       } else {
         if (!isScanning) {
           setTimeout(() => {
-            startQRScanning();
+            if (qrScanner) {
+              qrScanner.start();
+            } else {
+              startQRScanningWithZXing();
+            }
           }, 500);
         }
       }
