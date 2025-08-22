@@ -18,15 +18,6 @@ class ScanController extends Controller
         return view('scan.scan');
     }
 
-        /**
-         * Show rincian proses scan botol
-         */
-        public function rincianProses()
-        {
-            // Bisa tambahkan logic jika ingin ambil data dari session/DB
-            return view('scan.rincian-proses');
-        }
-
     /**
      * Show scan success page
      */

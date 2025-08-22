@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="color-scheme" content="light">
     <title>Data Profil - SIGMA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('/assets/css/components/back-button.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/components/sticky-header.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/profile_detail.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/profile/navigation-fixes.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/scan/modal.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -55,10 +53,11 @@
                     <h1 class="page-title">Data Profil</h1>
                 </div>
 
-        <!-- Profile Form Content -->
-        <form id="profileForm" onsubmit="handleSubmit(event)">
-            <!-- Section Title -->
-            <h2 class="section-title">Detail Profil</h2>
+                <!-- Main Content -->
+                <div class="detail-card fade-in-delayed">
+                    <form id="profileForm" onsubmit="handleSubmit(event)">
+                        <!-- Section Title -->
+                        <h2 class="section-title">Detail Profil</h2>
 
                         <!-- Photo Section -->
                         <div class="photo-section">
@@ -138,11 +137,12 @@
                             </button>
                         </div>
                     </form>
-    </div>
+                </div>
+            </div>
 
-    <!-- Loading Scripts -->
-    <script src="{{ asset('/assets/js/profile/navigation-utils.js') }}"></script>
-    <script src="{{ asset('/assets/js/profile/profile_detail.js') }}"></script>
+            <!-- Loading Scripts -->
+            <script src="{{ asset('/assets/js/profile/navigation-utils.js') }}"></script>
+            <script src="{{ asset('/assets/js/profile/profile_detail.js') }}"></script>
 </body>
 
 </html>

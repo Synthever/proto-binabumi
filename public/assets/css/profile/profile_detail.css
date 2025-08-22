@@ -1,29 +1,21 @@
 /* Browser Reset dan Normalisasi */
-*, *::before, *::after {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-:root {
-    --page-background: #ffffff;
-    --text-color: rgba(25, 61, 41, 0.8);
 }
 
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-    height: 100%;
-    background: var(--page-background);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    width: 100%;
     overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
@@ -31,26 +23,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Main Container - Single container approach */
-.profile-container {
-    background: #f8fafc;
-    position: relative;
-    min-height: 100vh;
+/* Profile Detail Page Custom Styles */
+.profile-detail-container {
     width: 100%;
-    max-width: 1024px;
+    max-width: 1024px; /* iPad Pro 12.9" width */
     margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 100px 8px 40px;
-    box-sizing: border-box;
-}
-
-/* Main Content - Remove card styling, just content wrapper */
-.main-content {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 0 24px;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
     position: relative;
     box-sizing: border-box;
 }
@@ -58,19 +40,17 @@ body {
 .header-section {
     display: flex;
     align-items: center;
-    padding: 0 0 24px 0;
+    padding: 16px 0 24px;
     gap: 16px;
     position: relative;
     z-index: 10;
-    border-bottom: 1px solid #e2e8f0;
-    margin-bottom: 24px;
 }
 
 .back-button {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: #f8fafc;
+    background: white;
     border: 1px solid #e2e8f0;
     display: flex;
     align-items: center;
@@ -83,32 +63,40 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .back-button:hover {
-    background: #e2e8f0;
+    background: #f8fafc;
     transform: translateX(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .back-button i {
-    font-size: 18px;
+    font-size: 20px;
     color: #374151;
 }
 
 .page-title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     color: #374151;
     margin: 0;
 }
 
+.detail-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+}
+
 .section-title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: #374151;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .photo-section {
@@ -329,6 +317,11 @@ body {
         font-size: 20px;
     }
     
+    .detail-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
     .section-title {
         font-size: 16px;
         margin-bottom: 20px;
@@ -373,6 +366,10 @@ body {
 @media (min-width: 481px) and (max-width: 768px) {
     .profile-detail-container {
         max-width: 600px;
+        padding: 0 24px;
+    }
+    
+    .detail-card {
         padding: 28px;
     }
     
@@ -390,6 +387,10 @@ body {
         padding: 0 32px;
     }
     
+    .detail-card {
+        padding: 40px;
+    }
+    
     .action-buttons {
         max-width: 400px;
         margin: 32px auto 0;
@@ -400,7 +401,11 @@ body {
 @media (min-width: 835px) {
     .profile-detail-container {
         max-width: 800px;
-        padding: 40px;
+        padding: 0 40px;
+    }
+    
+    .detail-card {
+        padding: 48px;
     }
     
     .profile-photo {
@@ -431,36 +436,27 @@ body {
 }
 
 /* Enhanced hover effects for larger screens */
-@media (min-width: 1025px) {
-    .profile-container {
-        background: #ffffff;
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-        border-left: 1px solid #e2e8f0;
-        border-right: 1px solid #e2e8f0;
-        padding: 100px 8px 40px;
-    }
-    
-    .main-content {
-        max-width: 600px;
-    }
-    
+@media (min-width: 1024px) {
     .form-input:hover {
         border-color: #9ca3af;
         background: #f9fafb;
     }
-}
-
-@media (min-width: 1024px) {
-    .form-input:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    
+    .detail-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
     }
 }
 
 /* Browser Specific Fixes */
-/* Chrome and Chromium-based browsers */
+/* Chrome dan Chromium-based browsers */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .main-content {
+    .profile-detail-container {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    
+    .detail-card {
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
     }
@@ -468,11 +464,17 @@ body {
 
 /* Microsoft Edge Legacy */
 @supports (-ms-ime-align: auto) {
-    .main-content {
+    .profile-detail-container {
         display: flex;
         flex-direction: column;
         -ms-flex-direction: column;
         box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .detail-card {
+        box-sizing: border-box;
+        -ms-box-sizing: border-box;
         width: 100%;
     }
     
@@ -486,7 +488,7 @@ body {
 
 /* Modern Edge (Chromium-based) */
 @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-    .main-content {
+    .profile-detail-container {
         box-sizing: border-box;
         width: 100%;
     }
@@ -494,7 +496,12 @@ body {
 
 /* Firefox specific fixes */
 @-moz-document url-prefix() {
-    .main-content {
+    .profile-detail-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .detail-card {
         width: 100%;
         box-sizing: border-box;
     }
@@ -502,7 +509,13 @@ body {
 
 /* Safari specific fixes */
 @supports (-webkit-appearance: none) and (not (stroke-color: transparent)) {
-    .main-content {
+    .profile-detail-container {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: 100%;
+    }
+    
+    .detail-card {
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
         width: 100%;
@@ -510,128 +523,10 @@ body {
 }
 
 /* Force consistent box model across browsers */
-.main-content {
-    box-sizing: border-box !important;
-    -webkit-box-sizing: border-box !important;
-    -moz-box-sizing: border-box !important;
-    width: 100% !important;
-}
-
-/* Responsive Design - Following login page structure */
-
-/* Specific styling for 1024px screens (iPad Pro) */
-@media (min-width: 1024px) and (max-width: 1024px) {
-    .profile-container {
-        background: #ffffff;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
-        border-left: 1px solid #e2e8f0;
-        border-right: 1px solid #e2e8f0;
-        padding: 100px 8px 40px;
-    }
-    
-    .main-content {
-        max-width: 500px;
-    }
-}
-
-/* Tablet Portrait and Larger */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .profile-container {
-        padding: 80px 8px 40px;
-    }
-    
-    .main-content {
-        max-width: 450px;
-    }
-    
-    .page-title {
-        font-size: 22px;
-    }
-}
-
-/* Mobile Landscape and Medium Phones */
-@media (min-width: 414px) and (max-width: 767px) {
-    .profile-container {
-        padding: 60px 16px 24px;
-        border-radius: 20px;
-    }
-    
-    .main-content {
-        max-width: 100%;
-    }
-    
-    .page-title {
-        font-size: 18px;
-    }
-    
-    .section-title {
-        font-size: 15px;
-    }
-    
-    .form-input {
-        font-size: 15px;
-        padding: 14px 16px;
-    }
-}
-
-/* Small Mobile Phones */
-@media (min-width: 375px) and (max-width: 413px) {
-    .profile-container {
-        padding: 40px 12px 20px;
-        border-radius: 16px;
-    }
-    
-    .page-title {
-        font-size: 17px;
-    }
-    
-    .form-input {
-        font-size: 14px;
-        padding: 12px 14px;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .btn-primary, .btn-secondary {
-        width: 100%;
-    }
-}
-
-/* Very Small Screens */
-@media (max-width: 374px) {
-    .profile-container {
-        padding: 30px 8px 16px;
-        border-radius: 12px;
-    }
-    
-    .page-title {
-        font-size: 16px;
-    }
-    
-    .back-button {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .back-button i {
-        font-size: 16px;
-    }
-}
-
-/* Landscape Mode Optimizations */
-@media (orientation: landscape) and (max-height: 600px) {
-    .profile-container {
-        padding: 20px 32px;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-}
-
-.main-content *,
-.main-content form * {
+.profile-detail-container,
+.profile-detail-container *,
+.detail-card,
+.detail-card * {
     box-sizing: border-box !important;
     -webkit-box-sizing: border-box !important;
     -moz-box-sizing: border-box !important;
