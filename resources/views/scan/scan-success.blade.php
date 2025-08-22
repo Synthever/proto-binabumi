@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/scan/scan-success.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/bottom-nav.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 

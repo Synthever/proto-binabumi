@@ -320,3 +320,95 @@ body {
         opacity: 1;
     }
 }
+
+/* Camera Error Styles */
+.camera-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 300px;
+    padding: 32px;
+    text-align: center;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    color: #495057;
+}
+
+.camera-error .error-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+
+.camera-error p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #dc3545;
+}
+
+.camera-error small {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.camera-error .retry-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.camera-error .retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.camera-error .retry-btn:active {
+    transform: translateY(0);
+}
+
+/* Toast notification styles */
+.toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+}
+
+/* Scanning indicator */
+.scanner-frame.scanning {
+    border-color: #28a745;
+    animation: scanningPulse 2s infinite;
+}
+
+@keyframes scanningPulse {
+    0%, 100% {
+        border-color: #28a745;
+        box-shadow: 0 0 20px rgba(40, 167, 69, 0.3);
+    }
+    50% {
+        border-color: #20c997;
+        box-shadow: 0 0 30px rgba(32, 201, 151, 0.5);
+    }
+}

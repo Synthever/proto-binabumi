@@ -19,6 +19,24 @@
     padding: 32px;
     margin: 0 auto;
     will-change: transform;
+    box-sizing: border-box;
+}
+
+.summary-box,
+.summary-note,
+.popup-actions {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .summary-box,
+    .summary-note,
+    .popup-actions {
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
 
 /* Set initial opacity for animated elements */
@@ -77,6 +95,86 @@
     color: #193D29;
 }
 
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .popup-container {
+        padding: 20px;
+    }
+
+    .summary-box {
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .summary-label {
+        font-size: 12px;
+    }
+
+    .summary-value {
+        font-size: 18px;
+    }
+
+    .popup-btn {
+        padding: 12px;
+        font-size: 14px;
+        width: auto;
+        min-width: 0;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .popup-container {
+        padding: 16px;
+    }
+
+    .summary-box {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .summary-label {
+        font-size: 11px;
+    }
+
+    .summary-value {
+        font-size: 16px;
+    }
+
+    .popup-actions {
+        gap: 12px;
+        width: 100%;
+    }
+
+    .popup-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 12px;
+        height: 36px;
+        width: auto;
+        min-width: 0;
+    }
+
+    .btn-kembali, .btn-scan {
+        white-space: nowrap;
+        flex: 0 1 auto;
+    }
+    
+    .detail-setoran h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .summary-note {
+        font-size: 11px;
+    }
+}
+}
+
 .summary-value.saldo {
     color: #B0891A;
 }
@@ -90,24 +188,31 @@
 }
 
 .popup-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
     gap: 24px;
     max-width: 800px;
     margin: 0 auto;
+    padding: 8px 0;
 }
 
 .popup-btn {
-    padding: 16px 32px;
+    padding: 16px 48px;
     border-radius: 16px;
     font-weight: 600;
     font-size: 16px;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    white-space: nowrap;
 }
 
 .btn-kembali {
     background: #F3F4F6;
     color: #374151;
+    min-width: 180px;
 }
 
 .btn-kembali:hover {
@@ -117,8 +222,25 @@
 .btn-scan {
     background: #193D29;
     color: white;
+    min-width: 180px;
 }
 
 .btn-scan:hover {
     background: #142F1F;
+}
+
+@media screen and (max-width: 768px) {
+    .popup-btn {
+        padding: 14px 32px;
+        min-height: 48px;
+        min-width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .popup-btn {
+        padding: 12px 24px;
+        min-height: 44px;
+        min-width: 130px;
+    }
 }
