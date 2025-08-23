@@ -13,14 +13,11 @@
 <body>
   <div class="page-wrapper">
     {{-- Header --}}
-    <div class="header">
-      <button class="back-btn" onclick="location.href='/donasi'">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-      </button>
-      <h1>Bukti Transfer</h1>
-    </div>
+    <!-- Header tidak ikut animasi -->
+        <div class="header">
+            <x-back-button href="/donasi" />
+            <h1>Bukti Transfer</h1>
+        </div>
 
     {{-- Box PT BINA BUMI --}}
     <div class="bank-box">

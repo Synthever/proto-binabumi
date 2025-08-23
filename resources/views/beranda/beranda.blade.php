@@ -126,11 +126,11 @@
         </div>
       </div>
     </div>
-
-    <!-- Bottom Navigation Component -->
-    @include('components.bottom-nav', ['active' => 'beranda'])
   </div>
 
+  <!-- Bottom Navigation Component -->
+  @include('components.bottom-nav', ['active' => 'beranda'])
+  
   <script>
     // Page load animations
     document.addEventListener('DOMContentLoaded', function() {

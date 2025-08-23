@@ -30,7 +30,6 @@ body {
   position: relative;
 }
 
-/* Header Styles */
 .header {
   display: flex;
   align-items: center;
@@ -42,48 +41,12 @@ body {
   z-index: 10;
 }
 
-@import url('../components/back-button.css');
-
 .header h1 {
   font-size: 18px;
   font-weight: 700;
   color: #193D29;
-  opacity: 0.7;
   padding-left: 16px;
-}
-
-.back-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: white;
-    border: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    z-index: 100;
-    pointer-events: all;
-    user-select: none;
-    flex-shrink: 0;
-    padding: 10px;
-    color: #374151;
-}
-
-.back-btn i {
-    font-size: 20px;
-}
-
-.back-btn:hover {
-    background: #f8fafc;
-    transform: translateX(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.back-btn:active {
-    background-color: rgba(95, 99, 104, 0.2);
+  font-family: 'Poppins', sans-serif;
 }
 
 .card {
@@ -224,22 +187,20 @@ ul {
 /* RESPONSIVE: Mobile */
 @media (max-width: 480px) {
   .header {
-    padding: 12px 0;
-  }
-
-  .header h1 {
-    font-size: 1rem;
-    padding-left: 8px;
-  }
-
-  .back-button {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: white;
+    z-index: 100;
+    border-bottom: 1px solid #e2e8f0;
+    width: 100%;
   }
 
   .card {
     padding: 12px;
+    margin-top: 90px;
   }
 
   .card h2 {

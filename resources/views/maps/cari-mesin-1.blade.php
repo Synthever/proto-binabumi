@@ -10,16 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-gray-50">
-    <div class="cari-mesin-container">
-        <!-- Header Section -->
-        <div class="header-wrapper">
-            <button onclick="window.location.href='/beranda'" class="back-btn">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <h1 class="header-title">Cari Mesin</h1>
+<body>
+    <!-- Header tidak ikut animasi -->
+        <div class="header">
+            <x-back-button href="/beranda" />
+            <h1>Cari Mesin</h1>
         </div>
-
+        
+    <div class="cari-mesin-container">
         <!-- Location Badge -->
         <button onclick="searchAgain()">
         <div class="location-btn fade-in">
